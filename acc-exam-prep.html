@@ -873,11 +873,13 @@ const QUESTIONS = [
 // ═══════════════════════════════════════════════════════════════
 //  KÉRDÉSBANK — PCC/MCC · 20 kérdés (8 kompetencia)
 // ═══════════════════════════════════════════════════════════════
+//  KÉRDÉSBANK — PCC/MCC · Scenario SJT (42 kérdés)
+// ═══════════════════════════════════════════════════════════════
 const QUESTIONS_PCC = [
 
-  // ── ETIKUSAN VISELKEDIK (3) ──────────────────────────────────
   {
     id: "pcc-eth-001", domain: "ethics", difficulty: 2,
+    type: "scenario", worstIndex: 2,
     question: "Egy coach az ügyféllel dolgozva rájön, hogy az ügyfél egy kollégájával is coachingban van, ugyanazon a témán. Mi a coach legjobb lépése?",
     options: [
       "Folytatja a munkát anélkül, hogy megemlítené – a titoktartás érvényes",
@@ -889,8 +891,10 @@ const QUESTIONS_PCC = [
     explanation: "Az ICF Etikai Kódex szerint a coach köteles felismerni és megbeszélni az érdekellentéteket az érintettel. A titoktartás nem tiltja az érdekellentét jelzését az ügyfelnek.",
     reference: "ICF Etikai Kódex 3.7 — Érdekellentétek kezelése",
   },
+
   {
     id: "pcc-eth-002", domain: "ethics", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "Az ügyfél egy session közben olyan információt oszt meg, amiből arra lehet következtetni, hogy veszélybe kerülhet. Mi a coach következő lépése?",
     options: [
       "Folytatja a sessiont – a coaching folyamat nem szakítható meg",
@@ -902,8 +906,10 @@ const QUESTIONS_PCC = [
     explanation: "A titoktartásnak vannak etikai határai: ha az ügyfél biztonsága forog kockán, a coachnak tájékoztatnia kell az ügyfelet, és segítenie kell a megfelelő erőforrások elérésében. Az ICF Kódex elvárja az átláthatóságot ezekben a helyzetekben.",
     reference: "ICF Etikai Kódex 4.1 — A titoktartás korlátai",
   },
+
   {
     id: "pcc-eth-003", domain: "ethics", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "A coaching megbízója részletes jelentést kér a coach-tól arról, hogy az ügyfél mit mond a sessionökön. Hogyan járjon el a coach?",
     options: [
       "Teljes körű jelentést készít, hiszen a megbízó fizeti a coachingot",
@@ -917,8 +923,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── COACHING SZEMLÉLET (3) ──────────────────────────────────
+
   {
     id: "pcc-mnd-001", domain: "mindset", difficulty: 2,
+    type: "scenario", worstIndex: 1,
     question: "Session közben a coach erős személyes reakciót észlel az ügyfél helyzetére, mert az tükrözi a saját feldolgozatlan problémáját. Mi a legmegfelelőbb válasz?",
     options: [
       "Erőt vesz magán és professzionálisan folytatja a sessiont",
@@ -930,8 +938,10 @@ const QUESTIONS_PCC = [
     explanation: "A Coaching Szemlélet kompetencia megköveteli, hogy a coach felismerje és kezelje saját belső reakcióit. A professzionális megoldás: tudatosan félreteszi a saját anyagát a session alatt, majd szupervízióban dolgozza fel.",
     reference: "ICF Kompetencia 2 — Coaching szemlélet megtestesítése",
   },
+
   {
     id: "pcc-mnd-002", domain: "mindset", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfél olyan célt fogalmaz meg, amellyel a coach személyesen nem ért egyet. Az ICF coaching szemlélet szerint a coach:",
     options: [
       "Megkérdőjelezi az ügyfél értékeit és jobb célt javasol",
@@ -943,8 +953,10 @@ const QUESTIONS_PCC = [
     explanation: "A coaching szemlélet lényege az ügyfél autonómiájának tisztelete. A coach feladata nem az, hogy értékelje az ügyfél céljait, hanem hogy segítsen azokat teljesebben megvalósítani.",
     reference: "ICF Kompetencia 2 — Coaching szemlélet: az ügyfél autonómiájának tisztelete",
   },
+
   {
     id: "pcc-mnd-003", domain: "mindset", difficulty: 3,
+    type: "scenario", worstIndex: 0,
     question: "Egy tapasztalt executive coach úgy gondolja, hogy pontosan tudja, mi a legjobb stratégia az ügyfélnek. Az ügyfél egy általa gyengébbnek tartott megközelítést javasol. Mi a coach legjobb válasza?",
     options: [
       "Megosztja szakértelmét és visszatereli az ügyfelet a bevált stratégiák felé",
@@ -958,8 +970,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── MEGÁLLAPODÁSOK (2) ──────────────────────────────────────
+
   {
     id: "pcc-agr-001", domain: "agreements", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az engagement közepén az ügyfél hirtelen személyes kapcsolati problémákra szeretné fókuszálni a coachingot az eredeti szakmai fejlődés helyett. Mit tegyen a coach?",
     options: [
       "Visszautasítja – az eredeti szerződés csak szakmai témákra vonatkozik",
@@ -971,8 +985,10 @@ const QUESTIONS_PCC = [
     explanation: "A Megállapodások kompetencia megköveteli, hogy a coach figyeljen a keretváltozásokra, és aktívan együttműködjön az ügyféllel a célok és hatáskör újradefiniálásában. Nem elutasítás, hanem közös döntés.",
     reference: "ICF Kompetencia 3 — Megállapodások fenntartása és módosítása",
   },
+
   {
     id: "pcc-agr-002", domain: "agreements", difficulty: 1,
+    type: "scenario", worstIndex: 0,
     question: "A session elején az ügyfél sürgős témát jelez, amely eltér az előző alkalommal tárgyalt folytatástól. Mi a coach legjobb válasza?",
     options: [
       "Ragaszkodik az előző menetrendhez a következetesség kedvéért",
@@ -986,8 +1002,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── BIZALOM & BIZTONSÁG (3) ─────────────────────────────────
+
   {
     id: "pcc-trs-001", domain: "trust", difficulty: 2,
+    type: "scenario", worstIndex: 2,
     question: "Az ügyfél megosztja egy sérülékeny élményét, de azonnal egy vicccel minimalizálja azt. A coach több session alatt észleli ezt a mintát. Mi a leghatékonyabb coaching válasz?",
     options: [
       "Továbblép és tiszteletben tartja az ügyfél elhárítását",
@@ -999,8 +1017,10 @@ const QUESTIONS_PCC = [
     explanation: "A Bizalom és Biztonság kompetencia megköveteli, hogy a coach meghívja az ügyfelet mélyebb feltárásra, de nem kényszeríti. A minta megnevezése – az ügyfél autonómiájának megtartásával – bizalomépítő gesztus.",
     reference: "ICF Kompetencia 4 — Bizalom és biztonság megteremtése",
   },
+
   {
     id: "pcc-trs-002", domain: "trust", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfél más kulturális háttérből érkezik, és láthatóan kényelmetlenül érzi magát a coach közvetlen kérdezési stílusa miatt. A pszichológiai biztonság megteremtéséhez a coach:",
     options: [
       "Megőrzi a saját stílusát, mivel az szakmailag hatékony",
@@ -1012,8 +1032,10 @@ const QUESTIONS_PCC = [
     explanation: "Az ICF szerint a coach feladata, hogy alkalmazkodjon az ügyfélhez – nem fordítva. A kulturális érzékenység és a nyitott kommunikáció a biztonságos coaching tér alapja.",
     reference: "ICF Kompetencia 4 — Kulturálisan érzékeny coaching jelenlét",
   },
+
   {
     id: "pcc-trs-003", domain: "trust", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "A coach érzi, hogy az ügyfél nem teljesen őszinte az elért haladással kapcsolatban. Mi a legmegfelelőbb coaching válasz?",
     options: [
       "Szembesíti az ügyfelet közvetlenül az őszintétlenséggel",
@@ -1027,8 +1049,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── TUDATOS JELENLÉT (3) ────────────────────────────────────
+
   {
     id: "pcc-prs-001", domain: "presence", difficulty: 1,
+    type: "scenario", worstIndex: 3,
     question: "Online session közben a coach észreveszi, hogy az ügyfél elvont és szórakozottnak tűnik. Mi demonstrálja a legerősebb coaching jelenlétet?",
     options: [
       "Folytatja a tervezett agendát, hogy a session mederben maradjon",
@@ -1040,8 +1064,10 @@ const QUESTIONS_PCC = [
     explanation: "A Tudatos Jelenlét kompetencia lényege: a coach teljes figyelmével jelen van, és reagál arra, ami az ügyfélnél valóban történik – nem ragaszkodik mereven az agendához. A megnevezés és az incheckelés a jelenlét közvetlen kifejezése.",
     reference: "ICF Kompetencia 5 — Coaching jelenlét fenntartása",
   },
+
   {
     id: "pcc-prs-002", domain: "presence", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "A session felénél a coach rájön, hogy az ügyfél valami sokkal fontosabbat fedett fel, mint az eredeti téma. Mi a legjelenlévőbb coaching válasz?",
     options: [
       "Befejezi az eredeti témát, mivel arra volt tervezve a session",
@@ -1053,8 +1079,10 @@ const QUESTIONS_PCC = [
     explanation: "Az ICF coaching egyik alapelve: a coach ott van, ahol az ügyfél van. Ha a session közben egy fontosabb témaszál bukkan fel, a jelenlévő coach ezt felismeri és követi – az agenda másodlagos.",
     reference: "ICF Kompetencia 5 — Rugalmasság és érzékenység a session közben",
   },
+
   {
     id: "pcc-prs-003", domain: "presence", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfél könnyezik és érzelmileg megrendül a session közben. A jelenlét megőrzéséhez a coach:",
     options: [
       "Papírzsebkendőt kínál és gyorsan megoldások felé tereli a helyzetet, hogy az ügyfél jobban érezze magát",
@@ -1068,8 +1096,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── AKTÍV HALLGATÁS (2) ─────────────────────────────────────
+
   {
     id: "pcc-lst-001", domain: "listening", difficulty: 2,
+    type: "scenario", worstIndex: 3,
     question: "Az ügyfél több session során is visszatérően használja az 'elakadtam' kifejezést különböző helyzetekben. Az aktív hallgatást gyakorló coach:",
     options: [
       "Belsőleg feljegyzi, és folytatja a sessiont",
@@ -1081,8 +1111,10 @@ const QUESTIONS_PCC = [
     explanation: "Az Aktív Hallgatás kompetencia nem csupán a szavakat, hanem a mögöttes jelentést is megérti. Az ismétlődő kifejezések mélyebb feltárást érdemelnek – az ügyfél egyéni tapasztalatára fókuszálva.",
     reference: "ICF Kompetencia 6 — Aktív hallgatás: mögöttes jelentés megértése",
   },
+
   {
     id: "pcc-lst-002", domain: "listening", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfél komplex munkahelyi konfliktusát meséli el. Meghallgatás után mi a coach legjobb reakciója?",
     options: [
       "Értelmezi a történteket és megoldási javaslatokat kínál",
@@ -1096,8 +1128,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── TUDATOSSÁG ELŐMOZDÍTÁSA (2) ─────────────────────────────
+
   {
     id: "pcc-awr-001", domain: "awareness", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "Az ügyfél nem tudja pontosan megfogalmazni, miért érzi magát elégedetlennek a szakmai sikerek ellenére. Mi lenne a coach leghatalmasabb kérdése?",
     options: [
       "Kéri, hogy sorolja fel, mi hiányzik az életéből",
@@ -1109,8 +1143,10 @@ const QUESTIONS_PCC = [
     explanation: "A Tudatosság előmozdítása kompetencia erős kérdéseket, metaforákat és testi jelzéseket is felhasznál a mélyebb tudatosság eléréséhez. A szomatikus kérdés ('mit érezsel a testben?') új dimenziókat nyit.",
     reference: "ICF Kompetencia 7 — Tudatosság előmozdítása: erős kérdések és szomatikus tudatosság",
   },
+
   {
     id: "pcc-awr-002", domain: "awareness", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfél azt mondja, 'mindig' megbukik az új kezdeményezéseknél. Mi a leginkább tudatosságot ébresztő coaching válasz?",
     options: [
       "Megkérdőjelezi a 'mindig' pontosságát ellenpéldákkal",
@@ -1124,8 +1160,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── FEJLŐDÉS FACILITÁLÁSA (2) ───────────────────────────────
+
   {
     id: "pcc-grw-001", domain: "growth", difficulty: 2,
+    type: "scenario", worstIndex: 1,
     question: "A session végén az ügyfél hatalmas felismerésre jut a saját vezetői stílusával kapcsolatban. Mi legyen a coach következő fókusza?",
     options: [
       "Ünnepli a felismerést és pozitív hangulattal zárja a sessiont",
@@ -1137,8 +1175,10 @@ const QUESTIONS_PCC = [
     explanation: "A Fejlődés Facilitálása kompetencia azt kéri, hogy a coach segítsen az ügyfélnek a felismeréseket integrálni és cselekvéssé alakítani. A session befejezése előtt ez az utolsó fontos lépés.",
     reference: "ICF Kompetencia 8 — Fejlődés facilitálása: felismerésből cselekvés",
   },
+
   {
     id: "pcc-grw-002", domain: "growth", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "Az ügyfél következetesen elvállal akciókat, de soha nem hajtja végre. A következő sessionön mi a coach leghatékonyabb reakciója?",
     options: [
       "Szigorúbb elszámoltatási mechanizmusokat és határidőket állít fel",
@@ -1154,8 +1194,10 @@ const QUESTIONS_PCC = [
   // ── 2. KÖTEG (21–40) ────────────────────────────────────────
 
   // ── ETIKUSAN VISELKEDIK (3) ──────────────────────────────────
+
   {
     id: "pcc-eth-004", domain: "ethics", difficulty: 2,
+    type: "scenario", worstIndex: 2,
     question: "Ügyfeleded elmondja, hogy a szervezeti szponzor (HR-vezető) rendszeresen rákérdez, 'hogyan haladnak a sessionök.' Az ügyfél nem tudja, mit mondhat el. Mi a coach legmegfelelőbb reakciója?",
     options: [
       "Megígéred az ügyfélnek, hogy soha semmit nem adsz ki a HR-nek",
@@ -1167,8 +1209,10 @@ const QUESTIONS_PCC = [
     explanation: "A titoktartás kereteinek tisztázása – ideálisan a háromoldalú megállapodásban – a coach felelőssége. Ha ez elmaradt, most kell pótolni. A kulcs: az ügyfél legyen az, aki saját maga kommunikál a szponzornak, a coach nem közbenjáró.",
     reference: "ICF Etikai Kódex 4. szakasz — Titoktartás; ICF Kompetencia 3: Megállapodás kialakítása szponzori kontextusban",
   },
+
   {
     id: "pcc-eth-005", domain: "ethics", difficulty: 3,
+    type: "scenario", worstIndex: 0,
     question: "Session közben ügyfeleded bevall egy etikai szabályszegést a munkahelyén – nem illegális, de érinti a csapatot. Kifejezetten kéri, hogy erről ne tudjon a szponzor. Mit teszel?",
     options: [
       "Azonnal jelzed a szponzornak, mert ő fizet a coachingért",
@@ -1180,23 +1224,10 @@ const QUESTIONS_PCC = [
     explanation: "A titoktartás alapszabály, kivéve ha jogi kötelezettség áll fenn (pl. közvetlen fizikai veszély). Egy munkahelyi etikai dilemma, ami nem illegális, az ügyfél felhatalmazása alatt marad. A coach feladata: coaching keretbe helyezni a kérdést, segíteni az ügyfélnek reflektálni saját értékeire.",
     reference: "ICF Etikai Kódex 4.1 — Titoktartás és szponzori kapcsolat; ICF Kompetencia 1: Etikusan viselkedik",
   },
-  {
-    id: "pcc-eth-006", domain: "ethics", difficulty: 2,
-    question: "Ügyfeleded az elmúlt 3 sessionön sírva fakad, nem tud továbblépni egy régi traumán, és azt mondja: 'ez nagyobb, mint amivel coaching segíthet.' Mi a coach legetikusabb válasza?",
-    options: [
-      "Folytatod a coachingot, mert az ügyfél maga kéri",
-      "Elmagyarázod a coaching és terápia közötti különbséget, más szakemberhez irányítasz, miközben nyitva hagyod a coaching folytatásának lehetőségét",
-      "Azonnal lezárod a coaching kapcsolatot",
-      "Mélyebb trauma-feltárásba kezdesz, hogy segíts az ügyfélnek feldolgozni",
-    ],
-    correctIndex: 1,
-    explanation: "Az ICF etikai kód elvárja, hogy a coach ismerje saját kompetenciáinak határait. A terapeutához irányítás nem jelenti feltétlenül a coaching lezárását – sok ügyfél párhuzamosan végez terápiát és coachingot. A kulcs: tájékoztatás és az ügyfél döntési jogának tiszteletben tartása.",
-    reference: "ICF Etikai Kódex 3.4 — Más szakmai szolgáltatásokhoz irányítás; ICF Kompetencia 1",
-  },
 
-  // ── COACHING SZEMLÉLET (2) ───────────────────────────────────
   {
     id: "pcc-mnd-004", domain: "mindset", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Egy különösen nehéz nap után egy session közben azon kapod magad, hogy automatikusan válaszolgatsz – valódi figyelmed máshol jár. Hogyan kezeled ezt a PCC szintű coaching szellemében?",
     options: [
       "Befejezed a sessiont, mert nem vagy jelen",
@@ -1208,8 +1239,10 @@ const QUESTIONS_PCC = [
     explanation: "A PCC szintű coaching-szemlélet megköveteli az önreflexiót és az autentikus jelenlétet. Az ügyfél bevonása a döntésbe ('ma nehezebbnek érzem a fókuszt – hogyan szeretnéd, hogy haladjunk?') tiszteli az ügyfél autonómiáját és modellt ad az öntudatos kommunikációra.",
     reference: "ICF Kompetencia 2 — Coaching szemlélet: önfejlesztés, autentikus jelenlét; ICF Etikai Kódex 3.6",
   },
+
   {
     id: "pcc-mnd-005", domain: "mindset", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfeled egy olyan iparágban dolgozik, amiről keveset tudsz. Session közben kísértést érzel, hogy feltételezéseket tégy az iparág működéséről. Mi a legjobb megközelítés?",
     options: [
       "Az iparágra vonatkozó tudásodat aktívan kamatoztatod, hogy jobban segíthess",
@@ -1223,8 +1256,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── MEGÁLLAPODÁSOK (3) ───────────────────────────────────────
+
   {
     id: "pcc-agr-003", domain: "agreements", difficulty: 1,
+    type: "scenario", worstIndex: 0,
     question: "A session elején az ügyfeled azt mondja: 'ma sok minden van a fejemben, nem tudom, hol kezdjük.' Mi a legtámogatóbb nyitás?",
     options: [
       "Felkéred, hogy soroljon fel mindent, ami foglalkoztatja, és te döntöd el a prioritást",
@@ -1236,8 +1271,10 @@ const QUESTIONS_PCC = [
     explanation: "A session megállapodásának lényege, hogy az ügyfél vezesse a fókuszt, ne a coach. A C meghívja az ügyfelet a választásba, tiszteletben tartva a belső fontossági sorrendet. Az ügyfél autonómiájának védelme kulcsfontosságú PCC szinten.",
     reference: "ICF Kompetencia 3 — Megállapodások kialakítása: session fókusz és ügyfél autonómia",
   },
+
   {
     id: "pcc-agr-004", domain: "agreements", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Egy szervezet megbíz téged, hogy coacholtál egy menedzserüket. Az első session előtt a HR igazgató azt kéri, hogy havonta küldj 'haladási jelentést'. Hogyan reagálsz?",
     options: [
       "Beleegyezel – ez a szponzor jogos kérése",
@@ -1249,8 +1286,10 @@ const QUESTIONS_PCC = [
     explanation: "A háromoldalú coaching megállapodás az ICF etikai és kompetencia keretének alapköve. Nem elég az ügyfél beleegyezése – a kereteket expliciten kell rögzíteni: mit oszt meg a coach (pl. részvétel, haladás általánosan), és mi marad bizalmas (session tartalom).",
     reference: "ICF Kompetencia 2 — Megállapodások; ICF Etikai Kódex 4.1-4.3: Titoktartás szponzori kontextusban",
   },
+
   {
     id: "pcc-agr-005", domain: "agreements", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "A 4. session közepén az ügyfeled azt mondja: 'azt hiszem, az eredeti célom nem az igazi – valami más foglalkoztat most.' Mi a leghatékonyabb coaching válasz?",
     options: [
       "Emlékezteted az ügyfelet az eredeti célra, és visszatereled oda a fókuszt",
@@ -1264,8 +1303,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── BIZALOM & BIZTONSÁG (3) ──────────────────────────────────
+
   {
     id: "pcc-trs-004", domain: "trust", difficulty: 1,
+    type: "scenario", worstIndex: 3,
     question: "Ügyfeleded sírni kezd a session közben, és azt mondja: 'bocsánat, ez nem illik ide.' Hogyan reagálsz?",
     options: [
       "Szünetet ajánlasz, és megkérdezed, folytathatják-e",
@@ -1277,8 +1318,10 @@ const QUESTIONS_PCC = [
     explanation: "A bizalom és biztonság teremtése azt jelenti: az ügyfél minden aspektusát – beleértve az érzelmeket – elfogadni, nem 'javítani' vagy terelgetni. A C a leginkább jelen-alapú válasz: nem ítéli meg az érzelmet, nem megy mellette el, és nem sietteti az ügyfelet.",
     reference: "ICF Kompetencia 4 — Bizalom és biztonság: teljes ügyfél-elfogadás, ítélkezésmentes jelenlét",
   },
+
   {
     id: "pcc-trs-005", domain: "trust", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfeled egy nehéz döntés előtt áll, és azt kéri: 'mondd meg, szerinted mit kellene tennem.' Hogyan válaszolsz?",
     options: [
       "Megadod a tanácsodat, mert az ügyfél kéri",
@@ -1290,8 +1333,10 @@ const QUESTIONS_PCC = [
     explanation: "A C-t az különbözteti meg a D-től: előbb az érzelem és szükséglet elismerése, MAJD a visszafordítás. Az ügyfél tanácskérése mögött általában bizonytalanság van. A coach ezt látja, és épp ezért nem ad tanácsot, hanem az ügyfelet erősíti meg saját belső tudásában.",
     reference: "ICF Kompetencia 4 — Bizalom és biztonság; Kompetencia 5 — Jelenlét: a coach nem az ügyfél megoldója",
   },
+
   {
     id: "pcc-trs-006", domain: "trust", difficulty: 3,
+    type: "scenario", worstIndex: 3,
     question: "Ügyfeleded más kulturális háttérből érkező menedzser, aki inkább közvetett módon kommunikál. Te hajlamos vagy direkt stílusra. Hogyan közelítesz ehhez?",
     options: [
       "Nyíltan megbeszélitek a kommunikációs stílus különbségeket az első sessionön",
@@ -1305,8 +1350,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── TUDATOS JELENLÉT (2) ─────────────────────────────────────
+
   {
     id: "pcc-prs-004", domain: "presence", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Session közben azt veszed észre, hogy az ügyfeled szavai és testtartása/hangszíne között eltérés van: 'minden rendben van' – mondja, de hangja lapos és válla előregörnyed. Mit teszel?",
     options: [
       "Figyelmen kívül hagyod a nonverbális jelzéseket és a kimondott szavakra fókuszálsz",
@@ -1318,8 +1365,10 @@ const QUESTIONS_PCC = [
     explanation: "A tudatos jelenlét magában foglalja a teljes üzenetre való figyelést – szavak, hang, test. A coach nem interpretál (D), nem kérdőjelez meg szkeptikusan (C), hanem visszatükröz és meghív: 'ezt hallom – te mit tapasztalsz?' Ez nyitva hagyja a teret az ügyfélnek.",
     reference: "ICF Kompetencia 5 — Tudatos jelenlét: nonverbális jelek figyelése; Kompetencia 6: Aktív hallgatás",
   },
+
   {
     id: "pcc-prs-005", domain: "presence", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "Egy session közepén erős intuíciód támad: úgy érzed, az ügyfél valami fontosat elhallgat. Hogyan kezeled ezt a legjobban?",
     options: [
       "Elfogadod és figyelmen kívül hagyod – az intuíció nem megbízható coaching eszköz",
@@ -1333,8 +1382,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── AKTÍV HALLGATÁS (3) ──────────────────────────────────────
+
   {
     id: "pcc-lst-003", domain: "listening", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Ügyfeleded negyedórán át részletezi, mi történt a munkahelyén, és te észreveszed, hogy mindig külső tényezőkre hivatkozik – főnök, kollégák, rendszer. Az ügyfél szerepe soha nem jelenik meg. Hogyan kezeled?",
     options: [
       "Megkérdezed: 'és te mit tettél rosszul ebben a helyzetben?'",
@@ -1346,8 +1397,10 @@ const QUESTIONS_PCC = [
     explanation: "Az aktív hallgatás nem csupán a kimondott szavakra figyel, hanem a mintákra és a hiányokra is. A coach sem nem ítéli el az ügyfelet (A), sem nem siet a megoldás felé (D), hanem visszatükrözi, amit hallott – és teret ad az ügyfélnek, hogy maga vizsgálja meg.",
     reference: "ICF Kompetencia 6 — Aktív hallgatás: minták és hiányok azonosítása",
   },
+
   {
     id: "pcc-lst-004", domain: "listening", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Ügyfeleded indulattal mesél egy konfliktusos munkahelyi szituációról – szokatlanul erős érzelmekkel teli a monológ. Mi a leghatékonyabb coaching lépés?",
     options: [
       "Megvárod, amíg befejezi, majd rátérsz a probléma megoldására",
@@ -1359,8 +1412,10 @@ const QUESTIONS_PCC = [
     explanation: "Az aktív hallgatás PCC szinten az érzelmekre is kiterjed. A C nem interpretál ('dühös vagy'), hanem tükröz és visszaad: 'hatalmas indulatot hallok'. A 'mit jelent ez számodra?' meghívja az ügyfelet az önreflexióra, nem a magyarázatra.",
     reference: "ICF Kompetencia 6 — Aktív hallgatás: érzelmi tükrözés; Kompetencia 4: Bizalom és biztonság",
   },
+
   {
     id: "pcc-lst-005", domain: "listening", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Ügyfeleded befejez egy mondatot és hallgat. A csend már 20 másodperce tart. Mi a leginkább jelenlét-alapú reakció?",
     options: [
       "Feltöröd a csendet egy kérdéssel, hogy ne legyen kínos",
@@ -1374,8 +1429,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── TUDATOSSÁG ELŐMOZDÍTÁSA (2) ──────────────────────────────
+
   {
     id: "pcc-awr-003", domain: "awareness", difficulty: 2,
+    type: "scenario", worstIndex: 1,
     question: "Ügyfeleded azt mondja: 'én egy olyan ember vagyok, aki nem tud nemet mondani.' Hogyan mozdítod elő leghatékonyabban a tudatosságát?",
     options: [
       "Megkérdezed, mikor tanulta meg ezt a mintát",
@@ -1387,8 +1444,10 @@ const QUESTIONS_PCC = [
     explanation: "Az ügyfél egy azonosítást fogalmazott meg ('én olyan vagyok, aki...') – ez egy limitáló hiedelem. A PCC szintű tudatosság-előmozdítás nem az okot kutatja (A), nem ad technikákat (B), hanem a keretet kérdőjelezi meg: 'mi lenne, ha ez nem lenne igaz?' Ez a legerősebb perspektívaváltó kérdés.",
     reference: "ICF Kompetencia 7 — Tudatosság előmozdítása: limitáló hiedelmek felülvizsgálata",
   },
+
   {
     id: "pcc-awr-004", domain: "awareness", difficulty: 3,
+    type: "scenario", worstIndex: 1,
     question: "Ügyfeleded az elmúlt 3 sessionön különböző helyzeteket mesél, de mindegyikben ugyanaz a minta: mindig kerüli a konfrontációt, és utólag bánja. Hogyan emeled be ezt a mintát?",
     options: [
       "Megvárod, amíg az ügyfél maga veszi észre",
@@ -1402,8 +1461,10 @@ const QUESTIONS_PCC = [
   },
 
   // ── FEJLŐDÉS FACILITÁLÁSA (2) ────────────────────────────────
+
   {
     id: "pcc-grw-003", domain: "growth", difficulty: 2,
+    type: "scenario", worstIndex: 3,
     question: "A 6. sessionön ügyfeleded arról számol be, hogy az előző session óta 'megint nem csinálta meg' a vállalt feladatot. Ez már a harmadik alkalom. Hogyan közelítesz ehhez?",
     options: [
       "Emlékezteted az ügyfelet az elkötelezettség fontosságára és a célkitűzés mögötti motivációra",
@@ -1415,8 +1476,10 @@ const QUESTIONS_PCC = [
     explanation: "A visszatérő 'nem csinálta meg' minta nem a feladat méretéről szól (B), és nem motiváció-hiányról feltétlenül (A/D). A C a legerőteljesebb kérdés: az ügyfelet magát hívja meg a minta vizsgálatára – ez hozza a legmélyebb növekedést.",
     reference: "ICF Kompetencia 8 — Fejlődés facilitálása: elszámoltatás vs. önfelfedezés",
   },
+
   {
     id: "pcc-grw-004", domain: "growth", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Ügyfeleded az utolsó sessionön azt mondja: 'nem is tudom, mennyire fejlődtem, mindez természetesnek tűnik már.' Hogyan zárod le a coaching folyamatot a legteljesebben?",
     options: [
       "Elmondod neki, milyen sokat fejlődött",
@@ -1432,202 +1495,10 @@ const QUESTIONS_PCC = [
   // ── 3. KÖTEG (41–60) ────────────────────────────────────────
 
   // ── ETIKUSAN VISELKEDIK (2) ──────────────────────────────────
-  {
-    id: "pcc-eth-007", domain: "ethics", difficulty: 2,
-    question: "Az ügyfeleded felkér, hogy légy az esemény-menedzsere az iparági konferenciáján, ahol előad – 'te ismered legjobban az anyagát.' Mit teszel?",
-    options: [
-      "Elvállalod, mert ez is coaching-jellegű támogatás",
-      "Jelzed, hogy ez szerepkonfliktusos lenne a coaching keretén belül; más megoldást ajánlasz",
-      "Megkérdezed, mit jelentene számodra és az ügyfél számára, ha elvállalod",
-      "Elvállalod, de jelzed, hogy a coaching-díjon felüli külön megbízás lenne",
-    ],
-    correctIndex: 1,
-    explanation: "Az ICF etikai kód egyértelműen tiltja az olyan kettős szerepvállalást, amely konfliktust okoz a coaching-kapcsolatban. A menedzseri szerep a coaching keretét meghaladja és a coach semlegességét veszélyezteti (B). A C is releváns önreflexió, de az etikai korlát nem megbeszélhető – az előbb lép.",
-    reference: "ICF Etikai kód — Összeférhetetlenség és kettős szerepek",
-  },
-  {
-    id: "pcc-eth-008", domain: "ethics", difficulty: 3,
-    question: "Az ügyfeled karrierváltásról szóló coaching-folyamat közben traumatikus gyermekkori élményeket kezd megosztani, és úgy érzi, ezek közvetlenül befolyásolják a döntési képességét. Mit teszel?",
-    options: [
-      "Meghallgatod és coaching-kérdésekkel dolgozol a traumás tartalommal",
-      "Leállítod: 'Ez már terápiás téma, coaching keretben nem tudok ezzel dolgozni'",
-      "Elismered a kapcsolatot az élmények és a döntési minta között; szükség esetén megfelelő szakemberhez irányítasz",
-      "Jelzed, hogy a coaching jövőfókuszú, a múlt témák kívül esnek a kereten",
-    ],
-    correctIndex: 2,
-    explanation: "A PCC/MCC coach tiszteli az ügyfél narratíváját és elismeri a kapcsolatot (C), de a kompetenciahatáron belül marad: traumafeldolgozás nem coaching-kompetencia. A B kategóriás és lezáró. A D pontatlan: a múlt megjelenik a coachingban, de a coach nem traumaterapeuta.",
-    reference: "ICF Etikai kód — Kompetenciahatárok és referálás",
-  },
 
-  // ── COACHING MINDSET (3) ──────────────────────────────────────
-  {
-    id: "pcc-mnd-006", domain: "mindset", difficulty: 2,
-    question: "Session közben rájössz, hogy egy kérdésed túl direktív volt, és az ügyfeled az ötletet a sajátjaként fogadta el. Hogyan kezeled?",
-    options: [
-      "Folytatod a sessiont – az ügyfél jól van, az ötlet működhet",
-      "A session végén jelzed az ügyfelnek, hogy esetleg befolyásoltad",
-      "Valós időben visszaveszed: 'Vegyük újra – ez az én ötletem volt. Mi a te gondolatod ennél a pontnál?'",
-      "A következő szupervízión dolgozod fel, de a sessionben nem hozod be",
-    ],
-    correctIndex: 2,
-    explanation: "Az ügyfél autonómiájának azonnali helyreállítása (C) a legtisztább megközelítés: a coach átlátható, és visszaadja az ügyfélnek a saját ötlet-alkotás élményét. A szupervízió is szükséges (D), de nem helyettesíti az azonnali korrekciót.",
-    reference: "ICF Kompetencia 2 — Coaching mindset: folyamatos reflexió és ügyfél-autonómia",
-  },
-  {
-    id: "pcc-mnd-007", domain: "mindset", difficulty: 2,
-    question: "Hat hete dolgoztok az ügyfeleddel, de konkrét előrelépés nincs. Az ügyfél elégedettnek tűnik, te aggódsz. Mit teszel?",
-    options: [
-      "Felkéred az ügyfelet, hogy értékelje maga a folyamatot és mondja el, hogyan látja a haladást",
-      "Felveted, hogy más módszert kellene próbálni",
-      "Konkrétabb célokat javasolsz a következő sessionre",
-      "Megvizsgálod magadban: honnan jön az aggodalmad?",
-    ],
-    correctIndex: 0,
-    explanation: "Az első lépés az ügyfél perspektívájának megismerése (A): ő az egyetlen, aki tudja, mi és hogyan változik benne. A coach aggódalma (D) szupervíziós téma, de a sessionban az ügyfél értékelése a prioritás. Módszer- vagy célváltás javaslata (B/C) a coach saját feltételezéséből indul – ezt meg kell előznie az ügyfél hangjának.",
-    reference: "ICF Kompetencia 2 — Coaching mindset: az ügyfél mint referenciapont",
-  },
-  {
-    id: "pcc-mnd-008", domain: "mindset", difficulty: 2,
-    question: "Az ügyfeleded egy iparági döntéséről kérdez, ahol te személy szerint másképp cselekednél. Hogyan reagálsz?",
-    options: [
-      "Elmondod a saját véleményed, de jelzed: ez csak egy nézőpont",
-      "Megkérdezed, milyen más perspektívákat látott már ez ügyben",
-      "Ellenpontozó kérdést teszel fel: 'Mi szólna ez ellen?'",
-      "Visszaadsz a döntésnek: 'Mi lenne a számodra legjobb út ennél a kérdésnél?'",
-    ],
-    correctIndex: 3,
-    explanation: "A coaching mindset alapja, hogy az ügyfél a saját életének szakértője. A coach nem ad tanácsot (A), és nem is az ellenpont felé irányít (C): az ügyfél saját belső bölcsességéhez vezet vissza (D). B hasznos lehet, de D direktebben tartja az autonómiát.",
-    reference: "ICF Kompetencia 2 — Coaching mindset: az ügyfél mint saját életének szakértője",
-  },
-
-  // ── MEGÁLLAPODÁSOK (2) ────────────────────────────────────────
-  {
-    id: "pcc-agr-006", domain: "agreements", difficulty: 2,
-    question: "A coaching engagement felénél az ügyfeled témát vált: a karriercél helyett most a személyes kapcsolatain akar dolgozni. Hogyan reagálsz?",
-    options: [
-      "Emlékezteted az eredeti célra és visszatereled oda",
-      "Elismered az új fókuszt, és feltárod, hogyan kapcsolódhat az eredeti célhoz",
-      "Megállsz, és nyíltan megbeszélitek: mi változott, és hogyan akarja folytatni a coachingot?",
-      "Jelzed, hogy ez más coaching-specializációt igényelne",
-    ],
-    correctIndex: 2,
-    explanation: "A coaching megállapodás dinamikus: amikor az ügyfél témát vált, explicit megállapodás-újragondolás szükséges (C). Az ügyfél nem 'téved el' – az ő belső logikája vezet. A B feltételez kapcsolatot, amit az ügyfél talán nem lát; a C az ügyfélre bízza a fókusz meghatározását.",
-    reference: "ICF Kompetencia 3 — Megállapodások: dinamikus újragondolás a folyamat során",
-  },
-  {
-    id: "pcc-agr-007", domain: "agreements", difficulty: 1,
-    question: "Az ügyfeled a session elején azt mondja: 'Ma csak ki akarom adni magamból, nem akarok semmi megoldást.' Mit teszel?",
-    options: [
-      "Megpróbálsz mégis coaching-kérdésekkel mélyebbre menni",
-      "Elfogadod, jelzed, hogy jelen leszel, és megkérdezed: mi kell most ettől a tértől?",
-      "Megkérdezed, biztosan ez-e a leghasznosabb töltése ennek az ötven percnek",
-      "Elfogadod az igényét, majd tíz perc után visszavezeted a coaching-folyamatba",
-    ],
-    correctIndex: 1,
-    explanation: "Az ügyfél session-szintű megállapodása meghatározza, mire van szüksége. A coach feladata követni – nem irányítani vagy felülvizsgálni (C). A B a tér minőségét is megkérdezi: ez erős jelen-fókuszú megállapodás-kötés.",
-    reference: "ICF Kompetencia 3 — Session-szintű megállapodás és az ügyfél szükségletei",
-  },
-
-  // ── BIZALOM ÉS BIZTONSÁG (2) ─────────────────────────────────
-  {
-    id: "pcc-trs-007", domain: "trust", difficulty: 2,
-    question: "Az ügyfeleded egy kockázatos ötletet vet fel, majd rögtön hozzáteszi: 'Persze, ez valószínűleg hülyeség.' Mit teszel?",
-    options: [
-      "Megerősíted: 'Ez nem hülyeség, ez egy bátor ötlet!'",
-      "Megkérdezed: 'Ki mondta, hogy ez hülyeség?'",
-      "Megállsz a pillanatra: 'Figyeltem, hogy az ötlettel együtt jött egy visszavonás. Mi történt ott?'",
-      "Továbbléptek az ötlet tárgyalására, mintha a mellékmondat nem hangzott volna el",
-    ],
-    correctIndex: 2,
-    explanation: "A meta-kommunikáció – az ötlet és az azonnali önkritika egymás utáni megjelenése – gazdagabb anyag, mint maga az ötlet. A C a legmélyebb szintű hallgatást tükrözi: nem ítél, nem vigasztal, hanem a mögöttes dinamikára kérdez rá (ICF Level 3 listening). A B is érdekes, de kevésbé pillanatfókuszú.",
-    reference: "ICF Kompetencia 4 — Bizalom és biztonság: a meta-kommunikáció visszatükrözése",
-  },
-  {
-    id: "pcc-trs-008", domain: "trust", difficulty: 2,
-    question: "Az ügyfeled egy session elején azt mondja: 'Úgy érzem, az előző session nem segített semmit.' Mit teszel?",
-    options: [
-      "Megkérdezed, mi ment félre az előző sessionön",
-      "Elnézést kérsz és megpróbálod jobban csinálni",
-      "Elismered az érzést és megkérdezed: mit várna a mai sessiontől?",
-      "Elemzitek az előző session tartalmát, hogy megtaláljátok, mi nem működött",
-    ],
-    correctIndex: 2,
-    explanation: "A bizalom helyreállítása nem retrospektív elemzéssel (A/D) vagy védekezéssel (B) történik: az ügyfél jelenbeli szükségletének megértése (C) a legjobb első lépés. Ez is egy session-szintű megállapodás-újrakötés.",
-    reference: "ICF Kompetencia 4 — Bizalom: biztonság helyreállítása, jelen-fókusz",
-  },
-
-  // ── JELENLÉT (3) ──────────────────────────────────────────────
-  {
-    id: "pcc-prs-006", domain: "presence", difficulty: 2,
-    question: "Nehéz személyes napod van (pl. haláleset a családban), de este coaching session van. Hogyan kezeled?",
-    options: [
-      "Elvégzed a sessiont – ez a munkád",
-      "Lemondod a sessiont, mert nem vagy jó állapotban",
-      "Összeszeded magad (pl. rövid szünet, légzés), és ha session közben sem tudod tartani a jelenlétet, transzparensen jelzed az ügyfélnek",
-      "Belemész a sessionbe, bízva, hogy a munka eltereli a gondolataidat",
-    ],
-    correctIndex: 2,
-    explanation: "A coach felelős a jelenlét minőségéért. A C a legőszintébb és legkevésbé kockázatos: ha az önfelkészülés nem elegendő, az ügyfél érdeke, hogy tudjon erről. A lemondás (B) valódi opció, ha valóban nem lehet jelen – de nem az alapértelmezett válasz.",
-    reference: "ICF Kompetencia 5 — Jelenlét: a coach felelőssége a jelenlét minőségéért",
-  },
-  {
-    id: "pcc-prs-007", domain: "presence", difficulty: 2,
-    question: "Session közben erős belső érzést tapasztalsz az ügyfeled szavai mögött – a tested jelez valamit. Mit teszel?",
-    options: [
-      "Figyelmen kívül hagyod és a kimondott szavaira fókuszálsz",
-      "Azonnal kimondod, amit éreztél",
-      "Megfontoltan visszajelzed: 'Valami megjelent bennem, amikor ezt mondtad – megvizsgálhatnánk?'",
-      "Megkérdezed az ügyfelet, mit érez ő a testében",
-    ],
-    correctIndex: 2,
-    explanation: "A coach saját intuíciójának figyelése és körültekintő bevonása ICF PCC/MCC szinten elismert készség. A C lehetőséget nyit, de az ügyfélre bízza, hogy belép-e – ez az egyensúly a coach jelenléte és az ügyfél autonómiája között.",
-    reference: "ICF Kompetencia 5 — Jelenlét: intuíció és szomatikus tudatosság a coaching-ban",
-  },
-  {
-    id: "pcc-prs-008", domain: "presence", difficulty: 2,
-    question: "Session közben veszed észre, hogy a következő ügyfeled gondjára gondolsz. Mit teszel?",
-    options: [
-      "Gyorsan összeszeded magad és visszakerülsz",
-      "Valós időben beismered: 'Egy pillanatra elvesztettem a fonalat – hadd legyek most teljesen jelen'",
-      "A session után leírod magadnak és szupervíziónál megbeszéled",
-      "Kérdést teszel fel az ügyfélnek, hogy visszaterelődhess",
-    ],
-    correctIndex: 1,
-    explanation: "A transzparens jelenlét-helyreállítás (B) erős PCC/MCC-szintű készség: az ügyfél megérdemli, hogy tudja, a coach visszatér hozzá. Ez mélyíti a bizalmat és modellezi az önismeretet. A szupervízió (C) szükséges, de nem helyettesíti az azonnali korrekciót.",
-    reference: "ICF Kompetencia 5 — Jelenlét: transzparencia és valós idejű önkorrekció",
-  },
-
-  // ── AKTÍV HALLGATÁS (2) ───────────────────────────────────────
-  {
-    id: "pcc-lst-006", domain: "listening", difficulty: 2,
-    question: "Az ügyfeled részletesen meséli a munkahelyi konfliktust. Amikor a főnökéről szól, a hangja megváltozik. Mit teszel?",
-    options: [
-      "Megkérdezed, mi a véleménye a főnökéről",
-      "Jelzed: 'Amikor a főnökedről mesélsz, valami változást érzékeltem a hangodon. Mi van ott?'",
-      "Folytatod a hallgatást és vársz, míg az ügyfél maga érinti a főnök-kapcsolatot",
-      "Összefoglalod a konfliktust és megkérdezed, hogyan szeretne reagálni",
-    ],
-    correctIndex: 1,
-    explanation: "A 3. szintű hallgatás (Level 3 listening) a teljes mező figyelme: a para-verbális jelekre (hangszín, tempó, csend) reagálás és visszatükrözés. A B pontosan ezt teszi: nem értelmez, csak megfigyel és megnyitja a teret.",
-    reference: "ICF Kompetencia 6 — Aktív hallgatás: para-verbális jelek és Level 3 listening",
-  },
-  {
-    id: "pcc-lst-007", domain: "listening", difficulty: 3,
-    question: "Az ügyfeled lelkesen meséli terveit, de valahányszor a partnere kerül szóba, rövid szünetek jelennek meg. Mit teszel?",
-    options: [
-      "Megkérdezed, mi a partnere véleménye a tervről",
-      "Rákérdezel a szünetekre: 'Veszem észre, hogy amikor a partneredet megemlíted, egy rövid csend jelenik meg. Mi van ott?'",
-      "Nem szólsz a szünetekre, mert az ügyfél nem hozta be önként",
-      "Megkérdezed, hogyan kommunikál a párjával a terveiről",
-    ],
-    correctIndex: 1,
-    explanation: "A coaching egyik legfontosabb hallgatási síkja a kimondatlan – a szünet, a hangsúlyváltás, az elmaradó mondatok. A B ítéletmentesen tükröz vissza egy megfigyelt mintát és teret nyit – ez a legteljesebb PCC/MCC-szintű hallgatás.",
-    reference: "ICF Kompetencia 6 — Aktív hallgatás: a kimondatlan és a szünet figyelése",
-  },
-
-  // ── TUDATOSSÁG ÖSZTÖNZÉSE (3) ─────────────────────────────────
   {
     id: "pcc-awr-005", domain: "awareness", difficulty: 2,
+    type: "scenario", worstIndex: 3,
     question: "Az ügyfeled azt mondja: 'Nem vagyok elég jó ahhoz, hogy vezető legyek.' Melyik kérdés nyitja meg leginkább a lehetséges teret?",
     options: [
       "'Mik az erősségeid, amiket nem ismersz el magadban?'",
@@ -1639,8 +1510,10 @@ const QUESTIONS_PCC = [
     explanation: "A C az ún. 'possibility question' – a hiedelem mögé néz és a lehetséges állapotot nyitja meg. Ez előre- és jövőfókuszú, és az ügyfelet a saját vízióján keresztül mozdítja. A B múlt-fókuszú; a D a hiedelem keretét elfogadja; az A lista-fókuszú.",
     reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: hiedelem mögötti lehetséges tér megnyitása",
   },
+
   {
     id: "pcc-awr-006", domain: "awareness", difficulty: 2,
+    type: "scenario", worstIndex: 2,
     question: "Három egymást követő sessionön az ügyfeled minden ötletét a 'de hátha elrontom' mondattal zárja. Mit teszel a 3. sessionön?",
     options: [
       "Megvárod a negyediket – talán magától is észreveszi",
@@ -1652,23 +1525,10 @@ const QUESTIONS_PCC = [
     explanation: "A mintafelismerés és annak ítéletmentesen, kíváncsian való visszatükrözése (B) mély tudatossági munkát indít el. A C ítéletes feltételezés. A D instrukció (coach-vezérelt). A B az ügyfelet a saját ismétlődő mintájával szembesíti – és teret nyit.",
     reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: visszatérő minták tükrözése",
   },
-  {
-    id: "pcc-awr-007", domain: "awareness", difficulty: 2,
-    question: "Az ügyfeled hosszan érvel egy döntési dilemma mindkét oldala mellett – logikusan, kiegyensúlyozottan. Mit teszel?",
-    options: [
-      "Segítesz elemezni az érveket egy döntési mátrixban",
-      "Megkérdezed: 'Ha a testeddel kellene választani – mit mondana a szíved vagy a gyomrod?'",
-      "Megkérdezed, melyik opció illik jobban az értékeihez",
-      "Jelzed, hogy a logikai érvek kiegyenlítik egymást – talán más szinten kell keresni a választ",
-    ],
-    correctIndex: 1,
-    explanation: "Amikor a logikai szint nem visz előre, a szomatikus/intuitív intelligencia bevonása (B) különösen értékes PCC/MCC szinten. Ez nem irracionális: az ICF elismeri a test és az intuíció szerepét a coaching-ban. A C is hasznos, de B direktebben más szintre mozdít.",
-    reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: szomatikus és intuitív intelligencia bevonása",
-  },
 
-  // ── FEJLŐDÉS FACILITÁLÁSA (3) ────────────────────────────────
   {
     id: "pcc-grw-005", domain: "growth", difficulty: 2,
+    type: "scenario", worstIndex: 0,
     question: "Az ügyfeleded vállalt egy feladatot, de a következő session elején azt mondja: 'Nem csináltam meg, mert nem volt rá időm.' Hogyan reagálsz?",
     options: [
       "Megkérdezed, hogyan tervezi jobban kezelni az időt a jövőben",
@@ -1679,284 +1539,6 @@ const QUESTIONS_PCC = [
     correctIndex: 2,
     explanation: "A PCC/MCC szintű elszámoltatás nem kritika, nem időmenedzsment-tanácsadás és nem is a kötelezettség felidézése: az akadály mögötti üzenet feltárása (C) a coaching-os megközelítés. Ez kíváncsiságot és önismeret-lehetőséget nyit.",
     reference: "ICF Kompetencia 8 — Fejlődés facilitálása: elszámoltatás mint önismereti lehetőség",
-  },
-  {
-    id: "pcc-grw-006", domain: "growth", difficulty: 2,
-    question: "Session közepén az ügyfeled elhallgat, majd halkan azt mondja: 'Azt hiszem, most rájöttem valamire.' Mit teszel?",
-    options: [
-      "Megkérdezed, mire jött rá",
-      "Teret hagyol a csendnek; ha az ügyfél folytatni akarja, jelen leszel",
-      "Bátorítod: 'Mesélj!'",
-      "Visszakérdezel a korábbi kérdésre, hogy ne veszítsd el a fonalat",
-    ],
-    correctIndex: 1,
-    explanation: "Ez egy AHA-pillanat: a coach feladata a tér megtartása és jelenlét – nem az azonnali verbalizálás sürgetése (A/C), nem a fonal visszavétele (D). A csend az integráció tere: a B engedi, hogy a felismerés mélységbe érjen.",
-    reference: "ICF Kompetencia 8 — Fejlődés facilitálása: AHA-pillanatok és az integráció tere",
-  },
-  {
-    id: "pcc-grw-007", domain: "growth", difficulty: 1,
-    question: "Az ügyfeled magabiztos, kreatív megoldást talál egy régóta húzódó problémára. Hogyan reagálsz?",
-    options: [
-      "'Látod, tudtad ezt egyedül is megoldani!'",
-      "'Mi tette lehetővé, hogy most megtaláld ezt a megoldást?'",
-      "'Ez egy nagyon jó ötlet – oszd meg másokkal is!'",
-      "'Hogyan fogod implementálni?'",
-    ],
-    correctIndex: 1,
-    explanation: "A coaching nem dicsér (A) és nem siet az akcióba (D): az ügyfél saját erőforrásainak és képességeinek tudatosítása a legfontosabb fejlődési mozzanat. A B visszafordít a belső erőforráshoz és mélyíti az ügyfél önismeretét – ez a coaching legjobb pillanata.",
-    reference: "ICF Kompetencia 8 — Fejlődés facilitálása: az ügyfél erőforrásainak tükrözése",
-  },
-
-  // ── 4. KÖTEG (61–78) ────────────────────────────────────────
-
-  // ── ETIKUSAN VISELKEDIK (2) ──────────────────────────────────
-  {
-    id: "pcc-eth-009", domain: "ethics", difficulty: 2,
-    question: "Session után rájössz, hogy egész végig belső ítéleteid voltak az ügyfeled döntéseivel kapcsolatban, bár ezt nem mondtad ki. Mit teszel?",
-    options: [
-      "Semmit – a coachingban az a lényeg, amit mondasz, nem amit belül érzel",
-      "A következő sessionön igyekszel tudatosabb lenni és elnyomni az ítéleteidet",
-      "Elviszed szupervízióba: megvizsgálod, mi csatolódott be benned",
-      "Bocsánatot kérsz az ügyfélnek a következő sessionön",
-    ],
-    correctIndex: 2,
-    explanation: "A belső ítélet a coach saját anyaga: az ICF etikai kód értelmében a coach köteles folyamatos önismeretre és szupervízióra. A gondolat elnyomása (B) nem feldolgozás – a szupervízió (C) az első és szükséges lépés.",
-    reference: "ICF Etikai kód — Folyamatos fejlődés: szupervízió és önismeret mint etikai kötelezettség",
-  },
-  {
-    id: "pcc-eth-010", domain: "ethics", difficulty: 2,
-    question: "Az ügyfeled anyagi nehézségekre hivatkozva díjcsökkentést kér, és hozzáteszi: 'remélem, ez nem változtat a minőségen.' Mit teszel?",
-    options: [
-      "Csökkented a díjat, hogy ne veszítsd el az ügyfelet",
-      "Jelzed, hogy a díjad a munkád értékét tükrözi, és nyíltan megbeszélitek a folytatás lehetséges kereteit",
-      "Megkérdezed, mit értett a 'minőségen' – és mi a véleménye a díj és a minőség kapcsolatáról",
-      "Ingyen folytatod egy ideig, mert az ügyfél-kapcsolat fontosabb a díjnál",
-    ],
-    correctIndex: 1,
-    explanation: "Az etikai kód és a professzionális integritás megkívánja, hogy a díjmegállapodás tiszta és nyílt legyen (B). A coach se alulértékeléssel (A/D), se kerülő kérdéssel (C) ne lépjen ki a saját keretéből – az egyenes párbeszéd védi mindkét felet.",
-    reference: "ICF Etikai kód — Díjak, szerződések és a coach integritása",
-  },
-
-  // ── COACHING MINDSET (2) ──────────────────────────────────────
-  {
-    id: "pcc-mnd-009", domain: "mindset", difficulty: 2,
-    question: "Session végén az ügyfeled azt mondja: 'köszönöm, de ezt én egyedül is rájöttem volna.' Hogyan reagálsz?",
-    options: [
-      "Megerősíted: 'Igen, te voltál az, aki mindezt megtalálta'",
-      "Finoman védekezve jelzed: 'Azért a kérdéseim is segítettek'",
-      "Belül kellemetlenül érzed magad, de kint mosolyogva elfogadod",
-      "A session után szupervízióban megvizsgálod, miért volt ez felkavaró",
-    ],
-    correctIndex: 0,
-    explanation: "A coaching mindset alapja, hogy az ügyfél az aktor – a coach a tér-tartó. Az ügyfél helyes: ő jött rá. Az A az egészséges és hiteles válasz, amely megerősíti az ügyfél autonómiáját. D szupervízióban is hasznos (ha az érzés erős), de A az elsődleges és azonnali válasz.",
-    reference: "ICF Kompetencia 2 — Coaching mindset: az ügyfél az aktor, a coach a tér-tartó",
-  },
-  {
-    id: "pcc-mnd-010", domain: "mindset", difficulty: 2,
-    question: "Az ügyfeled beleakad egy problémába és azt mondja: 'nem tudom, mit csináljak.' Te pontosan látod a megoldást. Mit teszel?",
-    options: [
-      "Megosztod a megoldást, de kérdés formájában csomagolod",
-      "Megkérdezed: 'Mi mindent próbáltál már?'",
-      "Jelen maradsz kíváncsian az ügyfeled 'nem-tudása' mellett – nem siettetel, nem töltesz ki",
-      "Jelzed, hogy van egy ötleted, ha szeretné hallani",
-    ],
-    correctIndex: 2,
-    explanation: "A coaching mindset mélyén a 'fixing' helyetti jelenlét és a bizonytalanság türelmes tartása áll (C). Az ügyfél 'nem-tudása' nem hiba, hanem lehetőség – a coach tere ebben van, nem a megoldás kínálásában (D) vagy burkolt tanácsban (A).",
-    reference: "ICF Kompetencia 2 — Coaching mindset: a 'nem-tudás' mint coaching-lehetőség",
-  },
-
-  // ── MEGÁLLAPODÁSOK (2) ────────────────────────────────────────
-  {
-    id: "pcc-agr-008", domain: "agreements", difficulty: 3,
-    question: "Az ügyfeled munkáltatója fizeti a coachingot. A sponsor felveszi veled a kapcsolatot és visszajelzést kér az ügyfél fejlődéséről. Mit teszel?",
-    options: [
-      "Átadod a visszajelzést, mert a sponsor a megbízó",
-      "Jelzed, hogy a bizalmasság alapján semmilyen tartalmat nem osztasz meg; az ügyfél bevonásával kell egyeztetni, hogyan kommunikálhatsz a sponsorral",
-      "Csak haladás-visszajelzést adsz, de a session tartalmáról nem beszélsz",
-      "Megkérdezed az ügyfelet, mit mondhatnak el a sponsornak",
-    ],
-    correctIndex: 1,
-    explanation: "A háromoldalú megállapodásban a coach–ügyfél–sponsor kommunikáció szabályait előre kell lefektetni. Ha ez hiányzott, most az ügyfél bevonásával kell rendezni (B). A B tartalmazza mind a bizalmasság elvét, mind a helyes eljárást. A D csak részben helyes: az ügyfél bevonása nélkül még D sem etikus.",
-    reference: "ICF Etikai kód — Háromoldalú megállapodás és bizalmasság vállalati kontextusban",
-  },
-  {
-    id: "pcc-agr-009", domain: "agreements", difficulty: 2,
-    question: "Az ügyfeled azt kéri, hogy légy permanensen elérhető 'coachként' telefonon – nemcsak a sessionök idején. Mit teszel?",
-    options: [
-      "Beleegyezel, mert az ügyfél bizalma fontos",
-      "Megtagadod: a coaching kizárólag session-keretben működik",
-      "Megbeszélitek, milyen igény áll a kérés mögött, és mi lenne egészséges megállapodás mindkettőtök számára",
-      "Javasolsz napi 15 perces elérhetőséget a sessionök közé",
-    ],
-    correctIndex: 2,
-    explanation: "A coaching keret rugalmasan, de tudatosan alakítható: a megállapodás co-creation eredménye (C). Először az ügyfél igényét érdemes megérteni – majd együtt létrehozni egy működőképes keretet. A kategorikus elutasítás (B) vagy egyszeri döntés (D) coach-vezérelt, nem partneri.",
-    reference: "ICF Kompetencia 3 — Megállapodások: keret-határok és co-creation",
-  },
-
-  // ── BIZALOM ÉS BIZTONSÁG (2) ─────────────────────────────────
-  {
-    id: "pcc-trs-009", domain: "trust", difficulty: 3,
-    question: "Az ügyfeled egy döntést hoz, amit te etikailag problémásnak tartasz (pl. igazságtalan bánásmód a csapatával). Mit teszel?",
-    options: [
-      "Tükrözöd amit hallottál, és megkérdezed, hogyan illeszkedik ez az értékeihez",
-      "Jelzed az etikai aggályaidat",
-      "Kifejezed, hogy nem értesz egyet, de tiszteled a döntését",
-      "Nem teszed fel a kérdést – ő az ügyfeled, a döntés az övé",
-    ],
-    correctIndex: 0,
-    explanation: "Az ICF coach nem ítél és nem tanácsol (B/C), de nem is hallgat el passívan (D). Az értékek és a döntés kapcsolatának vizsgálata (A) – az ügyfél saját keretén belül – az egyetlen coachingos út: nem ítél, de felkínálja a tükröt.",
-    reference: "ICF Kompetencia 4 — Bizalom: ítéletmentesség és az ügyfél értékeinek tükrözése",
-  },
-  {
-    id: "pcc-trs-010", domain: "trust", difficulty: 2,
-    question: "Az ügyfeled folyamatosan azt mondja: 'majd megkérdezem tőled, mikor jó a döntés.' Mit teszel?",
-    options: [
-      "Segítesz dönteni, mert az ügyfél bizalma tükrözi a coach-kapcsolat mélységét",
-      "Kíváncsian visszakérdezel: 'Mi mondaná neked belülről, hogy jó a döntés?'",
-      "Jelzed, hogy te nem tudsz dönteni helyette",
-      "Megkérdezed, hogyan hozta meg eddig a legjobb döntéseit az életében",
-    ],
-    correctIndex: 1,
-    explanation: "A B az ügyfelet azonnal visszaforgatja a saját belső bölcsességéhez – ez a legközvetlen és legteljesebb coaching-válasz. A D (kivétel-keresés retrospektíven) is értékes, de B jelenebb és erősebben céloz az önállóság fejlesztésére.",
-    reference: "ICF Kompetencia 4 — Bizalom: az ügyfél saját döntési képességébe vetett bizalom fejlesztése",
-  },
-
-  // ── JELENLÉT (2) ──────────────────────────────────────────────
-  {
-    id: "pcc-prs-009", domain: "presence", difficulty: 3,
-    question: "Az ügyfeled annyira emlékeztet valakit az életedből, hogy nehéz semlegesnek maradnod. Mit teszel?",
-    options: [
-      "Igyekszel figyelmen kívül hagyni az érzést és folytatod",
-      "Transparensen megkérdezed az ügyfelet, mit érez a kapcsolatotokban",
-      "Elviszed szupervízióba a projekciót; ha tartós és kezelhetetlennek érzed, az ügyfelet más coachhoz irányítod",
-      "A session után leírod a jelenséget és megfigyeled, visszatér-e",
-    ],
-    correctIndex: 2,
-    explanation: "A projekció vagy áttétel a coach saját anyaga: szupervízió az első és szükséges lépés (C). Ha a jelenség hosszan fennáll és nem kezelhető, az ügyfél érdeke felülírja a kapcsolat fenntartásának vágyát. Az elnyomás (A) vagy csak megfigyelés (D) nem elég.",
-    reference: "ICF Kompetencia 5 — Jelenlét: projekció, áttétel és a szupervízió szerepe",
-  },
-  {
-    id: "pcc-prs-010", domain: "presence", difficulty: 2,
-    question: "Session közepén azt érzed, hogy az ügyfeled szavai 'kívülről hangzanak' – mintha nem lenne igazi találkozás. Mit teszel?",
-    options: [
-      "Megkérdezed az ügyfeled, hogyan érzi ő a session minőségét",
-      "Más megközelítést próbálsz – pl. átvált egy konkrétabb kérdésre",
-      "Megvizsgálod magadban: mi zárt be benned? – és visszatérsz a teljes jelenlétbe",
-      "Több csöndet hozol be, hogy a kapcsolat mélyen visszaüssön",
-    ],
-    correctIndex: 2,
-    explanation: "A jelenlét-kiesés belső munkával indul: a coach önvizsgálata (mi zárt be bennem?) az elsődleges lépés (C). Ha a coach visszaér saját jelenlétébe, a találkozás újra megnyílik. Az A is hasznos lehet, de a forrást a coach belső munkája oldja meg.",
-    reference: "ICF Kompetencia 5 — Jelenlét: a coach belső munkája mint jelenlét-forrás",
-  },
-
-  // ── AKTÍV HALLGATÁS (2) ───────────────────────────────────────
-  {
-    id: "pcc-lst-008", domain: "listening", difficulty: 2,
-    question: "Az ügyfeled azt mondja 'minden rendben van', de száraz, rövid mondatokban, szemkontaktus nélkül. Mit teszel?",
-    options: [
-      "Elfogadod: 'Örülök, hogy rendben van'",
-      "Tükrözöd a megfigyeltet: 'A szavaid azt mondják, minden rendben – de valami mást is érzékelek. Mi van most valóban?'",
-      "Direkten rákérdezel: 'Biztos, hogy rendben van?'",
-      "Megvárod, hogy az ügyfél maga nyissa ki a témát",
-    ],
-    correctIndex: 1,
-    explanation: "A szavak és a nonverbális kommunikáció közötti rés megfigyelése és ítéletmentes visszatükrözése (B) a Level 3 hallgatás egyik legjobb példája. A C konfrontatív és feltételez; az A lezár; a D passzív – B nyitja meg a legszelídebben és legőszintébben a teret.",
-    reference: "ICF Kompetencia 6 — Aktív hallgatás: verbális és nonverbális kommunikáció közötti rés tükrözése",
-  },
-  {
-    id: "pcc-lst-009", domain: "listening", difficulty: 2,
-    question: "Az ügyfeled mesélés közben mellékesen megjegyzi: 'mindig én vagyok az egyetlen felnőtt a szobában.' Mit teszel?",
-    options: [
-      "Megkérdezed, mit értett ezalatt",
-      "Megkérdezed, honnan jön ez az érzés",
-      "Visszatükrözöd pontosan a szavait: ''Az egyetlen felnőtt a szobában.' Mesélj erről.'",
-      "Megkérdezed, ki vannak ott ezek a 'nem-felnőttek'",
-    ],
-    correctIndex: 2,
-    explanation: "Az ügyfél saját szavainak és metaforájának pontos, értelmezés nélküli visszatükrözése (C) a mélyhallgatás (Level 2-3) egyik legtisztább formája. A minimalis prompt ('Mesélj erről') teret nyit anélkül, hogy irányt adna. Az A és D értelmez; B múlt-fókuszú.",
-    reference: "ICF Kompetencia 6 — Aktív hallgatás: az ügyfél metaforáinak és szavainak tükrözése",
-  },
-
-  // ── TUDATOSSÁG ÖSZTÖNZÉSE (3) ─────────────────────────────────
-  {
-    id: "pcc-awr-008", domain: "awareness", difficulty: 2,
-    question: "Az ügyfeled azt mondja: 'Én mindig így csinálom a dolgokat, ez az én stílusom.' Hogyan reagálsz?",
-    options: [
-      "Elfogadod az identitásnyilatkozatot és továbbléptek",
-      "Megkérdezed: 'Mi lenne, ha ez nem a stílusod, hanem egy szokás volna?'",
-      "Felkéred, hogy meséljen egy helyzetről, ahol másképp cselekedett",
-      "Megkérdezed: 'Szereted ezt a stílusodat?'",
-    ],
-    correctIndex: 2,
-    explanation: "A rögzített önkép kivétel-kereséssel (C) nyílik meg a legszelídebben: 'volt-e helyzet, ahol másképp cselekedett?' Ez az ügyfél saját tapasztalatán keresztül vizsgálja a fixált képet. A B reframing, amely közvetlen kihívást intéz az identitáshoz – ez ICF-szinten óvatosabb megközelítést kíván.",
-    reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: fixált identitásképek és kivétel-keresés",
-  },
-  {
-    id: "pcc-awr-009", domain: "awareness", difficulty: 2,
-    question: "Az ügyfeled sikereket ér el, de folyamatosan fáradtnak és kiégettnek érzi magát. Mit kérdezel?",
-    options: [
-      "'Hogyan kezeled jobban az energiádat?'",
-      "'Mi táplálja igazán az energiádat – és mi vezeti el tőle?'",
-      "'Mik az élet prioritásaid?'",
-      "'Mikor érezted utoljára, hogy teljes erővel benne voltál valamiben?'",
-    ],
-    correctIndex: 1,
-    explanation: "A B kettős kontrasztkérdés: feltárja mind az energiaforrásokat, mind az energialevezetőket – ez az értéktérkép és a fenntarthatóság legközvetlenebb vizsgálata. A D retrospektív és hasznos, de egyirányú; A tünetkezelő; C túl általános.",
-    reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: energiaforrások, értékek és fenntarthatóság",
-  },
-  {
-    id: "pcc-awr-010", domain: "awareness", difficulty: 3,
-    question: "Az ügyfeled a session során minden nehézség mögé külső okot nevez meg. Mit teszel?",
-    options: [
-      "Megkérdezed: 'Mit tehetnél te ebben a helyzetben?'",
-      "Tükrözöd vissza a mintát: 'Figyeltem, hogy a mai session során minden nehézség mögé külső okot neveztél. Mit gondolsz erről?'",
-      "Megkérdezed: 'Mi az, ami rajtad múlik ebből?'",
-      "Jelzed, hogy a coaching az egyéni felelősségről szól",
-    ],
-    correctIndex: 1,
-    explanation: "A vakfolt visszatükrözése (B) nem ítélet, nem korrekció: a megfigyelt mintát adja vissza az ügyfélnek ítéletmentesen, és teret nyit a vizsgálatra. Az A és C implicit felelősség-feltételezést hordoz; a D didaktikus és nem coaching-jellegű.",
-    reference: "ICF Kompetencia 7 — Tudatosság ösztönzése: vakfoltok és mintatükrözés",
-  },
-
-  // ── FEJLŐDÉS FACILITÁLÁSA (3) ────────────────────────────────
-  {
-    id: "pcc-grw-008", domain: "growth", difficulty: 2,
-    question: "Az ügyfeled egy jelentős áttörést ér el a sessionön. Hogyan segítesz, hogy ez ne maradjon szavak szintjén?",
-    options: [
-      "Leíratod az áttörést és megkéred, hogy jövő hétre csinálja meg",
-      "Megkérdezed: 'Mi az első kis lépés, amit még ezen a héten megtehetsz?'",
-      "Megkérdezed: 'Hogyan tudod bevinni ezt a mindennapjaidba – és mi fogja emlékeztetni?'",
-      "Gratulálsz és biztosítod, hogy a következő sessionön folytatjátok",
-    ],
-    correctIndex: 2,
-    explanation: "A C kettős: az integráció kérdése ('hogyan viszed be a mindennapokba') és a fenntartási mechanizmus ('mi fogja emlékeztetni') együtt alkotja a legteljesebb transzfer-kérdést. B egylépéses és akcióra fókuszál; C hosszabb ívű és tartósabb változást céloz.",
-    reference: "ICF Kompetencia 8 — Fejlődés facilitálása: integráció és transzfer a mindennapokba",
-  },
-  {
-    id: "pcc-grw-009", domain: "growth", difficulty: 2,
-    question: "A coaching-folyamat végén az ügyfeled attól tart, hogy a coaching nélkül 'visszacsúszik' a régi mintákba. Hogyan reagálsz?",
-    options: [
-      "Biztatod: 'Nem fog visszacsúszni – láttam, mennyit fejlődtél'",
-      "Felajánlod, hogy felveszi veled a kapcsolatot, ha szükséges",
-      "Együtt feltárjátok azokat a belső erőforrásokat és jelzőrendszereket, amelyek segítik a fejlődés fenntartásában",
-      "Megkérdezed: 'Miért gondolod, hogy ez megtörténhet?'",
-    ],
-    correctIndex: 2,
-    explanation: "A coaching lezárásának legfontosabb feladata az ügyfél autonómiájának megerősítése (C): belső erőforrások és saját jelzőrendszerek. A coach nem ígér (A), nem ajánl folytatást (B), hanem az önállóság alapjait erősíti meg az ügyféllel együtt.",
-    reference: "ICF Kompetencia 8 — Fejlődés facilitálása: önállóság, fenntarthatóság és lezárás",
-  },
-  {
-    id: "pcc-grw-010", domain: "growth", difficulty: 2,
-    question: "Az engagement utolsó sessionjén az ügyfeled azt mondja: 'nem tudom, fejlődtem-e.' Mit teszel?",
-    options: [
-      "Felsorolod, miben fejlődött az elmúlt hónapokban",
-      "Megkérdezed: 'Ha az elején álló önmagad most látna, mit mondana?'",
-      "Megkérdezed, milyen konkrét változásokat észlel a mindennapi életében",
-      "Megkérdezed, mit jelent számára a fejlődés",
-    ],
-    correctIndex: 1,
-    explanation: "A B perspektivikus kérdés: az ügyfél saját korábbi verziójával való találkozás meglepő és mélyíti az önismeretet. Nincs benne külső mérce (A), nincs definíciókeresés (D), és konkrétabb annál, mint hogy 'miben változtál' (C). Ez az integráció legerősebb kérdéstípusa.",
-    reference: "ICF Kompetencia 8 — Fejlődés facilitálása: az ügyfél saját fejlődésének retrospektív perspektívája",
   },
 
 ];
