@@ -2096,7 +2096,287 @@ const ACC_CONFIG = {
 };
 
 // Knowledge MC kérdések — 40 db (Chunk 2+3-ban töltjük fel)
-const QUESTIONS_PCC_KNOWLEDGE = [];
+const QUESTIONS_PCC_KNOWLEDGE = [
+
+// ── BATCH 1 (20 kérdés) ─────────────────────────────────────────
+
+// ETHICS (3)
+{
+  id: "pcc-k-eth-001", type: "knowledge", domain: "ethics", difficulty: 2,
+  question: "Az ICF Etikai Kódex szerint mi a coach teendője, ha érdekkonfliktus merül fel egy coaching kapcsolatban?",
+  options: [
+    "Folytatja a kapcsolatot, mivel a coach professzionalizmusa megoldja a konfliktust",
+    "Feltárja az érdekkonfliktust az érintett feleknek, és szükség esetén kiszáll a kapcsolatból",
+    "Titkosítja az érdekkonfliktust, hogy ne zavarja az ügyfelet",
+    "Megvárja, amíg az ügyfél maga észreveszi a problémát"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF Etikai Kódex előírja, hogy a coach azonnal feltárja az érdekkonfliktust. Az átláthatóság az etikus coaching alapja — ha a konfliktus feloldása nem lehetséges, a coach felelőssége kilépni a kapcsolatból.",
+  reference: "ICF Etikai Kódex 2020, 3. szakasz: Szakmai magatartás"
+},
+{
+  id: "pcc-k-eth-002", type: "knowledge", domain: "ethics", difficulty: 2,
+  question: "Mikor etikus az ICF kódex szerint, ha egy coach egyszerre nyújt coachingot és más szakmai szolgáltatást (pl. tanácsadás) ugyanannak az ügyfélnek?",
+  options: [
+    "Soha — a kétféle szerepet teljesen el kell különíteni",
+    "Ha a coach átláthatóan kommunikálja mindkét szerepet, és az ügyfél informált beleegyezését adja",
+    "Ha az ügyfél kéri, akkor mindig",
+    "Ha a coaching és a tanácsadás tartalmukban eltérő témákat érintenek"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF kódex nem tiltja a kettős szerepeket, de megköveteli az átláthatóságot és az informált beleegyezést. A kulcs: az ügyfél pontosan tudja, mikor kap coachingot és mikor más típusú szolgáltatást.",
+  reference: "ICF Etikai Kódex 2020, 3. szakasz; ICF Kompetencia 1: Etikusan viselkedik"
+},
+{
+  id: "pcc-k-eth-003", type: "knowledge", domain: "ethics", difficulty: 3,
+  question: "Csoportos coaching során az egyik résztvevő olyan bizalmas információt oszt meg, amely egy másik résztvevőre is vonatkozik. Mi a coach etikus teendője?",
+  options: [
+    "Azonnal leállítja a csoportos foglalkozást",
+    "Figyelmen kívül hagyja az információt, és a csoportfolyamatra fókuszál",
+    "Keretezi a csoportos coaching titoktartási normáit, és szükség esetén privát egyeztetést javasol",
+    "A csoport előtt megbeszéli az érintett személlyel"
+  ],
+  correctIndex: 2,
+  explanation: "Csoportos coachingban a titoktartás összetettebb. A coach felelőssége, hogy a csoport számára is tiszták legyenek a titoktartási normák, és hogy érzékeny tartalmakat privát térbe tereljen — nem nyilvánosan konfrontál.",
+  reference: "ICF Etikai Kódex 2020, 4. szakasz: Titoktartás; ICF Csoportos Coaching Kompetenciák"
+},
+
+// MINDSET (3)
+{
+  id: "pcc-k-mnd-001", type: "knowledge", domain: "mindset", difficulty: 2,
+  question: "Mi az ICF 'coaching szemlélet' (coaching mindset) lényege?",
+  options: [
+    "A coach szakértelme és tapasztalata alapján vezeti az ügyfelet a helyes döntés felé",
+    "A coach mélyen hisz abban, hogy az ügyfél kreatív, erőforrásokkal teli és egész — és ebből a meggyőződésből dolgozik",
+    "A coach semleges marad, és kerüli az érzelmi bevonódást",
+    "A coach az ügyfél céljait a szervezet érdekeinek rendeli alá"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF coaching szemlélet alapja az 'ICF Coaching Definition'-ban is szereplő meggyőződés: az ügyfél kreatív, erőforrásokkal teli és egész (creative, resourceful, and whole). A coach ebből a bizalomból kérdez és hallgat.",
+  reference: "ICF Alapkompetenciák 2019, 2. kompetencia: Coaching szemlélet megtestesítése"
+},
+{
+  id: "pcc-k-mnd-002", type: "knowledge", domain: "mindset", difficulty: 2,
+  question: "Mi különbözteti meg a coachingot a mentoring-tól az ICF definíció szerint?",
+  options: [
+    "A coaching hosszabb ideig tart, mint a mentoring",
+    "A coachingban a coach nem oszt meg személyes tapasztalatokat vagy tanácsokat; a fókusz az ügyfél saját felfedezésén van",
+    "A coaching csak szakmai, a mentoring csak személyes témákkal foglalkozik",
+    "A mentoring fizetős, a coaching önkéntes alapon működik"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF definíció szerint a coaching az ügyfél gondolkodást és cselekvést ösztönző partneri folyamat — nem tanácsadás, nem mentoring. A mentor tapasztalatait és útmutatását osztja meg; a coach az ügyfél belső erőforrásaira támaszkodik.",
+  reference: "ICF Coaching Definition; ICF 'Coaching vs. Other Disciplines'"
+},
+{
+  id: "pcc-k-mnd-003", type: "knowledge", domain: "mindset", difficulty: 3,
+  question: "Hogyan támogatja a coach saját folyamatos fejlődését az ICF Kompetenciák szerint?",
+  options: [
+    "Minél több ügyfelet vállal, hogy tapasztalatot szerezzen",
+    "Reflexív gyakorlattal, szupervízióval, peer coachinggal és folyamatos tanulással",
+    "ICF tanúsítványainak megújításával minden öt évben",
+    "Kizárólag a legfrissebb coaching módszerek elsajátításával"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF 2. kompetencia (Coaching szemlélet) hangsúlyozza a coach folyamatos önreflexióját és fejlődését: szupervízió, peer coaching, reflexív gyakorlat. Ez nem csupán formális képzés, hanem belső fejlődési elköteleződés.",
+  reference: "ICF Alapkompetenciák 2019, 2. kompetencia: Coaching szemlélet megtestesítése"
+},
+
+// AGREEMENTS (3)
+{
+  id: "pcc-k-agr-001", type: "knowledge", domain: "agreements", difficulty: 2,
+  question: "Mi a különbség az általános coaching megállapodás (overall contract) és a munkameneti megállapodás (session agreement) között?",
+  options: [
+    "Az általános megállapodás jogi dokumentum, a munkameneti csak informális",
+    "Az általános megállapodás a teljes coaching kapcsolat kereteit rögzíti; a munkameneti az adott ülés fókuszát és célját határozza meg",
+    "A munkameneti megállapodást mindig írásban kell rögzíteni, az általánost nem",
+    "Nincs lényeges különbség — mindkettő ugyanazt tartalmazza"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF 3. kompetencia két szintű megállapodást különböztet meg: az általános keret (célok, logisztika, pénzügy, titoktartás) és az ülésszintű megállapodás (mi a fókusz ma, mit szeretne elérni az ügyfél ebből az ülésből). Mindkettő elengedhetetlen.",
+  reference: "ICF Alapkompetenciák 2019, 3. kompetencia: Megállapodások kialakítása"
+},
+{
+  id: "pcc-k-agr-002", type: "knowledge", domain: "agreements", difficulty: 2,
+  question: "Háromoldalú (coach – ügyfél – szponzor) megállapodásban mit kell egyértelműen rögzíteni?",
+  options: [
+    "Az ügyfél teljesítményértékelésének kritériumait",
+    "A titoktartás határait, az eredmények kommunikálásának módját és a szponzor visszajelzési jogait",
+    "A coach díjazásának részleteit az összes fél számára",
+    "Az ügyfél fejlesztési terve minden részletét"
+  ],
+  correctIndex: 1,
+  explanation: "Háromoldalú helyzetben a legnagyobb etikai kockázat a titoktartás és a lojalitás kérdése. A megállapodásnak egyértelműen rögzítenie kell: mit kommunikál a coach a szponzornak, mit nem, és hogyan kezeli a lehetséges feszültséget.",
+  reference: "ICF Alapkompetenciák 2019, 3. kompetencia; ICF Etikai Kódex 4. szakasz"
+},
+{
+  id: "pcc-k-agr-003", type: "knowledge", domain: "agreements", difficulty: 3,
+  question: "Coaching folyamat közben az ügyfél célja jelentősen megváltozik. Mit tesz a PCC szintű coach?",
+  options: [
+    "Ragaszkodik az eredeti megállapodáshoz, mert az a keret",
+    "Azonnal befejezi a coaching kapcsolatot",
+    "Renegociálja a megállapodást az új céllal összhangban, biztosítva, hogy minden fél tisztában legyen a változással",
+    "Csendben alkalmazkodik, anélkül, hogy megbeszélné az ügyféllel"
+  ],
+  correctIndex: 2,
+  explanation: "A rugalmas, de tudatos megállapodás-kezelés a PCC szint jellemzője. Ha a cél megváltozik, a coach feladata felvetni és tudatosan renegociálni — nem ignorálni és nem mereven ragaszkodni az eredetihez.",
+  reference: "ICF Alapkompetenciák 2019, 3. kompetencia: Megállapodások kialakítása"
+},
+
+// TRUST (2)
+{
+  id: "pcc-k-trs-001", type: "knowledge", domain: "trust", difficulty: 2,
+  question: "Hogyan épít pszichológiai biztonságot a coach az ICF Alapkompetenciák szerint?",
+  options: [
+    "Megígéri, hogy minden ülés pozitív hangulatban ér véget",
+    "Következetes, ítélkezésmentes jelenléttel, az ügyfél autonómiájának tiszteletben tartásával és a titoktartás betartásával",
+    "Elkerüli a nehéz vagy kényelmetlenséggel járó témákat",
+    "Minden ülésen pozitív visszajelzést ad az ügyfélnek"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF 4. kompetencia (Bizalom és biztonság kialakítása) szerint a pszichológiai biztonság alapja: következetes jelenlét, ítélkezésmentesség, az ügyfél autonómiájának tisztelete és a titoktartás hiteles betartása.",
+  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Bizalom és biztonság kialakítása"
+},
+{
+  id: "pcc-k-trs-002", type: "knowledge", domain: "trust", difficulty: 2,
+  question: "Mit jelent az ICF Kompetenciákban az ügyfél 'autonómiájának' tiszteletben tartása?",
+  options: [
+    "A coach hagyja, hogy az ügyfél döntse el, mikor tart szünetet az ülésen",
+    "A coach elismeri, hogy az ügyfél a saját élete, döntései és fejlődési útja szakértője",
+    "Az ügyfél bármikor megszakíthatja a coachingt következmények nélkül",
+    "A coach nem szól bele az ügyfél személyes döntéseibe"
+  ],
+  correctIndex: 1,
+  explanation: "Az autonómia tisztelete az ICF coaching szemlélet alapelve: az ügyfél a saját élete és fejlődési folyamata szakértője. A coach nem dirigál, nem irányít — partneri viszonyban dolgozik, tisztelve az ügyfél önmeghatározását.",
+  reference: "ICF Alapkompetenciák 2019, 4. kompetencia; ICF Coaching Definition"
+},
+
+// PRESENCE (3)
+{
+  id: "pcc-k-prs-001", type: "knowledge", domain: "presence", difficulty: 2,
+  question: "Mi az ICF 'tudatos jelenlét' (coaching presence) kompetencia lényege?",
+  options: [
+    "A coach fókuszáltan, nyitottan és rugalmasan van jelen az ügyféllel, az ügyfél érdekét tartva szem előtt",
+    "A coach lehetőleg ne gondoljon semmire az ülés alatt",
+    "A coach folyamatosan figyelje a saját érzelmeit, és jelezze ezeket az ügyfélnek",
+    "A coach fizikailag és mentálisan is elkülönül az ügyféltől a professzionalizmus érdekében"
+  ],
+  correctIndex: 0,
+  explanation: "Az ICF 5. kompetencia (Tudatos jelenlét) szerint a jelenlét: teli figyelem, nyitottság, rugalmasság és az ügyfél érdekének prioritása. Nem a gondolatok hiánya, hanem minőségi, teli figyelem.",
+  reference: "ICF Alapkompetenciák 2019, 5. kompetencia: Coaching jelenlét kialakítása és fenntartása"
+},
+{
+  id: "pcc-k-prs-002", type: "knowledge", domain: "presence", difficulty: 2,
+  question: "Hogyan kezeli a coach a saját erős érzelmeit (pl. frusztráció, aggodalom) coaching közben az ICF szerint?",
+  options: [
+    "Elnyomja az érzelmeit, hogy professzionális maradjon",
+    "Azonnal elmondja az ügyfélnek, hogy mit érez",
+    "Tudatosan észleli az érzelmeit, nem hagyja, hogy azok vezessék — szükség esetén szupervíziót keres",
+    "Befejezi az ülést, ha az érzelmek túl erősek"
+  ],
+  correctIndex: 2,
+  explanation: "A coach önszabályozása az ICF jelenlét kompetencia része. Az érzelmek elnyomása nem hatékony — a tudatos észlelés és a szupervízió igénybevétele az érett, PCC-szintű hozzáállás.",
+  reference: "ICF Alapkompetenciák 2019, 5. kompetencia; ICF 2. kompetencia: Coaching szemlélet"
+},
+{
+  id: "pcc-k-prs-003", type: "knowledge", domain: "presence", difficulty: 3,
+  question: "Mikor alkalmaz a coach tudatos hallgatást (csend) az ICF szerint?",
+  options: [
+    "Ha nem tudja, mit mondjon legközelebb",
+    "Ha az ügyfél ellenállást mutat",
+    "Tudatosan, az ügyfél feldolgozási folyamatát támogatva — lehetőséget adva a reflexióra",
+    "Csak az ülés elején és végén"
+  ],
+  correctIndex: 2,
+  explanation: "A csend tudatos eszköz a PCC szintű coachingban. Az ICF szerint a csend lehetőséget ad az ügyfélnek a feldolgozásra, a mélyebb kapcsolódásra és az önreflexióra — nem a coach zavarát jelzi.",
+  reference: "ICF Alapkompetenciák 2019, 5. kompetencia: Coaching jelenlét; 6. kompetencia: Aktív hallgatás"
+},
+
+// LISTENING (2)
+{
+  id: "pcc-k-lst-001", type: "knowledge", domain: "listening", difficulty: 2,
+  question: "Mit jelent az ICF aktív hallgatás (active listening) kompetenciában a 'szavak mögötti tartalom' hallgatása?",
+  options: [
+    "A coach értelmezi az ügyfél szavait a saját életélménye alapján",
+    "A coach figyelmet fordít az érzelmekre, energiaszintekre, testbeszédre és arra, amit az ügyfél nem mond ki",
+    "A coach visszamondja az ügyfél szavait szóról szóra",
+    "A coach kizárólag a szavak logikai tartalmára koncentrál"
+  ],
+  correctIndex: 1,
+  explanation: "Az ICF aktív hallgatás (6. kompetencia) magában foglalja a szavak mögötti tartalom észlelését: érzelmek, energiaváltozások, hallgatás, testbeszéd és a kimondatlan. Ez a hallgatás sokkal több, mint passzív befogadás.",
+  reference: "ICF Alapkompetenciák 2019, 6. kompetencia: Aktív hallgatás"
+},
+{
+  id: "pcc-k-lst-002", type: "knowledge", domain: "listening", difficulty: 3,
+  question: "Mi a különbség az 'összefoglalás' és az 'visszatükrözés' (reflecting) között az ICF coachingban?",
+  options: [
+    "Nincs különbség — ugyanazt jelölik",
+    "Az összefoglalás a tartalmat adja vissza strukturáltan; a visszatükrözés az érzelmi vagy energetikai dimenziót is megragadja",
+    "Az összefoglalás hosszabb, a visszatükrözés rövidebb",
+    "A visszatükrözés kizárólag non-verbális kommunikáció"
+  ],
+  correctIndex: 1,
+  explanation: "Az összefoglalás az elhangzottak strukturált, kognitív visszaadása. A visszatükrözés az ICF aktív hallgatás részekéntmélyebb szinten dolgozik: visszaad érzéseket, energiaváltozásokat, mintákat — ezzel mélyebb önreflexiót indít az ügyfélben.",
+  reference: "ICF Alapkompetenciák 2019, 6. kompetencia: Aktív hallgatás; 7. kompetencia: Tudatosság előmozdítása"
+},
+
+// AWARENESS (2)
+{
+  id: "pcc-k-awr-001", type: "knowledge", domain: "awareness", difficulty: 2,
+  question: "Mi az ICF Kompetenciákban a 'hatásos kérdések' (powerful questions) jellemzője?",
+  options: [
+    "Rövid és egyszerű — maximum 5 szó",
+    "Elsősorban miért-kérdések, amelyek ok-okozati kapcsolatokat tárnak fel",
+    "Nyitott, az ügyfél gondolkodását és önfelfedezését ösztönző kérdések, amelyek az ügyfél érdekét szolgálják",
+    "Irányított kérdések, amelyek a coach hipotézisét ellenőrzik"
+  ],
+  correctIndex: 2,
+  explanation: "Az ICF 7. kompetencia (Tudatosság előmozdítása) szerint a hatásos kérdés nyitott, ösztönzi az ügyfél saját felfedezését, és az ügyfél valódi érdekét szolgálja — nem a coach kíváncsiságát vagy hipotézisét.",
+  reference: "ICF Alapkompetenciák 2019, 7. kompetencia: Tudatosság előmozdítása"
+},
+{
+  id: "pcc-k-awr-002", type: "knowledge", domain: "awareness", difficulty: 3,
+  question: "Mit jelent az ICF coaching kontextusában az 'átkeretezés' (reframing)?",
+  options: [
+    "Az ügyfél negatív gondolatait pozitív gondolatokra cseréli a coach",
+    "A coach új nézőpontot kínál fel, amely segít az ügyfélnek másképpen látni a helyzetet — anélkül, hogy a saját értelmezését erőltetné rá",
+    "Az ügyfél problémáját kisebb részekre osztja fel a coach",
+    "A coach megcáfolja az ügyfél tévesnek tartott meggyőződéseit"
+  ],
+  correctIndex: 1,
+  explanation: "Az átkeretezés az ICF 7. kompetencia eszköze: a coach alternatív nézőpontot kínál, amely kitágítja az ügyfél gondolkodási terét. Nem meggyőzés, nem korrekció — lehetőség arra, hogy az ügyfél másképpen lásson.",
+  reference: "ICF Alapkompetenciák 2019, 7. kompetencia: Tudatosság előmozdítása"
+},
+
+// GROWTH (2)
+{
+  id: "pcc-k-grw-001", type: "knowledge", domain: "growth", difficulty: 2,
+  question: "Hogyan kezeli az ICF coaching az ügyfél elszámoltathatóságát (accountability)?",
+  options: [
+    "A coach rendszeresen ellenőrzi az ügyfél feladatait, és jelzi a szponzornak, ha valami nem teljesül",
+    "Az elszámoltathatóság az ügyfél döntése — a coach csak emlékeztet, ha az ügyfél kéri",
+    "A coach partnerként támogatja az ügyfelet abban, hogy saját magáért vállaljon felelősséget — nem felügyel, hanem együtt halad",
+    "Az elszámoltathatóságot kizárólag a szponzor feladata kezelni"
+  ],
+  correctIndex: 2,
+  explanation: "Az ICF 8. kompetencia (Fejlődés facilitálása) szerint az elszámoltathatóság az ügyfél belső motivációjából fakad — a coach partneri támogatást nyújt, de nem felügyel. Az ügyfél maga vállal felelősséget saját fejlődéséért.",
+  reference: "ICF Alapkompetenciák 2019, 8. kompetencia: Ügyfél fejlődésének facilitálása"
+},
+{
+  id: "pcc-k-grw-002", type: "knowledge", domain: "growth", difficulty: 2,
+  question: "Mit jelent az ICF 8. kompetenciában az ügyfél 'ünneplése' (celebrating)?",
+  options: [
+    "A coach minden ülés végén gratulál az ügyfélnek a megjelenésért",
+    "A coach túlzott dicséretet alkalmaz, hogy az ügyfél motivált maradjon",
+    "A coach elismeri az ügyfél erőfeszítéseit, haladását és eredményeit — ezzel erősítve az ügyfél önerejébe vetett hitét",
+    "Az ügyfél sikereinek ünneplése csak a coaching lezárásakor releváns"
+  ],
+  correctIndex: 2,
+  explanation: "Az ICF 8. kompetencia szerint az ünneplés az ügyfél fejlődésének elismerése — nem üres dicséret. Erősíti az ügyfél önbizalmát, növeli az önhivatkozású visszajelzés képességét, és megerősíti a haladás valóságát.",
+  reference: "ICF Alapkompetenciák 2019, 8. kompetencia: Ügyfél fejlődésének facilitálása"
+},
+
+];
 
 const PCC_CONFIG = {
   id: "pcc",
