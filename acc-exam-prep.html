@@ -388,7 +388,7 @@ const QUESTIONS = [
     question: "Mit jelent a 'kulturálisan érzékeny' megközelítés az ICF etikában?",
     options: ["A coach saját kultúrájának értékeit tartja irányadónak a coachingban", "A coach felismeri és tiszteletben tartja az ügyfél kulturális hátterét, értékeit és világnézetét", "A coach kizárólag azonos kulturális háttérrel rendelkező ügyfeleket vállal", "A coach kerüli a kulturális témákat a semlegesség érdekében"],
     correctIndex: 1,
-    explanation: "Az ICF Etikai Kódex 2020 hangsúlyozza az egyenlőség, a befogadás és a kulturális érzékenység fontosságát. A coach kötelezettsége, hogy elismerjük és tiszteletben tartsuk a különböző kulturális perspektívákat, nem saját értékeinket vetítsük ki.",
+    explanation: "Az ICF Etikai Kódex 2020 hangsúlyozza az egyenlőség, a befogadás és a kulturális érzékenység fontosságát. A coach kötelezettsége, hogy elismerje és tiszteletben tartsa a különböző kulturális perspektívákat, ne saját értékeit vetítse ki.",
     reference: "ICF Etikai Kódex 2020, 2. szakasz: Méltányosság és befogadás"
   },
   {
@@ -1165,7 +1165,7 @@ const QUESTIONS_PCC = [
     ],
     correctIndex: 1,
     explanation: "A titoktartás kereteinek tisztázása – ideálisan a háromoldalú megállapodásban – a coach felelőssége. Ha ez elmaradt, most kell pótolni. A kulcs: az ügyfél legyen az, aki saját maga kommunikál a szponzornak, a coach nem közbenjáró.",
-    reference: "ICF Etikai Kódex 4. szakasz — Titoktartás; ICF Kompetencia 2: Megállapodás kialakítása szponzori kontextusban",
+    reference: "ICF Etikai Kódex 4. szakasz — Titoktartás; ICF Kompetencia 3: Megállapodás kialakítása szponzori kontextusban",
   },
   {
     id: "pcc-eth-005", domain: "ethics", difficulty: 3,
@@ -2203,7 +2203,7 @@ function Badge({ domain, meta }) {
 // ═══════════════════════════════════════════════════════════════
 //  HEADER
 // ═══════════════════════════════════════════════════════════════
-function Header({ onHome, screen }) {
+function Header({ onHome }) {
   return (
     <header style={{
       position: "sticky", top: 0, zIndex: 100,
@@ -2211,30 +2211,33 @@ function Header({ onHome, screen }) {
       borderBottom: `1px solid ${C.border}`,
     }}>
       <div style={{
-        maxWidth: 900, margin: "0 auto", padding: "0 24px",
-        height: 56, display: "flex", alignItems: "center", justifyContent: "space-between",
+        maxWidth: 900, margin: "0 auto", padding: "0 20px",
+        height: 52, display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <button
           onClick={onHome}
           style={{
-            background: "none", border: "none", cursor: "pointer",
-            color: C.text, fontFamily: "'Syne', sans-serif", fontWeight: 800,
-            display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1,
+            background: "none", border: "none", cursor: "pointer", padding: 0,
+            display: "flex", alignItems: "baseline", gap: 10,
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 17, letterSpacing: "-0.2px" }}>
-            <span style={{ color: C.accent }}>Y2Y</span>
-            <span style={{ color: C.border }}>·</span>
-            <span>{screen === "levelSelect" ? "Vizsga Felkészítő" : (screen === "landing" || screen === "practice" || screen === "mock" || screen === "results") ? "ICF Felkészítő" : "ICF Felkészítő"}</span>
-          </div>
-          <span style={{ fontSize: 10, color: C.accent, letterSpacing: "1.5px", fontWeight: 700, textTransform: "uppercase", opacity: 0.75 }}>Next Chapter</span>
+          <span style={{
+            fontFamily: "'Syne', sans-serif", fontWeight: 800,
+            fontSize: 13, letterSpacing: "2.5px", textTransform: "uppercase",
+            color: C.accent,
+          }}>Next Chapter</span>
+          <span style={{ color: C.border, fontSize: 13 }}>·</span>
+          <span style={{
+            fontFamily: "'Syne', sans-serif", fontWeight: 700,
+            fontSize: 12, letterSpacing: "0.5px",
+            color: C.text, opacity: 0.65,
+          }}>ICF Credentialing Exam Felkészítő</span>
         </button>
         <span style={{
-          fontSize: 11, color: C.accent, letterSpacing: "2px",
-          textTransform: "uppercase", fontWeight: 700,
-        }}>
-          Érted van. nem pénzért.
-        </span>
+          fontFamily: "'Syne', sans-serif", fontWeight: 700,
+          fontSize: 11, letterSpacing: "2px", textTransform: "uppercase",
+          color: C.text, opacity: 0.4,
+        }}>by Y2Y</span>
       </div>
     </header>
   );
@@ -2941,7 +2944,7 @@ function App() {
         body { font-family: Inter, sans-serif; }
       `}</style>
 
-      <Header onHome={() => dispatch({ type: "GO_HOME" })} screen={state.screen} />
+      <Header onHome={() => dispatch({ type: "GO_HOME" })} />
 
       {state.screen === "levelSelect" && <LevelSelect dispatch={dispatch} />}
       {state.screen === "landing"     && <Landing      state={state} dispatch={dispatch} />}
