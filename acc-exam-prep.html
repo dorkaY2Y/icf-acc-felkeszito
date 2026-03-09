@@ -52,7 +52,7 @@ const C = {
 };
 
 // ═══════════════════════════════════════════════════════════════
-//  KÉRDÉSBANK — 30 kérdés, 3 terület
+//  KÉRDÉSBANK — 100 kérdés, 3 terület
 // ═══════════════════════════════════════════════════════════════
 const QUESTIONS = [
 
@@ -301,6 +301,573 @@ const QUESTIONS = [
     explanation: "Az ICF szerint a hatékony coaching kérdések nyitottak, gondolatébresztők és az ügyfél valódi szükségletét célozzák — nem a coach kíváncsiságát elégítik ki, és nem irányítanak előre meghatározott válasz felé.",
     reference: "ICF 7. alapkompetencia: Tudatosság ébresztése"
   },
+
+  // ── ETIKA (11-30) ──────────────────────────────────────────
+  {
+    id: "eth-011", domain: "ethics", difficulty: 2,
+    question: "Egy ügyfél coaching közben felkéri a coachot, hogy vegyen részt egy üzleti vállalkozásában befektetőként. Hogyan kell ezt kezelni?",
+    options: ["Elfogadja, ha az összeg nem nagy és személyes döntés", "Visszautasítja és megvizsgálja a kettős szerep hatását a coaching kapcsolatra", "Elfogadja, de átlátható módon dokumentálja", "Felfüggeszti a coachingot a befektetési döntés idejére"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex tiltja a coach-ügyfél kettős szerepeket, amelyek veszélyeztetik a szakmai objektivitást. Befektetővé válni az ügyfél vállalkozásában egyértelmű érdekellentétet hoz létre, amely aláássa a coaching integritását.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Összeférhetetlenség"
+  },
+  {
+    id: "eth-012", domain: "ethics", difficulty: 1,
+    question: "Melyik állítás írja le helyesen a coach etikai felelősségét a coaching elején?",
+    options: ["A coach csak akkor köteles etikai tájékoztatást adni, ha az ügyfél kéri", "A coach köteles meggyőződni arról, hogy az ügyfél érti a coaching határait és a coach etikai kötelezettségeit", "A coach elég, ha a saját weboldala tartalmazza az etikai elveket", "Az etikai tájékoztatás a szervező vagy megbízó feladata"],
+    correctIndex: 1,
+    explanation: "A tájékoztatáson alapuló beleegyezés az etikus coaching alapja. A coachnak proaktívan kell ismertetni a coaching természetét, határait és az etikai keretrendszert — minden ügyfélnél, minden esetben.",
+    reference: "ICF Etikai Kódex 2020, 1. szakasz: Felelősség az ügyfelekért"
+  },
+  {
+    id: "eth-013", domain: "ethics", difficulty: 3,
+    question: "Egy coach tudomást szerez arról, hogy az ügyfele súlyos szabálytalanságot követ el a munkahelyén. Mi a legmegfelelőbb reakció?",
+    options: ["Azonnal értesíti az ügyfél munkáltatóját a titoktartási kötelezettség ellenére is", "Megvizsgálja a helyzetet az ügyféllel, feltárja a lehetséges következményeket, de tiszteletben tartja az ügyfél döntési autonómiáját", "Felmondja a coaching szerződést, mivel nem tud ilyen helyzetben coachot lenni", "Figyelmen kívül hagyja, mert a coaching fókusza az ügyfél fejlődése, nem az etikus viselkedés"],
+    correctIndex: 1,
+    explanation: "A coach nem rendőr és nem is etikai felügyelő. A helyes megközelítés: a coaching keretein belül feltárni a következményeket, miközben tiszteletben tartja az ügyfél autonómiáját. Ha közvetlen jogi kötelezettség nem áll fenn, a titoktartás megmarad.",
+    reference: "ICF Etikai Kódex 2020, 4. szakasz: Titoktartás; 1. szakasz: Az ügyfél autonómiája"
+  },
+  {
+    id: "eth-014", domain: "ethics", difficulty: 2,
+    question: "Melyik magatartás sérti az ICF etikai elveit a coaching lezárásakor?",
+    options: ["A coach és ügyfél közösen értékeli a folyamat sikereit", "A coach folytatja a kapcsolatot az ügyfél igényei ellenére, mert jövedelemforrásra van szüksége", "A coach átadja az ügyfelet egy másik szakembernek, ha az igények meghaladják a kompetenciáját", "A coach összefoglalja a legfontosabb tanulságokat az utolsó ülésen"],
+    correctIndex: 1,
+    explanation: "A coaching fenntartása az ügyfél valódi szükségletei ellenére az ügyfél érdekeivel szemben hat és saját pénzügyi érdeket helyez előtérbe. Az ICF Etikai Kódex egyértelműen az ügyfél jólétét rendeli a coach anyagi érdekei fölé.",
+    reference: "ICF Etikai Kódex 2020, 1. szakasz: Az ügyfél érdekeinek védelme"
+  },
+  {
+    id: "eth-015", domain: "ethics", difficulty: 2,
+    question: "Hogyan kell eljárni, ha egy szponzoráló szervezet részletes információkat kér az ügyfél coaching üléseiről?",
+    options: ["Teljesíti a kérést, mivel a szervező fizeti a coachingot", "Csak az előre megállapodott, ügyfél által jóváhagyott összefoglalókat osztja meg", "Megtagadja a tájékoztatást és leállítja a coaching folyamatot", "Elmondja az általános benyomásait, de ügyfélspecifikus tartalmakat nem"],
+    correctIndex: 1,
+    explanation: "A háromszögű coaching kapcsolatban (coach–ügyfél–szervező) az ICF megköveteli, hogy a titoktartási egyensúly előre meghatározott legyen. A szervező csak az ügyfél által előzetesen jóváhagyott információkat kaphatja meg.",
+    reference: "ICF Etikai Kódex 2020, 4.1: Titoktartás a hármas kapcsolatban"
+  },
+  {
+    id: "eth-016", domain: "ethics", difficulty: 1,
+    question: "Mi az ICF Etikai Kódex megsértésének leggyakoribb formája a dokumentumok szerint?",
+    options: ["A túl magas díjszabás", "A kettős szerep és az érdekellentét nem feltárása", "A coaching célok nem megfelelő dokumentálása", "Az ügyfél bevonása a coach saját döntéseibe"],
+    correctIndex: 1,
+    explanation: "Az érdekellentétek és kettős szerepek nem feltárása az ICF etikai panaszok egyik leggyakoribb forrása. A transzparencia és az időbeli feltárás védi az ügyfelet és a coaching kapcsolat integritását.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Felelősség a professzionalizmusért"
+  },
+  {
+    id: "eth-017", domain: "ethics", difficulty: 3,
+    question: "Egy coach supervízió során rájön, hogy egy kollégája etikátlan magatartást tanúsított egy ügyféllel szemben. Mi a megfelelő reakció?",
+    options: ["Névtelenül jelenti az ICF-nek a kollégát", "Először a kollégával folytat közvetlen, konstruktív párbeszédet", "Értesíti az ügyfelet a jogairól és az ICF etikai panasz folyamatáról", "Figyelmen kívül hagyja, mert a másik coach szakmai ügyei nem az ő hatásköre"],
+    correctIndex: 2,
+    explanation: "Az ICF Etikai Kódex szerint minden ICF tag felelős az etikai normák érvényesítéséért. Az ügyfelet tájékoztatni jogairól — beleértve az etikai panasz lehetőségét — elsőrendű kötelezettség, különösen ha az ügyfél sérelmet szenvedett.",
+    reference: "ICF Etikai Kódex 2020, 5. szakasz: Felelősség a szakmáért"
+  },
+  {
+    id: "eth-018", domain: "ethics", difficulty: 2,
+    question: "Egy ügyfél megkéri a coachot, hogy tanúsítson mellette egy bírósági eljárásban, ahol a coaching tartalmára lenne szükség. Mit kell tennie a coachnak?",
+    options: ["Azonnal vállalja a tanúskodást, mivel az ügyfél kéri", "Megvizsgálja jogi kötelezettségeit és azt, hogy az ügyfél aláírta-e a titoktartás feloldásához szükséges nyilatkozatot", "Megtagadja a tanúskodást a titoktartás abszolút elve alapján", "Elvégzi a tanúskodást, de csak általános benyomásokat oszt meg"],
+    correctIndex: 1,
+    explanation: "A coach ebben a helyzetben két kötelezettség metszéspontján van: titoktartás vs. jogi kötelezettség. A helyes lépés jogi tanácsot kérni, ellenőrizni az ügyfél hozzájárulását, és ha a jogi kényszer valódi, a törvénynek megfelelni.",
+    reference: "ICF Etikai Kódex 2020, 4.3: Titoktartás törvényi korlátai"
+  },
+  {
+    id: "eth-019", domain: "ethics", difficulty: 1,
+    question: "Az ICF Etikai Kódex szerint ki az ICF etikai irányelveinek hatálya alá tartozó személy?",
+    options: ["Kizárólag az ICF-minősített coachok", "Minden ICF tag és minden, aki ICF-minősítést kér vagy tart fenn", "Minden hivatásos coach, függetlenül a minősítéstől", "Csak az ICF Mentorcoach programban részt vevők"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex 2020 minden ICF tagra és minősítésre jelentkezőre vagy azt fenntartóra vonatkozik — nem csak a már minősített coachokra. Ez biztosítja, hogy az etikai elvárások a teljes ICF közösségre kiterjedjenek.",
+    reference: "ICF Etikai Kódex 2020, Bevezetés: Alkalmazási kör"
+  },
+  {
+    id: "eth-020", domain: "ethics", difficulty: 3,
+    question: "Egy ügyfél coachingon kívül szeretne közeli barátságot kialakítani a coachával. Mi a legmegfelelőbb módja ennek kezelésére?",
+    options: ["Elfogadja a barátságot — az emberi kapcsolódás értékes a coaching folyamatban", "Megvizsgálja az ügyféllel, hogyan hathat a barátság a coaching kapcsolat hatékonyságára és határaira", "Azonnal lezárja a coaching kapcsolatot, mert a barátság kizárja a professzionális munkát", "Fenntartja a barátságot, de a coaching ülések tartalmát titkosan kezeli"],
+    correctIndex: 1,
+    explanation: "A határok és a kettős szerepek kezelése az ICF etika alapvető része. A helyes megközelítés nem az elutasítás, hanem az átlátható, coaching alapú vizsgálat: hogyan hatna ez a dynamic a kapcsolat hatékonyságára?",
+    reference: "ICF Etikai Kódex 2020, 1.3-1.4: Szerephatárok és kettős kapcsolatok"
+  },
+  {
+    id: "eth-021", domain: "ethics", difficulty: 2,
+    question: "Mit jelent a 'kulturálisan érzékeny' megközelítés az ICF etikában?",
+    options: ["A coach saját kultúrájának értékeit tartja irányadónak a coachingban", "A coach felismeri és tiszteletben tartja az ügyfél kulturális hátterét, értékeit és világnézetét", "A coach kizárólag azonos kulturális háttérrel rendelkező ügyfeleket vállal", "A coach kerüli a kulturális témákat a semlegesség érdekében"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex 2020 hangsúlyozza az egyenlőség, a befogadás és a kulturális érzékenység fontosságát. A coach kötelezettsége, hogy elismerjük és tiszteletben tartsuk a különböző kulturális perspektívákat, nem saját értékeinket vetítsük ki.",
+    reference: "ICF Etikai Kódex 2020, 2. szakasz: Méltányosság és befogadás"
+  },
+  {
+    id: "eth-022", domain: "ethics", difficulty: 2,
+    question: "Ha egy ügyfél önkárosítást említ a coaching ülés során, mi a coach etikai kötelezettsége?",
+    options: ["Folytatja az ülést — ez a coaching természetes részének tekintendő", "Közvetlen veszély esetén értesíti a megfelelő hatóságokat, egyébként gondoskodik arról, hogy az ügyfél szakmai segítséget kapjon", "Azonnal leállítja a coaching kapcsolatot", "Dokumentálja és a következő ülésen visszatér a témához"],
+    correctIndex: 1,
+    explanation: "A titoktartás nem abszolút. Ha az ügyfél önmaga vagy mások biztonságát veszélyezteti, a coach etikai és jogi kötelezettsége beavatkozni. A coaching az ügyfél biztonságát minden más szempontnál fontosabbnak tartja.",
+    reference: "ICF Etikai Kódex 2020, 4.2: Titoktartás korlátai — biztonság"
+  },
+  {
+    id: "eth-023", domain: "ethics", difficulty: 1,
+    question: "Melyik nem tartozik az ICF hat alapértéke közé?",
+    options: ["Professzionalizmus", "Együttérzés", "Nyereség maximalizálása", "Méltányosság"],
+    correctIndex: 2,
+    explanation: "Az ICF hat alapértéke: Professzionalizmus, Együttérzés, Tiszteletadás, Integritás, Méltányosság, Befogadás. A pénzügyi nyereség maximalizálása nem szerepel ezek között — a coaching etika az ügyfél és szakma érdekeit helyezi előtérbe.",
+    reference: "ICF Etikai Kódex 2020, Alapértékek"
+  },
+  {
+    id: "eth-024", domain: "ethics", difficulty: 3,
+    question: "Egy coach felismeri, hogy az ügyfél szorongása meghaladja a coaching hatáskörét. Mi a legmegfelelőbb lépés?",
+    options: ["Folytatja a coachingot, mert az ügyfél nem kért más segítséget", "Megvitatja az ügyféllel a megfigyelését és szükség esetén más szakemberhez irányítja", "Azonnal lezárja a kapcsolatot és pszichológust ajánl", "Átvált coaching-tól terápiás megközelítésbe, mert az ügyfélnek arra van szüksége"],
+    correctIndex: 1,
+    explanation: "A coach feladata saját kompetenciahatárait felismerni és átláthatóan kommunikálni az ügyféllel. Az ICF elvárja, hogy a coach szükség esetén megfelelő szakemberhez irányítsa az ügyfelet — de az ügyfél dönt, nem a coach.",
+    reference: "ICF Etikai Kódex 2020, 1.5: Kompetenciahatárok és átirányítás"
+  },
+  {
+    id: "eth-025", domain: "ethics", difficulty: 2,
+    question: "Mi a helyes eljárás, ha egy coach az ügyfél csoportjában lát egy tagot, akit korábban coacholt?",
+    options: ["Jelzi az ügyfeleknek, hogy ismeri az illetőt, részletek nélkül", "Titoktartási kötelezettségéből adódóan nem fedheti fel, hogy coaching kapcsolatban álltak", "Megkérdezi a korábbi ügyfelet, hogy felfedhet-e bármit a közös munkáról", "Nincs teendő, mivel a coaching kapcsolat már lezárult"],
+    correctIndex: 1,
+    explanation: "A coaching titoktartás lezárt kapcsolatoknál is fennmarad. A coach nem utalhat arra sem, hogy coaching kapcsolatban álltak, kivéve ha a korábbi ügyfél kifejezetten felhatalmazta erre. Az anonimitás védelmének kötelezettsége folyamatos.",
+    reference: "ICF Etikai Kódex 2020, 4. szakasz: Titoktartás"
+  },
+  {
+    id: "eth-026", domain: "ethics", difficulty: 2,
+    question: "Mit kell a coachnak tartalmaznia a coaching szerződésben az etikai elvárások alapján?",
+    options: ["Csak a díjszabást és a találkozók számát", "A titoktartás határait, a coaching természetét, a coach képzettségét és a panasztétel lehetőségét", "Kizárólag a coachingcélokat és a mérési módszereket", "A szponzoráló szervezet elvárásait és a coach kötelezettségeit feléjük"],
+    correctIndex: 1,
+    explanation: "A tájékoztatáson alapuló beleegyezés megköveteli, hogy a szerződés tartalmazza a titoktartás határait, a coaching természetét és korlátait, a coach képzettségét, és az ügyfél panaszkezelési lehetőségeit — minden esetben.",
+    reference: "ICF Etikai Kódex 2020, 1.1: Beleegyezés és tájékoztatás"
+  },
+  {
+    id: "eth-027", domain: "ethics", difficulty: 1,
+    question: "Melyik helyzet igényel azonnali etikai mérlegelést a coaching kapcsolat megkezdése előtt?",
+    options: ["Az ügyfél nem dolgozik szervezett munkahelyen", "A coach korábban HR-tanácsadóként dolgozott az ügyfél szervezeténél", "Az ügyfél coaching tapasztalattal rendelkezik már", "A szponzoráló szervezet nem coaching kultúrájú vállalat"],
+    correctIndex: 1,
+    explanation: "Ha a coach korábban HR-tanácsadóként dolgozott ugyanannál a szervezetnél, korábbi ismeretek és esetleges hatalmi dinamikák lehetnek jelen, amelyek érdekellentétet hozhatnak létre. Ezt fel kell tárni és meg kell vizsgálni az ügyfél beleegyezésével.",
+    reference: "ICF Etikai Kódex 2020, 3.1: Érdekellentét megelőzése"
+  },
+  {
+    id: "eth-028", domain: "ethics", difficulty: 3,
+    question: "Egy coach online hirdetésében azt állítja, hogy 'garantált eredményeket' kínál. Miért etikátlan ez az ICF szerint?",
+    options: ["Mert az online marketing nem megfelelő fórum coachok számára", "Mert a coaching eredményei az ügyfél erőfeszítésétől és készségétől függenek, és garanciát ígérni félrevezető", "Mert ez pénzügyi nyomást helyez a coachingra", "Mert a garancia feltételei általában nem tisztázottak"],
+    correctIndex: 1,
+    explanation: "Az ICF tiltja a megtévesztő marketinget. A coaching eredményei az ügyfél elkötelezettségétől, a folyamat minőségétől és számos más tényezőtől függnek. Garanciát ígérni hamis elvárásokat kelt és alássa a coaching integritását.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Professzionalizmus — kommunikáció és marketing"
+  },
+  {
+    id: "eth-029", domain: "ethics", difficulty: 2,
+    question: "Mire vonatkozik az ICF Etikai Kódexben az 'ügyfél' fogalma a coaching kontextusban?",
+    options: ["Kizárólag arra a személyre, aki a coachingot fizeti", "Mind a coachee személyre, mind a szponzoráló szervezetre, ha szervezett keretek között zajlik a coaching", "Kizárólag a szponzoráló szervezetre, ha ők a megbízók", "Csak a közvetlen coaching kapcsolatra belépő személyre"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex 2020 megkülönbözteti az 'ügyfél' fogalmát a szoros értelemben (coachee) és tágabb értelemben (a szponzoráló szervezet is lehet ügyfél). A coach felelőssége mindkét féllel szemben fennáll, ezért a titoktartás és az érdekek egyensúlyát elő kell re meghatározni.",
+    reference: "ICF Etikai Kódex 2020, Fogalmak: Ügyfél"
+  },
+  {
+    id: "eth-030", domain: "ethics", difficulty: 3,
+    question: "Hogyan kezeli etikusan a coach azt, ha felismeri, hogy saját megoldatlan személyes problémái befolyásolják a coachingot?",
+    options: ["Figyelmen kívül hagyja, mert a coaching az ügyfélre fókuszál, nem a coachre", "Felügyelet vagy saját coaching révén foglalkozik ezekkel a kérdésekkel és szükség esetén átutalja az ügyfelet", "Felfedi a problémáit az ügyfélnek a transzparencia érdekében", "Csökkenti az ülések számát, amíg a problémák megoldódnak"],
+    correctIndex: 1,
+    explanation: "Az ICF elvárja, hogy a coach folyamatos szakmai fejlődést végezzen és saját jólétéről gondoskodjon. Ha a coach saját megoldatlan problémái befolyásolják a munkát, a szupervízió, önmaga coachingja vagy ideiglenes visszahúzódás az etikus megoldás.",
+    reference: "ICF Etikai Kódex 2020, 3.5: Coach önismerete és kompetencia-fenntartás"
+  },
+
+  // ── DEFINÍCIÓ (11-30) ───────────────────────────────────────
+  {
+    id: "def-011", domain: "definition", difficulty: 2,
+    question: "Mi különbözteti meg leginkább a coachingot a mentoring-tól?",
+    options: ["A coaching mindig rövidebb, míg a mentoring hosszabb", "A mentor tapasztalatát és tudását adja át, a coach az ügyfél saját erőforrásaira épít", "A mentoring csak karrierfejlesztésre alkalmas, coaching bármiről szólhat", "A coaching fizetett szolgáltatás, a mentoring mindig önkéntes"],
+    correctIndex: 1,
+    explanation: "A mentoring egyik alapjellemzője, hogy a mentor saját tapasztalatát, tudását és kapcsolatrendszerét osztja meg. A coaching ezzel szemben az ügyfél inherens kapacitásaira, értékeire és erőforrásaira épít, a coach nem ad tanácsot saját tapasztalatából.",
+    reference: "ICF, Mi a coaching? — Coaching vs. mentoring megkülönböztetés"
+  },
+  {
+    id: "def-012", domain: "definition", difficulty: 1,
+    question: "Mi a coaching célja az ICF definíciója szerint?",
+    options: ["Az ügyfél problémáinak megoldása a coach szakértelmével", "Az ügyfél személyes és szakmai potenciáljának maximalizálása gondolatébresztő és kreatív folyamaton keresztül", "Az ügyfél viselkedésének megváltoztatása szervezeti célok érdekében", "Pszichológiai akadályok azonosítása és megszüntetése"],
+    correctIndex: 1,
+    explanation: "Az ICF meghatározása szerint a coaching 'gondolkodást serkentő és kreatív folyamat az ügyféllel partnerségben, amely maximalizálja a személyes és szakmai potenciált'. A coach nem ad tanácsot, hanem a partnerség erejével tárja fel az ügyfél kapacitásait.",
+    reference: "ICF, Mi a coaching? — Hivatalos definíció"
+  },
+  {
+    id: "def-013", domain: "definition", difficulty: 2,
+    question: "Melyik szituáció igényel inkább terápiát, mint coachingot?",
+    options: ["Egy vezető javítani szeretné a csapatkommunikációját", "Egy személy krónikus traumával küzd, amely akadályozza mindennapi működését", "Egy vállalkozó jobb döntéshozatali stratégiákat szeretne kialakítani", "Egy munkavállaló karrierváltást tervez"],
+    correctIndex: 1,
+    explanation: "A terápia fő területe a mentális egészség, a trauma és a klinikai szintű pszichológiai zavarok. Ha az ügyfél múltbeli trauma hatására nem tud funkcionálni jelenleg, ez klinikai szakembert igényel, nem coachot. A coaching jövőorientált, az erőforrásokra épít.",
+    reference: "ICF, Coaching vs. terápia megkülönböztetés"
+  },
+  {
+    id: "def-014", domain: "definition", difficulty: 1,
+    question: "Az ICF milyen analógiát használ a coaching kapcsolat leírásához?",
+    options: ["Tanár-diák", "Orvos-beteg", "Partnerség az ügyféllel", "Mentor-jelölt"],
+    correctIndex: 2,
+    explanation: "Az ICF hangsúlyozza, hogy a coaching 'partnerség az ügyféllel'. Ez a szóhasználat jelzi az egyenlőséget, a kölcsönöst tiszteletet és azt, hogy a coach nem egy hierarchiában felette van az ügyfélnek, hanem mellette dolgozik.",
+    reference: "ICF, Mi a coaching? — Partnerség modellje"
+  },
+  {
+    id: "def-015", domain: "definition", difficulty: 2,
+    question: "Miben tér el a tanácsadás (consulting) a coachingtól legmarkánsabban?",
+    options: ["A tanácsadás mindig szervezetekre vonatkozik, a coaching egyénekre", "A tanácsadó diagnózist állít és megoldásokat ajánl, a coach az ügyfél saját megoldáskeresési folyamatát támogatja", "A tanácsadás rövidebb és koncentráltabb, a coaching hosszabb folyamat", "A tanácsadó külső szemlélő, a coach belső erőforrás"],
+    correctIndex: 1,
+    explanation: "A tanácsadó általában diagnózist állít, elemez és konkrét javaslatokat tesz a problémák megoldására. A coaching ezzel szemben az ügyfelet támogatja abban, hogy maga találjon megoldást — a coach nem ad tanácsot, hanem kérdezéssel katalizálja a folyamatot.",
+    reference: "ICF, Coaching vs. tanácsadás megkülönböztetés"
+  },
+  {
+    id: "def-016", domain: "definition", difficulty: 3,
+    question: "Egy ügyfél coaching közben azt kéri: 'Mit tennél te a helyemben?' Hogyan válaszol egy hatékony coach?",
+    options: ["Megadja saját véleményét, mert az ügyfél kéri és ez erősíti a kapcsolatot", "Visszakérdez: 'Mi az, amit te már tudsz arról, mit szeretnél tenni?'", "Elmagyarázza, hogy a coaching nem tanácsadás és nem válaszol", "Megosztja tapasztalatát, majd visszairányítja az ügyfelet a saját döntéséhez"],
+    correctIndex: 1,
+    explanation: "A coaching a coaching megközelítése: a coach visszafordítja a fókuszt az ügyfélre, hogy az saját bölcsességét és erőforrásait tárja fel. A tanácsadás kerülése nem merevség — hanem a coaching alapfeltételezése, hogy az ügyfélben megvan a válasz.",
+    reference: "ICF 3. kompetencia: Coaching gondolkodásmód — az ügyfél a szakértő saját életében"
+  },
+  {
+    id: "def-017", domain: "definition", difficulty: 1,
+    question: "Melyik területen alkalmazzák legszélesebb körben a coachingot az ICF felmérései szerint?",
+    options: ["Sportpszichológia", "Szervezeti és vezetői coaching", "Életmód-coaching", "Iskolai coaching"],
+    correctIndex: 1,
+    explanation: "Az ICF globális felmérései szerint a szervezeti és vezetői (executive) coaching a coaching leggyakoribb alkalmazási területe világszerte, ezt követi az életvezetési coaching és a karriercoaching.",
+    reference: "ICF Global Coaching Study"
+  },
+  {
+    id: "def-018", domain: "definition", difficulty: 2,
+    question: "Mi a különbség a coaching és a tréning között?",
+    options: ["A tréning egyéni, a coaching csoportos", "A tréning meghatározott tartalmat ad át általánosan, a coaching az egyén egyedi szükségleteire épít", "A coaching csak szóbeli, a tréning szimulációkat is tartalmaz", "Nincs lényegi különbség, csak a terminológia más"],
+    correctIndex: 1,
+    explanation: "A tréning előre meghatározott tartalmakat, készségeket és ismereteket ad át egyéneknek vagy csoportoknak. A coaching ellenben teljesen az egyén egyedi kontextusára, céljára és szükségleteire épül, tartalmát az ügyfél határozza meg.",
+    reference: "ICF, Coaching vs. tréning megkülönböztetés"
+  },
+  {
+    id: "def-019", domain: "definition", difficulty: 3,
+    question: "Egy vezetői coach szervezeti kontextusban dolgozik. Mit jelent a 'kettős ügyfél' problematika ebben az összefüggésben?",
+    options: ["A coach egyszerre két cégnél dolgozik, ami érdekellentétet okozhat", "A szponzoráló szervezet és az ügyfél (coachee) érdekei néha ütközhetnek, és a coachnak mindkettőt figyelembe kell vennie", "A coach coachingot és mentoring-ot egyaránt végez ugyanannak az ügyfélnek", "A coaching és a tanácsadás szerepei keverednek egy szervezeti projektben"],
+    correctIndex: 1,
+    explanation: "A szervezeti kontextusban a coachnak két 'ügyféllel' van dolga: a coachee-val (a személy, akivel dolgozik) és a szponzoráló szervezettel (aki fizet). Ezek érdekei olykor ütközhetnek, és a coach feladata az egyensúly és a titoktartás fenntartása.",
+    reference: "ICF, Szervezeti coaching — háromszögű kapcsolat"
+  },
+  {
+    id: "def-020", domain: "definition", difficulty: 2,
+    question: "Melyik állítás igaz a coaching és a pszichoterápia viszonyáról?",
+    options: ["A coaching a pszichoterápia egyik formája, módszerek tekintetében azonosak", "A coaching jelenre és jövőre fókuszál, az erőforrásokra épít; a terápia a múltat és a klinikai problémákat is kezeli", "A coaching megváltotta a terápiát, mert kevésbé stigmatizált", "A kettő közötti határ a praktikus coachok számára nem releváns"],
+    correctIndex: 1,
+    explanation: "A coaching és a terápia között alapvető különbség van a fókuszban: a coaching jövőorientált, erőforrás-alapú és nem foglalkozik klinikai zavarokkal; a terápia a múltat is vizsgálja és mentális egészségi problémákat is kezel. A coach köteles felismerni a hatáskör-határt.",
+    reference: "ICF, Coaching vs. pszichoterápia megkülönböztetés"
+  },
+  {
+    id: "def-021", domain: "definition", difficulty: 1,
+    question: "Milyen típusú coaching az ICF által elismert két fő terület?",
+    options: ["Egyéni (life coaching) és szervezeti (executive) coaching", "Pozitív pszichológiai coaching és megoldásfókuszú coaching", "Csoportos coaching és öncoaching", "Karriercoaching és egészségcoaching"],
+    correctIndex: 0,
+    explanation: "Az ICF elsősorban az egyéni életvezetési coachingot (life coaching) és a szervezeti / vezető (executive / organizational) coachingot ismeri el fő területként. Ezen belül számos szakterület (karrier, egészség, pár stb.) létezik.",
+    reference: "ICF, Coaching típusok és szakterületek"
+  },
+  {
+    id: "def-022", domain: "definition", difficulty: 2,
+    question: "Mi az 'aktív hallgatás' szerepe a coaching meghatározásában?",
+    options: ["Az aktív hallgatás csökkenti az ülések hosszát, mert gyorsabban jutunk a lényegre", "Az aktív hallgatás lehetővé teszi a coach számára, hogy az ügyfél szavain túl az érzelmeket, értékeket és feltételezéseket is észlelje", "Az aktív hallgatás garantálja, hogy a coach minden szót le tud jegyezni", "Az aktív hallgatás az ügyfél tanítója által alkalmazott technika"],
+    correctIndex: 1,
+    explanation: "A coaching definíciójában az aktív hallgatás többrétegű: a coach nem csak a szavakat hallja, hanem az érzelmeket, a kimondatlan feltételezéseket, az értékeket és a metakommunikációt is. Ez az alapja a mélységi coaching munkának.",
+    reference: "ICF 6. alapkompetencia: Aktív hallgatás"
+  },
+  {
+    id: "def-023", domain: "definition", difficulty: 3,
+    question: "Miért mondja az ICF, hogy a coaching 'gondolkodást serkentő és kreatív folyamat'?",
+    options: ["Mert a coach kreatív eszközöket és vizualizációs technikákat alkalmaz minden ülésen", "Mert a folyamat az ügyfél számára új perspektívákat, ötleteket és lehetőségeket nyit meg, amelyeket korábban nem látott", "Mert a coaching mindig innovatív megoldásokra törekszik a szokásos megközelítések helyett", "Mert a coaching definíció szerzői kreatív emberek voltak"],
+    correctIndex: 1,
+    explanation: "A 'gondolkodást serkentő és kreatív' jelzők arra utalnak, hogy a coaching folyamat az ügyfél gondolkodását tágítja, új nézőpontokat és lehetőségeket nyit meg, amelyeket az ügyfél korábban nem látott. Ez a coaching lényegi értékteremtése.",
+    reference: "ICF, Mi a coaching? — Definíció elemzése"
+  },
+  {
+    id: "def-024", domain: "definition", difficulty: 2,
+    question: "Mit jelent, hogy a coaching 'az ügyfél a szakértő saját életében'?",
+    options: ["A coach soha nem ajánlhat erőforrásokat vagy eszközöket", "A coach feltételezi, hogy az ügyfélben megvan a képesség és a bölcsesség, hogy megtalálja a saját megoldásait", "Az ügyfélnek mindig igaza van, a coach nem kérdőjelezhet meg semmit", "Az ügyfél határozza meg a coaching módszereit és technikáit"],
+    correctIndex: 1,
+    explanation: "Az ICF alapfeltételezése, hogy az ügyfél kreatív, erőforrásokban gazdag és teljes (creative, resourceful, whole). Ez azt jelenti, hogy a coach nem diagnózist állít vagy megoldásokat kínál, hanem az ügyfél inherens bölcsességét tárja fel.",
+    reference: "ICF 3. kompetencia: Coaching gondolkodásmód"
+  },
+  {
+    id: "def-025", domain: "definition", difficulty: 1,
+    question: "Mi az a 'coaching szövetség' (coaching alliance)?",
+    options: ["Az ICF és más coaching szervezetek közötti együttműködés", "A coach és az ügyfél között kialakuló bizalmi, partneri kapcsolat, amely a hatékony coaching alapja", "A coaching vállalatok és szervezetek közötti formális megállapodás", "Az ICF akkreditált coachok hálózata"],
+    correctIndex: 1,
+    explanation: "A coaching szövetség (working alliance) a coach–ügyfél kapcsolatban kialakuló bizalom, kölcsönös tisztelet és cél-egyezés. Kutatások igazolják, hogy a coaching hatékonyságának egyik legfontosabb prediktora a szövetség minősége.",
+    reference: "ICF 4. alapkompetencia: Bizalom és biztonság kialakítása"
+  },
+  {
+    id: "def-026", domain: "definition", difficulty: 2,
+    question: "Melyik nem jellemzője a professzionális coaching-nak az ICF szerint?",
+    options: ["A coach kérdéseket tesz fel, amelyek segítik az ügyfél gondolkodását", "A coach elvégzi az ügyfél számára a szükséges elemzéseket és döntéseket", "A coach biztonságos teret teremt az ügyfél számára", "A coach tiszteletben tartja az ügyfél döntési autonómiáját"],
+    correctIndex: 1,
+    explanation: "A coaching alapelve, hogy az ügyfél maga hozza meg a döntéseit és végzi el a szükséges munkát. Ha a coach elvégzi az ügyfél helyett az elemzéseket vagy döntéseket, az tanácsadás vagy mentoring, nem coaching.",
+    reference: "ICF, Mi a coaching? — Coaching alapelvei"
+  },
+  {
+    id: "def-027", domain: "definition", difficulty: 3,
+    question: "Egy szervezet coaching programot indít, de elvárja, hogy a coach rendszeresen csoportos workshopokat tartson az alkalmazottaknak. Ez etikailag mit vet fel?",
+    options: ["Semmit — a coaching és a tréning kombinálható tetszés szerint", "A szerepek keveredhetnek, ami ássa a coaching titoktartását és az egyéni coaching biztonságos terét", "A workshop az egyéni ülések kiegészítője lehet, ha az ICF jóváhagyja", "Csak akkor probléma, ha a workshop más céget érint"],
+    correctIndex: 1,
+    explanation: "Ha a coach egyszerre coach és tréner/facilitátor az ugyanazon szervezetben, felmerülhetnek kettős szerepek. A coachee-k tarthatnak attól, hogy workshopon megosztott dolgaik visszakerülnek a coaching ülésekbe vagy fordítva, ami aláássa a biztonságos teret.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Kettős szerepek szervezeti kontextusban"
+  },
+  {
+    id: "def-028", domain: "definition", difficulty: 1,
+    question: "Mi az ICF ACC minősítés megszerzésének egyik alapkövetelménye?",
+    options: ["Legalább 500 igazolt coachingóra", "Legalább 100 igazolt coachingóra és ICF-akkreditált képzés elvégzése", "Doktori fokozat pszichológiából vagy kapcsolódó területről", "Legalább 5 éves coaching tapasztalat nagyvállalati környezetben"],
+    correctIndex: 1,
+    explanation: "Az ICF ACC minősítés megköveteli: legalább 60 óra ICF-akkreditált coaching képzést, legalább 100 igazolt coaching-óra ügyfélmunkát (ebből 75 fizetett), és ICF-minősített mentor coach visszajelzését.",
+    reference: "ICF ACC minősítési követelmények"
+  },
+  {
+    id: "def-029", domain: "definition", difficulty: 2,
+    question: "Mi a különbség a coaching és az 'enabling' (kiszolgálás/kényszersegítés) között?",
+    options: ["Az enabling gyorsabb eredményeket hoz, a coaching lassabb", "Az enabling az ügyfél helyett megold problémákat és függőséget teremt, a coaching az ügyfél autonómiáját és felelősségét erősíti", "Az enabling etikátlan, de hatékony rövid távon", "Nincs különbség, mindkettő az ügyfél segítéséről szól"],
+    correctIndex: 1,
+    explanation: "Az enabling (kényszersegítés) az ügyfél helyett old meg problémákat, ami függőséget teremt és aláássa az önálló fejlődést. A coaching az ellenkezőjét teszi: az ügyfél képességeit, önállóságát és felelősségvállalását erősíti.",
+    reference: "ICF, Coaching alapelvei — autonómia és felelősség"
+  },
+  {
+    id: "def-030", domain: "definition", difficulty: 3,
+    question: "Melyik állítás írja le legpontosabban a coaching 'jelenlét' (presence) szerepét a definícióban?",
+    options: ["A jelenlét azt jelenti, hogy a coach fizikailag jelen van az ülésen", "A coach teljes figyelemmel, tudatosan és rugalmasan vesz részt, reagálva az ügyfél egész lényére — szavakra, érzelmekre, testbeszédre egyaránt", "A jelenlét a coach érzelmi stabilitásának kifejezése nehéz ülésen", "A jelenlét módszer, amelyet a coach tudatosan alkalmaz, hogy az ügyfél kényelmesebben érezze magát"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét (coaching presence) az ICF 5. kompetenciája: a coach teljes tudatossággal, rugalmasan és nyitottan vesz részt — minden szinten (verbális, érzelmi, szomatikus) érzékel és reagál. Ez a mély coaching munka feltétele.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét fenntartása"
+  },
+
+  // ── KOMPETENCIÁK (11-40) ────────────────────────────────────
+  {
+    id: "comp-011", domain: "competencies", difficulty: 2,
+    question: "Az ICF 1. kompetenciája ('Etika megtestesítése és fenntartása') szerint melyik coaching viselkedés a leginkább megfelelő?",
+    options: ["A coach az összes coaching ülést ugyanolyan módszerrel vezeti, a következetesség érdekében", "A coach felismeri, ha saját elfogultsága befolyásolja az ügyfelet, és ezt transzparensen kezeli", "A coach az ülés elején ismerteti az ICF etikai kódexet az ügyféllel", "A coach csak ICF-minősített ügyfelekkel dolgozik"],
+    correctIndex: 1,
+    explanation: "Az 1. kompetencia lényege nem csupán az etikai szabályok ismerete, hanem azok belső megtestesítése. Ez magában foglalja saját elfogultságaink, feltételezéseink és korlátaink felismerését és transzparens kezelését.",
+    reference: "ICF 1. alapkompetencia: Etika megtestesítése és fenntartása"
+  },
+  {
+    id: "comp-012", domain: "competencies", difficulty: 1,
+    question: "Mit jelent a 'coaching gondolkodásmód' (coaching mindset) az ICF 2. kompetencia szerint?",
+    options: ["A legújabb coaching módszerek alkalmazása minden ügyfélnél", "Folyamatos fejlődés iránti elkötelezettség, nyitott kíváncsiság és az ügyfél iránti pozitív feltételezések fenntartása", "Pozitív hozzáállás az ügyfélhez, hogy az ügyfél bizalmat érezzen", "A coach személyes fejlődési célkitűzéseinek rendszeres felülvizsgálata"],
+    correctIndex: 1,
+    explanation: "A coaching mindset a coach belső orientációja: folyamatos tanulás, kíváncsiság, az ügyfél kreatív, erőforrásokban gazdag és teljes természetébe vetett hit. Ez nem technika, hanem a coach alapvető hozzáállása.",
+    reference: "ICF 2. alapkompetencia: Coaching gondolkodásmód kialakítása és fenntartása"
+  },
+  {
+    id: "comp-013", domain: "competencies", difficulty: 2,
+    question: "Egy ügyfél az ülés elején azt mondja, hogy 'el akar dönteni valamit'. Mi a coach legjobb első lépése a 3. kompetencia (Megállapodás és szerződés) szerint?",
+    options: ["Azonnal feltárja az ügyfél döntési lehetőségeit", "Megkérdezi, mit jelent számára a siker ebben az ülésen és mit szeretne elérni", "Elvégzi a pro-kontra elemzést az ügyféllel", "Megkérdezi az ügyfelet, mit döntött már el magában"],
+    correctIndex: 1,
+    explanation: "A 3. kompetencia szerint a coach az ülés elején egyértelmű megállapodást köt az ügyfél kívánt eredményéről. 'Mit jelent számodra a siker ebben az ülésen?' pontosan meghatározza a fókuszt és az ügyfél célját.",
+    reference: "ICF 3. alapkompetencia: Megállapodások kötése"
+  },
+  {
+    id: "comp-014", domain: "competencies", difficulty: 3,
+    question: "Miként erősíti a coach a bizalmat és biztonságot (4. kompetencia) egy érzékeny témánál?",
+    options: ["Megmutatja saját szakmai tapasztalatát a témában, hogy az ügyfél megbízzon benne", "Elismeri az ügyfél bátorságát a téma felvetésében, és jelzi, hogy ítélet nélkül van jelen", "Azonnal szakmai irodalmat ajánl, amely segít feldolgozni a témát", "Elmondja az ügyfelének, hogy más ügyfelek is hasonló helyzetben voltak"],
+    correctIndex: 1,
+    explanation: "A biztonságos tér kialakítása az ügyfél bátorságának elismerésével és az ítéletmentesség kommunikálásával történik. Ez erősebb bizalomépítő, mint a coach szaktudásának demonstrálása, amely hatalmi egyenlőtlenséget hozhat létre.",
+    reference: "ICF 4. alapkompetencia: Bizalom és biztonság kialakítása"
+  },
+  {
+    id: "comp-015", domain: "competencies", difficulty: 2,
+    question: "Mikor mondható, hogy a coach teljes jelenlétben van (5. kompetencia: Coaching jelenlét)?",
+    options: ["Amikor a coach előre megtervezi az összes kérdést, hogy az ülés gördülékenyen haladjon", "Amikor a coach nyitott, rugalmas, teljes figyelmű, és kész az irányt az ügyfél alapján módosítani", "Amikor a coach az ülés előtt meditál és felkészül érzelmileg", "Amikor a coach saját tapasztalataira támaszkodik az ügyfél jobb megértéséhez"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét nem technika, hanem egy állapot: a coach teljes figyelme az ügyfélen van, rugalmas az ülés irányában, és intuitívan reagál az ügyfél igényeire és jelzéseire. A merev struktúra vagy a személyes vetítés ennek ellentéte.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét fenntartása"
+  },
+  {
+    id: "comp-016", domain: "competencies", difficulty: 1,
+    question: "Melyik viselkedés a legjobb példa az aktív hallgatásra (6. kompetencia)?",
+    options: ["A coach szó szerint feljegyzi az ügyfél minden mondatát", "A coach visszatükrözi az ügyfél szavait, érzelmeit és mögöttes feltételezéseit", "A coach hallgat és nem szól bele az ügyfél monológjába", "A coach az ügyfél testbeszédére fókuszál és az érzelmeket nevezi meg"],
+    correctIndex: 1,
+    explanation: "Az aktív hallgatás az ICF szerint nem csupán csend vagy feljegyzés — a coach aktívan visszatükrözi a hallottakat (szavak, érzelmek, értékek, feltételezések), ezzel jelzi a mélyebb megértést és kérdéseket generál az ügyfélben.",
+    reference: "ICF 6. alapkompetencia: Aktív hallgatás"
+  },
+  {
+    id: "comp-017", domain: "competencies", difficulty: 2,
+    question: "Mi a 'tudatosság ébresztésének' (7. kompetencia) lényege a coaching ülésen?",
+    options: ["A coach felkéri az ügyfelet, hogy meditáljon az ülés elején a jobb fókusz érdekében", "A coach kérdéseket és megfigyeléseket tesz, amelyek az ügyfél számára új felismeréseket hoznak önmagáról, gondolkodásáról vagy helyzetéről", "A coach elemzést végez az ügyfél viselkedési mintáiról és bemutatja azt", "A coach tudatosságnövelő eszközöket alkalmaz, pl. Enneagramot vagy MBTI-t"],
+    correctIndex: 1,
+    explanation: "A 7. kompetencia a legmélyebb coaching munka: a coach olyan kérdéseket és megfigyeléseket tesz, amelyek az ügyfél számára valóban new insight-ot hoznak — nem megerősítik a már ismerteket, hanem megvilágítanak valamit, amit az ügyfél eddig nem látott.",
+    reference: "ICF 7. alapkompetencia: Tudatosság ébresztése"
+  },
+  {
+    id: "comp-018", domain: "competencies", difficulty: 3,
+    question: "Egy ügyfél az ülés végén azt mondja: 'Végül is nem tudom, mit fogok csinálni.' Hogyan reagál a coach a 8. kompetencia (Növekedés és tanulás előmozdítása) szerint?",
+    options: ["Felajánlja a saját megoldási javaslatait az ülés lezárásának segítésére", "Visszatér az ügyfél eredeti céljára és megkérdezi, mi volt értékes az ülésből, még akkor is, ha nincs konkrét döntés", "Meghosszabbítja az ülést, hogy az ügyfél döntésre jusson", "Megkérdezi, miért nem sikerült dönteni és mi volt az akadály"],
+    correctIndex: 1,
+    explanation: "A 8. kompetencia szerint a coaching értéke nem mindig egy konkrét döntésben vagy akcióban van — a tudatosság növekedése, a felismerés önmagában is érték. A coach visszatér az ügyfél fókuszára és felismerteti a tanulást, még bizonytalanság esetén is.",
+    reference: "ICF 8. alapkompetencia: Növekedés és tanulás előmozdítása"
+  },
+  {
+    id: "comp-019", domain: "competencies", difficulty: 2,
+    question: "Mi az ICF alapfeltételezése az ügyfelekről, amelyre az összes kompetencia épül?",
+    options: ["Az ügyfelek motiváltak, de általában önmaguk útjában állnak", "Az ügyfelek kreatívak, erőforrásokban gazdagok és teljesek (creative, resourceful, whole)", "Az ügyfelek szakmai segítségre szorulnak, mert egyedül nem boldogulnak", "Az ügyfelek alapvetően jószándékúak, de fejlesztésre szorulnak"],
+    correctIndex: 1,
+    explanation: "Az ICF alapfeltételezése: az ügyfél 'creative, resourceful, and whole' (kreatív, erőforrásokban gazdag és teljes). Ez azt jelenti, hogy az ügyfélben megvan minden kapacitás a növekedéshez — a coach dolga ezt felszínre hozni, nem pótolni.",
+    reference: "ICF Kompetencia keret — alapfeltételezés"
+  },
+  {
+    id: "comp-020", domain: "competencies", difficulty: 1,
+    question: "Az ICF hány alapkompetenciát definiál a 2019-es frissített modellben?",
+    options: ["6", "8", "10", "12"],
+    correctIndex: 1,
+    explanation: "Az ICF 2019-ben frissítette kompetencia modelljét, amelyben 8 alapkompetencia szerepel 4 kategóriában: (1) Alap, (2) Kapcsolat, (3) Hatékony kommunikáció, (4) Tanulás és eredmény elérése.",
+    reference: "ICF Frissített kompetencia modell 2019"
+  },
+  {
+    id: "comp-021", domain: "competencies", difficulty: 2,
+    question: "Melyik coaching kérdés a legjobb példa a 7. kompetencia (Tudatosság ébresztése) szerinti gondolatébresztő kérdésre?",
+    options: ["'Miért nem tettél semmit eddig?'", "'Mi akadályoz meg abban, hogy X-et megtedd?'", "'Ha ez a helyzet 5 év múlva is ugyanígy lenne, hogyan éreznéd magad?'", "'Mit mondana neked a főnököd, ha ezt hallaná?'"],
+    correctIndex: 2,
+    explanation: "Az időperspektíva-váltás ('5 év múlva') egy tipikus tudatosságébresztő eszköz, amely új nézőpontba helyezi a jelenlegi helyzetet és érzelmeket ébreszt. Az első kérdés hibáztató, a második korlátozó hiedelmeket erősít, a negyedik más perspektívát hoz be ugyan, de irányító.",
+    reference: "ICF 7. alapkompetencia: Gondolatébresztő kérdések"
+  },
+  {
+    id: "comp-022", domain: "competencies", difficulty: 3,
+    question: "Egy ügyfél folyamatosan az 'ideális jövőjéről' beszél, de soha nem tesz lépést. Melyik coaching megközelítés a leghatékonyabb?",
+    options: ["Elmondja az ügyfélnek, hogy a cselekvés nélküli coaching hatástalan", "Kíváncsi kérdésekkel tárja fel, mi tartja az ügyfelet a jövővíziójától: mi a mögöttes feltételezés vagy félelem?", "Cselekvési tervet készít az ügyféllel, hogy struktúrát adjon a jövő felé vezető útnak", "Áttér egy rövidebb fókuszú coachingra, ahol kisebb célokra összpontosítanak"],
+    correctIndex: 1,
+    explanation: "A 7. kompetencia (Tudatosság ébresztése) és a 8. (Növekedés elősegítése) alapján: ha az ügyfél nem cselekszik, mögöttes feltételezések, félelmek vagy ellentmondások dolgoznak. A coach ezeket tárja fel kíváncsian, nem struktúrát kényszerít rá.",
+    reference: "ICF 7–8. alapkompetencia: Tudatosság és növekedés"
+  },
+  {
+    id: "comp-023", domain: "competencies", difficulty: 1,
+    question: "Melyik kompetencia kategóriába tartozik az 'Aktív hallgatás' az ICF 2019-es modelljében?",
+    options: ["Alap", "Kapcsolatépítés", "Hatékony kommunikáció", "Tanulás és eredmény elérése"],
+    correctIndex: 2,
+    explanation: "Az ICF 2019-es modelljében az 'Aktív hallgatás' a 'Hatékony kommunikáció' kategória egyik kompetenciája (6. kompetencia), a 'Tudatosság ébresztése' (7.) és a közvetlen kommunikáció (7. egyes modellek szerint) mellé sorolva.",
+    reference: "ICF Frissített kompetencia modell 2019 — kategóriák"
+  },
+  {
+    id: "comp-024", domain: "competencies", difficulty: 2,
+    question: "Mit jelent a 'metafora és analógia' alkalmazása a coaching kommunikációban?",
+    options: ["A coach irodalmi eszközöket használ, hogy meggyőzze az ügyfelet a helyes döntésről", "A metafora és analógia az ügyfél saját szóhasználatából indul ki és mélyebb megértést tesz lehetővé", "A metafora csak kultúrálisan érzékeny ügyfeleknek alkalmazható", "Az analógiák más ügyfelek tapasztalatait kötik össze az aktuális ügyféllel"],
+    correctIndex: 1,
+    explanation: "A coaching kommunikációban a metaforák és analógiák akkor a legerősebbek, ha az ügyfél saját nyelvéből, képeiből indulnak ki (nem a coach szótárából). Ezek komplex valóságokat tesznek egyszerűbbé és az ügyfél számára rezonáns képeket hoznak.",
+    reference: "ICF 7. alapkompetencia: Metafora és analógia alkalmazása"
+  },
+  {
+    id: "comp-025", domain: "competencies", difficulty: 3,
+    question: "Egy ügyfél agresszíven reagál egy coaching kérdésre és azt mondja: 'Ez nem releváns kérdés.' Mit csinál a coach?",
+    options: ["Bocsánatot kér és visszavon a témától", "Elismeri az ügyfél reakcióját és megkérdezi, mi váltotta ki — ezzel a reakció maga válik coaching anyaggá", "Megmagyarázza, miért tette fel a kérdést és hogyan kapcsolódik a célhoz", "Más kérdéssel folytatja, figyelmen kívül hagyva a reakciót"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét (5. kompetencia) és az aktív hallgatás (6.) szerint: az ügyfél erős reakciója maga is értékes adat. A coach ítéletmentesen elismeri és megkérdezi a reakciót, ezzel még mélyebb munkát tesz lehetővé, ahelyett, hogy visszakozna.",
+    reference: "ICF 5–6. alapkompetencia: Jelenlét és aktív hallgatás"
+  },
+  {
+    id: "comp-026", domain: "competencies", difficulty: 2,
+    question: "Melyik az 'elszámoltathatóság és felelősség' (8. kompetencia) helyes coaching módja?",
+    options: ["A coach emlékezteti az ügyfelet a határidőkre és ellenőrzi, hogy teljesítette-e a vállalásait", "A coach az ügyféllel közösen létrehozott elszámoltathatósági struktúrát alkalmaz, amelyet az ügyfél maga választ", "A coach szankciókat helyez kilátásba az el nem végzett feladatokért", "Az elszámoltathatóság a coaching természetes következménye, a coachnak nem kell foglalkozni vele"],
+    correctIndex: 1,
+    explanation: "Az ICF szerint az elszámoltathatóság az ügyfél autonómiájára épül. A coach az ügyféllel közösen alakít ki egy elszámoltathatósági formát, amelyet az ügyfél választ és vállal — nem a coach kényszeríti rá saját elvárásait.",
+    reference: "ICF 8. alapkompetencia: Növekedés és tanulás előmozdítása — elszámoltathatóság"
+  },
+  {
+    id: "comp-027", domain: "competencies", difficulty: 1,
+    question: "Mi a különbség a 'zárt' és a 'nyitott' kérdés között a coaching kontextusban?",
+    options: ["A zárt kérdés igen/nem válaszra korlátozza az ügyfelet, a nyitott kérdés gondolkodásra és felfedezésre ösztönöz", "A nyitott kérdés hosszabb választ igényel, a zárt kérdés gyorsabb haladást tesz lehetővé", "A zárt kérdés a coach tudásából indul ki, a nyitott kérdés az ügyfél tudásából", "A nyitott kérdések kizárólag a jövőre vonatkoznak, a zárt kérdések a múltra"],
+    correctIndex: 0,
+    explanation: "A coaching hatékony kérdezésének alapja a nyitott kérdések alkalmazása: ezek gondolkodásra, felfedezésre, önreflexióra serkentik az ügyfelet. A zárt kérdések igen/nem válaszokra korlátoznak és szűkítik a felfedezést.",
+    reference: "ICF 7. alapkompetencia: Gondolatébresztő kérdések — nyitott vs. zárt"
+  },
+  {
+    id: "comp-028", domain: "competencies", difficulty: 2,
+    question: "Hogyan alkalmazza a coach a 'direkt kommunikáció' kompetenciát (a korábbi modell szerint)?",
+    options: ["A coach egyenesen megmondja az ügyfélnek, mit kellene tennie", "A coach egyértelműen, tömören és hatásosan kommunikál — beleértve a nehéz megfigyelések megosztását is", "A coach kerüli a körmönfont fogalmazást és azonnal a lényegre tér", "A coach nem kertel és megnevezi, ha az ügyfél nem teljesít"],
+    correctIndex: 1,
+    explanation: "A direkt kommunikáció a coaching kommunikáció hatékonysága: a coach tömören fogalmaz, és ha szükséges, megosztja megfigyeléseit vagy konfrontál — de mindig az ügyfél érdekében és ítéletmentesen, nem a coach véleményének erőltetésével.",
+    reference: "ICF 7. alapkompetencia: Közvetlen kommunikáció (régi modell)"
+  },
+  {
+    id: "comp-029", domain: "competencies", difficulty: 3,
+    question: "Melyik jelenség utal arra, hogy a coaching kapcsolatban 'párhuzamos folyamatok' zajlanak?",
+    options: ["Az ügyfél és a coach egyszerre ugyanazt a problémát tapasztalják saját életükben", "Az ügyfél viselkedési mintái a coaching kapcsolatban is megjelennek, tükrözve a többi kapcsolatában megfigyelt dinamikát", "Az ügyfél és a coach azonos kulturális háttérrel rendelkezik", "A coach saját megoldatlan problémái megjelennek az ügyfél témáiban"],
+    correctIndex: 1,
+    explanation: "A párhuzamos folyamatok (parallel process) a coaching egyik legmélyebb jelenségei: az ügyfél szokásos kapcsolati mintái megjelennek a coach–ügyfél dinamikában is. Ennek felismerése rendkívül értékes coaching anyag lehet.",
+    reference: "ICF Szupervízió és fejlett coaching kompetenciák"
+  },
+  {
+    id: "comp-030", domain: "competencies", difficulty: 2,
+    question: "Mi a coaching értékelés (assessment) helyes szerepe a kompetenciák szerint?",
+    options: ["Az értékelés az ügyfél gyengeségeinek azonosítására szolgál, hogy a coaching pontosan célzott legyen", "Az értékelés az ügyfél önismeretének és erőforrásainak feltárásához járul hozzá, nem diagnózist állít", "Az értékelés a coach számára készül, hogy strukturálni tudja a coaching folyamatot", "Az ICF-ben nem alkalmazható semmilyen értékelési eszköz a coaching semlegessége érdekében"],
+    correctIndex: 1,
+    explanation: "Ha a coach értékelési eszközöket (pl. 360°, MBTI, StrengthsFinder) alkalmaz, ezek az ügyfél önfelfedezésének eszközei — nem diagnózisok vagy ítéletek. A coach az eredményeket visszaadja az ügyfélnek, és az ügyfél maga értelmezi azokat.",
+    reference: "ICF Kompetenciák — értékelési eszközök etikus alkalmazása"
+  },
+  {
+    id: "comp-031", domain: "competencies", difficulty: 1,
+    question: "Melyik csoport tartalmazza kizárólag az ICF 8 alapkompetenciáját?",
+    options: ["Etika, coaching gondolkodásmód, megállapodás, bizalom, jelenlét, hallgatás, tudatosság, növekedés", "Etika, empátia, egyeztetés, jelenlét, kérdezés, hallgatás, tükrözés, lezárás", "Célkitűzés, bizalom, empátia, jelenlét, hallgatás, visszajelzés, összegzés, elszámoltathatóság", "Bizalomépítés, célmeghatározás, értékelés, tükrözés, konfrontáció, összegzés, lezárás, nyomon követés"],
+    correctIndex: 0,
+    explanation: "Az ICF 8 frissített kompetenciája: (1) Etika megtestesítése, (2) Coaching gondolkodásmód, (3) Megállapodások kötése, (4) Bizalom és biztonság, (5) Coaching jelenlét, (6) Aktív hallgatás, (7) Tudatosság ébresztése, (8) Növekedés előmozdítása.",
+    reference: "ICF Frissített kompetencia modell 2019"
+  },
+  {
+    id: "comp-032", domain: "competencies", difficulty: 2,
+    question: "Egy coaching ülésen az ügyfél hirtelen könnyek közt megosztja, hogy otthon komoly krízis van. Hogyan reagál a coach a kompetenciák alapján?",
+    options: ["Megkérdezi, hogy az ügyfél szeretne-e inkább ma a krízisre fókuszálni, nem az eredeti témára", "Jelzi, hogy ez személyes ügy, és visszatér az eredeti coaching célhoz", "Azonnal befejezi az ülést és pszichológust ajánl", "Meghallgatja, majd visszavezeti az eredeti cél felé"],
+    correctIndex: 0,
+    explanation: "A 3. kompetencia (Megállapodás) és a jelenlét (5.) alapján: a coaching az ügyfél szükségletét követi. Ha egy krízis lép fel, a coach megkérdezi, mit szeretne az ügyfél most — ezzel tiszteletben tartja az autonómiáját és rugalmasan igazodik.",
+    reference: "ICF 3. és 5. alapkompetencia: Rugalmas megállapodás és jelenlét"
+  },
+  {
+    id: "comp-033", domain: "competencies", difficulty: 3,
+    question: "Mi a különbség az 'összefoglalás' és a 'visszatükrözés' között a coaching kommunikációban?",
+    options: ["Az összefoglalás több tartalom rendszerezése, a visszatükrözés azonnali, szószerinti visszaküldés az ügyfélnek", "Az összefoglalás csak az ülés végén alkalmazandó, a visszatükrözés bármikor", "A visszatükrözés az ügyfél szó szerinti mondatait ismétli, az összefoglalás az értelmet adja vissza", "Nincs különbség, mindkettő az aktív hallgatás eszköze"],
+    correctIndex: 0,
+    explanation: "A visszatükrözés azonnali, szó szerinti (vagy szinte szó szerinti) visszaküldés, amely jelzi a figyelmet és pontosítást hívhat elő. Az összefoglalás több tartalom rendszerezése, nagyobb egységeket fog össze és segít a menetrend visszaállításában.",
+    reference: "ICF 6. alapkompetencia: Aktív hallgatás — összefoglalás és tükrözés"
+  },
+  {
+    id: "comp-034", domain: "competencies", difficulty: 2,
+    question: "Melyik viselkedés példázza legjobban a 'növekedés és tanulás előmozdítása' (8. kompetencia) kompetenciát?",
+    options: ["A coach elismerést fejez ki az ügyfél minden erőfeszítéséért", "A coach az ügyfél sikereit, erőforrásait és fejlődési mintáit tükrözi vissza, és elősegíti az ügyfél önreflexióját a folyamatról", "A coach az ülés végén konkrét feladatokat határoz meg az ügyfél számára", "A coach ellenőrzi az előző ülésen vállalt feladatok teljesítését"],
+    correctIndex: 1,
+    explanation: "A 8. kompetencia nem csupán elszámoltathatóságról szól. Lényege: az ügyfél saját fejlődési folyamatának tudatosítása — erőforrásainak, mintáinak és tanulásának tükrözése, hogy az ügyfél a coaching után is képes legyen ezzel dolgozni.",
+    reference: "ICF 8. alapkompetencia: Növekedés és tanulás előmozdítása"
+  },
+  {
+    id: "comp-035", domain: "competencies", difficulty: 1,
+    question: "Mi a 'belső zaj' fogalma a coaching jelenlét (5. kompetencia) kontextusában?",
+    options: ["A külső körülmények zavaró hatása az ülés során (pl. telefon, forgalom)", "A coach saját gondolatai, ítéletei és feltételezései, amelyek elterelhetik figyelmét az ügyféltől", "Az ügyfél által hozott érzelmi tartalom, amely nehezen kezelhető a coach számára", "Az online coaching platform technikai zajai"],
+    correctIndex: 1,
+    explanation: "A 'belső zaj' (internal noise) a coach saját fejében zajló gondolatok, ítéletek, feltételezések és asszociációk összessége. Ezek a jelenlét fő akadályai — a coach önismereti munkájának célja ezek felismerése és kezelése.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét — belső zaj kezelése"
+  },
+  {
+    id: "comp-036", domain: "competencies", difficulty: 3,
+    question: "Egy ügyfél coaching közben kimondatlanul is jelzi, hogy valami nincs rendben — szavai és testbeszéde ellentmondanak egymásnak. Mit csinál a coach?",
+    options: ["Figyelmen kívül hagyja a testbeszédet, mert az online coachingnál nem megbízható adat", "Megjegyzi az ellentmondást és lehetőséget ad az ügyfélnek ennek vizsgálatára: 'Azt mondod X, ugyanakkor valami mást is érzékelek...'", "Megmondja az ügyfélnek, hogy a testbeszéde azt mutatja, nem mondja az igazat", "Lejegyzi a megfigyelést és a következő ülésen visszatér rá"],
+    correctIndex: 1,
+    explanation: "Az aktív hallgatás (6.) és a tudatosságébresztés (7.) ötvözetével: a coach csendesen megjegyzi az ellentmondást és az ügyfél figyelmét rá hívja — kérdésként, nem ítéletként. Ez megnyitja a mélyebb explorációt anélkül, hogy konfrontatív lenne.",
+    reference: "ICF 6–7. alapkompetencia: Aktív hallgatás és tudatosságébresztés"
+  },
+  {
+    id: "comp-037", domain: "competencies", difficulty: 2,
+    question: "Mit ért az ICF az 'ügyfél agendájának követése' alatt?",
+    options: ["A coach az ügyfél által hozott témák alapján vezeti az ülést, nem a coach saját tematikája szerint", "A coach listát vezet az ügyfél számára, hogy ne felejtse el a fontos témákat", "A coach az ügyfél szervezeti céljaihoz igazítja a coaching fókuszát", "A coach az összes ülést az ügyfél által meghatározott sorrendben vezeti le"],
+    correctIndex: 0,
+    explanation: "Az 'ügyfél agendájának követése' alapelv: a coaching fókuszát és irányát az ügyfél határozza meg, nem a coach előre kialakított tematikája vagy saját érdeklődése. A coach rugalmasan kísér, nem vezet.",
+    reference: "ICF Kompetencia keret — az ügyfél agendájának tisztelete"
+  },
+  {
+    id: "comp-038", domain: "competencies", difficulty: 3,
+    question: "Mi a 'coaching jelenlét' (5. kompetencia) legmélyebb szintjének jellemzője?",
+    options: ["A coach készen áll bármilyen kérdést feltenni és bármilyen módszert alkalmazni", "A coach teljes figyelemmel figyel, saját belső jelzéseit is felhasználja az ügyfél jobb megértéséhez, és kész a nem-tudás állapotában maradni", "A coach tökéletesen memorizálja az ügyfél korábbi üléseit", "A coach saját energiáját kezeli és pihentet az ülések között"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét legmélyebb szintje az un. 'somatic awareness' és 'not-knowing': a coach saját belső jelzéseit (érzések, intuitív felismerések) is felhasználja coaching adatként, és kész nem tudni — megszabadulva a megoldás keresésének kényszerétől.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét — mély szint"
+  },
+  {
+    id: "comp-039", domain: "competencies", difficulty: 2,
+    question: "Melyik viselkedés nem illik az ICF 4. kompetencia (Bizalom és biztonság kialakítása) leírásába?",
+    options: ["A coach ítélet nélkül figyel és elfogad", "A coach saját tapasztalatait osztja meg, hogy az ügyfél tudja, értik", "A coach megmutatja az ügyfél iránti őszinte érdeklődést és empátiát", "A coach tiszteletben tartja az ügyfél értékeit és nézőpontját"],
+    correctIndex: 1,
+    explanation: "A coach saját tapasztalatainak megosztása (önfeltárás) megfontolandó és inkább az ügyfél perspektíváját tágítja, ha helyesen alkalmazzák — de nem a bizalomépítés elsődleges módja az ICF szerint. A biztonság alapja az ítéletmentesség, az empátia és a tisztelet.",
+    reference: "ICF 4. alapkompetencia: Bizalom és biztonság kialakítása"
+  },
+  {
+    id: "comp-040", domain: "competencies", difficulty: 3,
+    question: "Hogyan alkalmazza a kompetens coach az 'intuitív megfigyelést' az ülésen?",
+    options: ["A coach megosztja minden intuitív gondolatát az ügyféllel azonnal, mert ez az őszinteség jele", "A coach az intuitív megfigyelést lehetőségként kínálja fel az ügyfélnek, nem igazságként: 'Valami azt súgja nekem... ez rezonál veled?'", "A coach az intuícióra alapoz döntéseket az ügyfél helyett, mert a coach jobban lát", "Az intuíció nem tudományos, ezért kerülni kell a professzionális coachingban"],
+    correctIndex: 1,
+    explanation: "Az intuitív megfigyelés értékes coaching adat — de a coach felajánlja, nem kinyilatkoztatja. Az 'Ezt érzékelem... ez rezonál veled?' forma a szakszerű módja: az ügyfél visszajelzése határozza meg, releváns-e a megfigyelés.",
+    reference: "ICF 7. alapkompetencia: Tudatosságébresztés — intuitív megfigyelések megosztása"
+  },
+
 ];
 
 // ═══════════════════════════════════════════════════════════════
@@ -367,8 +934,8 @@ const DOMAIN_META = {
   competencies: { label: "Kompetencia",  color: C.accent,  icon: "🌱" },
 };
 
-const MOCK_COUNT = 30;
-const MOCK_SECS  = 45 * 60; // 45 perc
+const MOCK_COUNT = 60;
+const MOCK_SECS  = 90 * 60; // 90 perc
 
 // ═══════════════════════════════════════════════════════════════
 //  REDUCER
@@ -536,6 +1103,7 @@ function Landing({ dispatch }) {
   const cardStyle = {
     background: C.surface, border: `1px solid ${C.border}`,
     borderRadius: 16, padding: "28px 24px",
+    display: "flex", flexDirection: "column",
   };
 
   const domains = [
@@ -639,7 +1207,7 @@ function Landing({ dispatch }) {
         <div style={{ ...cardStyle }}>
           <div style={{ fontSize: 30, marginBottom: 14 }}>🎯</div>
           <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 8 }}>Gyakorló mód</h3>
-          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20 }}>
+          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20, flex: 1 }}>
             5 véletlenszerű kérdés, azonnali visszajelzés minden válasz után, ICF hivatkozásokkal. Ismételd, ahányszor akarod.
           </p>
           <Btn full onClick={() => dispatch({ type: "START_PRACTICE" })}>Gyakorlás indítása</Btn>
@@ -653,8 +1221,8 @@ function Landing({ dispatch }) {
             }}>INGYENES</span>
           </div>
           <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 8 }}>Próbavizsga</h3>
-          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20 }}>
-            30 kérdés, 45 perces időzítő, szekció szünet, részletes eredmény és visszajelzés a végén.
+          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20, flex: 1 }}>
+            60 kérdés, 90 perces időzítő, szekció szünet, részletes eredmény és visszajelzés a végén.
           </p>
           <Btn full onClick={() => dispatch({ type: "START_MOCK" })}>Próbavizsga indítása</Btn>
         </div>
@@ -833,8 +1401,8 @@ function MockScreen({ state, dispatch }) {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 32 }}>
             {[
-              { icon: "📋", label: "30 kérdés", sub: "2 szekció (15+15)" },
-              { icon: "⏱", label: "45 perc", sub: "időkorlát" },
+              { icon: "📋", label: "60 kérdés", sub: "2 szekció (30+30)" },
+              { icon: "⏱", label: "90 perc", sub: "időkorlát" },
               { icon: "☕", label: "Szekció szünet", sub: "félúton opcionálisan" },
               { icon: "🎯", label: "460/600 pont", sub: "átmenő küszöb" },
             ].map((item, i) => (
