@@ -402,9 +402,9 @@ const QUESTIONS = [
   {
     id: "eth-023", domain: "ethics", difficulty: 1,
     question: "Melyik nem tartozik az ICF hat alapértéke közé?",
-    options: ["Professzionalizmus", "Együttérzés", "Nyereség maximalizálása", "Méltányosság"],
+    options: ["Professzionalizmus", "Emberiség", "Nyereség maximalizálása", "Együttműködés"],
     correctIndex: 2,
-    explanation: "Az ICF hat alapértéke: Professzionalizmus, Együttérzés, Tiszteletadás, Integritás, Méltányosság, Befogadás. A pénzügyi nyereség maximalizálása nem szerepel ezek között — a coaching etika az ügyfél és szakma érdekeit helyezi előtérbe.",
+    explanation: "Az ICF hat alapértéke (2020): Professzionalizmus, Együttműködés, Emberiség, Tudatosság, Integritás, Tisztelet. A pénzügyi nyereség maximalizálása nem szerepel ezek között — a coaching etika az ügyfél és szakma érdekeit helyezi előtérbe.",
     reference: "ICF Etikai Kódex 2020, Alapértékek"
   },
   {
@@ -511,7 +511,7 @@ const QUESTIONS = [
     options: ["Megadja saját véleményét, mert az ügyfél kéri és ez erősíti a kapcsolatot", "Visszakérdez: 'Mi az, amit te már tudsz arról, mit szeretnél tenni?'", "Elmagyarázza, hogy a coaching nem tanácsadás és nem válaszol", "Megosztja tapasztalatát, majd visszairányítja az ügyfelet a saját döntéséhez"],
     correctIndex: 1,
     explanation: "A coaching a coaching megközelítése: a coach visszafordítja a fókuszt az ügyfélre, hogy az saját bölcsességét és erőforrásait tárja fel. A tanácsadás kerülése nem merevség — hanem a coaching alapfeltételezése, hogy az ügyfélben megvan a válasz.",
-    reference: "ICF 3. kompetencia: Coaching gondolkodásmód — az ügyfél a szakértő saját életében"
+    reference: "ICF 2. kompetencia: Coaching szemlélet — az ügyfél a szakértő saját életében"
   },
   {
     id: "def-017", domain: "definition", difficulty: 1,
@@ -1140,7 +1140,7 @@ const QUESTIONS_PCC = [
       "Terapeutához irányítja, mivel ez érzelmi kérdés",
     ],
     correctIndex: 2,
-    explanation: "A Tudatosság előmozdítása kompetencia erős kérdéseket, metaforákat és testi jelzéseket is felhasznál a mélyebb tudatosság eléréséhez. A szomatikus kérdés ('mit érezsel a testben?') új dimenziókat nyit.",
+    explanation: "A Tudatosság előmozdítása kompetencia erős kérdéseket, metaforákat és testi jelzéseket is felhasznál a mélyebb tudatosság eléréséhez. A szomatikus kérdés ('mit érzel a testben?') új dimenziókat nyit.",
     reference: "ICF Kompetencia 7 — Tudatosság előmozdítása: erős kérdések és szomatikus tudatosság",
   },
 
@@ -1284,7 +1284,7 @@ const QUESTIONS_PCC = [
     ],
     correctIndex: 2,
     explanation: "A háromoldalú coaching megállapodás az ICF etikai és kompetencia keretének alapköve. Nem elég az ügyfél beleegyezése – a kereteket expliciten kell rögzíteni: mit oszt meg a coach (pl. részvétel, haladás általánosan), és mi marad bizalmas (session tartalom).",
-    reference: "ICF Kompetencia 2 — Megállapodások; ICF Etikai Kódex 4.1-4.3: Titoktartás szponzori kontextusban",
+    reference: "ICF Kompetencia 3 — Megállapodások; ICF Etikai Kódex 4.1-4.3: Titoktartás szponzori kontextusban",
   },
 
   {
@@ -1898,7 +1898,7 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "A visszatükrözés kizárólag non-verbális kommunikáció"
   ],
   correctIndex: 1,
-  explanation: "Az összefoglalás az elhangzottak strukturált, kognitív visszaadása. A visszatükrözés az ICF aktív hallgatás részekéntmélyebb szinten dolgozik: visszaad érzéseket, energiaváltozásokat, mintákat — ezzel mélyebb önreflexiót indít az ügyfélben.",
+  explanation: "Az összefoglalás az elhangzottak strukturált, kognitív visszaadása. A visszatükrözés az ICF aktív hallgatás részeként mélyebb szinten dolgozik: visszaad érzéseket, energiaváltozásokat, mintákat — ezzel mélyebb önreflexiót indít az ügyfélben.",
   reference: "ICF Alapkompetenciák 2019, 6. kompetencia: Aktív hallgatás; 7. kompetencia: Tudatosság előmozdítása"
 },
 
@@ -2027,8 +2027,8 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "A coach a szponzorral egyezteti, hogy engedélyezi-e a témamódosítást"
   ],
   correctIndex: 2,
-  explanation: "Az ICF 4. kompetencia (Coaching megállapodások megkötése) szerint a megállapodás rugalmas — de a váltásokat tudatosan kell kezelni. A coach partnerként kezeli az ügyfelet, megnevezi a váltást és együtt dönt az új irányról.",
-  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Megállapodások megkötése"
+  explanation: "Az ICF 3. kompetencia (Coaching megállapodások megkötése) szerint a megállapodás rugalmas — de a váltásokat tudatosan kell kezelni. A coach partnerként kezeli az ügyfelet, megnevezi a váltást és együtt dönt az új irányról.",
+  reference: "ICF Alapkompetenciák 2019, 3. kompetencia: Megállapodások megkötése"
 },
 {
   id: "pcc-k-agr-005", type: "knowledge", domain: "agreements", difficulty: 2,
@@ -2040,8 +2040,8 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "A cél az egész coaching kapcsolatra vonatkozik; a kimenetel kizárólag az egyes ülésekre"
   ],
   correctIndex: 1,
-  explanation: "Az ICF 4. kompetencia különbséget tesz a mérhetőbb cél és a mélyebb, értékalapú kimenetel között. Az ülés elején megállapodott kimenetel az ügyfél mélyebb szándékát tükrözi — nem csak azt, mit akar elérni, hanem miért.",
-  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Megállapodások megkötése"
+  explanation: "Az ICF 3. kompetencia különbséget tesz a mérhetőbb cél és a mélyebb, értékalapú kimenetel között. Az ülés elején megállapodott kimenetel az ügyfél mélyebb szándékát tükrözi — nem csak azt, mit akar elérni, hanem miért.",
+  reference: "ICF Alapkompetenciák 2019, 3. kompetencia: Megállapodások megkötése"
 },
 
 // TRUST (3)
@@ -2055,8 +2055,8 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "A hitelesség az ügyfél érzelmi igényeihez való igazodást jelenti"
   ],
   correctIndex: 1,
-  explanation: "Az ICF 5. kompetencia (Bizalom és biztonság megteremtése) szerint a hitelesség a coach belső konzisztenciájából fakad — tettei egybeesnek szavaival. Ez ad alapot az ügyfélnek, hogy megbízzon a coachban.",
-  reference: "ICF Alapkompetenciák 2019, 5. kompetencia: Bizalom és biztonság megteremtése"
+  explanation: "Az ICF 4. kompetencia (Bizalom és biztonság megteremtése) szerint a hitelesség a coach belső konzisztenciájából fakad — tettei egybeesnek szavaival. Ez ad alapot az ügyfélnek, hogy megbízzon a coachban.",
+  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Bizalom és biztonság megteremtése"
 },
 {
   id: "pcc-k-trs-004", type: "knowledge", domain: "trust", difficulty: 3,
@@ -2068,8 +2068,8 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "Az ellenállás a coaching leállításának jele — a coach lezárja a kapcsolatot"
   ],
   correctIndex: 2,
-  explanation: "Az ICF 5. kompetencia alapján az ellenállás nem probléma — fontos információ az ügyfélről. A PCC coach kíváncsisággal közelít, meghallgatja és érvényesíti az ügyfél perspektíváját ahelyett, hogy megpróbálná legyőzni az ellenállást.",
-  reference: "ICF Alapkompetenciák 2019, 5. kompetencia: Bizalom és biztonság megteremtése"
+  explanation: "Az ICF 4. kompetencia alapján az ellenállás nem probléma — fontos információ az ügyfélről. A PCC coach kíváncsisággal közelít, meghallgatja és érvényesíti az ügyfél perspektíváját ahelyett, hogy megpróbálná legyőzni az ellenállást.",
+  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Bizalom és biztonság megteremtése"
 },
 {
   id: "pcc-k-trs-005", type: "knowledge", domain: "trust", difficulty: 2,
@@ -2081,8 +2081,8 @@ const QUESTIONS_PCC_KNOWLEDGE = [
     "A coach az ügyfél teljes élettörténetét feltárja, mielőtt elkezd dolgozni vele"
   ],
   correctIndex: 1,
-  explanation: "Az ICF 5. kompetencia a 'teljes ember' kezelését úgy értelmezi, hogy a coach nem csak a problémát látja, hanem az ügyfél erőforrásait, belső tudását, értékeit és fejlődési potenciálját is. Ez a hozzáállás alapvető bizalmat és biztonságot teremt.",
-  reference: "ICF Alapkompetenciák 2019, 5. kompetencia: Bizalom és biztonság megteremtése"
+  explanation: "Az ICF 4. kompetencia a 'teljes ember' kezelését úgy értelmezi, hogy a coach nem csak a problémát látja, hanem az ügyfél erőforrásait, belső tudását, értékeit és fejlődési potenciálját is. Ez a hozzáállás alapvető bizalmat és biztonságot teremt.",
+  reference: "ICF Alapkompetenciák 2019, 4. kompetencia: Bizalom és biztonság megteremtése"
 },
 
 // LISTENING (3)
