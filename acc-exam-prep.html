@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICF ACC Felkészítő — Y2Y Hungary</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #0f1117; min-height: 100vh; }
+    #root { min-height: 100vh; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0f1117; }
+    ::-webkit-scrollbar-thumb { background: #1e2130; border-radius: 3px; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useReducer, useCallback, useRef } = React;
+
+// ═══════════════════════════════════════════════════════════════
+//  DESIGN TOKENS — Y2Y stílus
+// ═══════════════════════════════════════════════════════════════
+const C = {
+  bg:           "#0f1117",
+  surface:      "#161b27",
+  surfaceHover: "#1c2232",
+  border:       "#232b3e",
+  borderLight:  "#2e3a52",
+  accent:       "#DED114",
+  accentDark:   "#c4bc0f",
+  accentGlow:   "rgba(222,209,20,0.10)",
+  accentBorder: "rgba(222,209,20,0.35)",
+  accentText:   "#0f1117",
+  text:         "#f0f2f8",
+  textSub:      "#7e8aa8",
+  textDim:      "#3e4a62",
+  correct:      "#4ade80",
+  correctBg:    "rgba(74,222,128,0.08)",
+  correctBorder:"rgba(74,222,128,0.25)",
+  wrong:        "#f87171",
+  wrongBg:      "rgba(248,113,113,0.08)",
+  wrongBorder:  "rgba(248,113,113,0.25)",
+  purple:       "#a78bfa",
+  blue:         "#60a5fa",
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  KÉRDÉSBANK — 30 kérdés, 3 terület
+// ═══════════════════════════════════════════════════════════════
+const QUESTIONS = [
+
+  // ── ETIKA (10) ─────────────────────────────────────────────
+  {
+    id: "eth-001", domain: "ethics", difficulty: 2,
+    question: "Egy coach rájön, hogy személyes befektetése van egy cégnél, amelyet ügyfele potenciális munkaadóként fontolgat. Mi a legmegfelelőbb lépés?",
+    options: ["Folytassa a coachingot — a befektetés személyes jellegű", "Tárja fel az érdekellentétet és közösen vizsgálják meg a továbbiakat", "Azonnal szüntesse meg a coaching kapcsolatot", "Kérje meg az ügyfelet, hogy ne hozza szóba azt a céget"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex megköveteli az érdekellentétek feltárását. A feltárás tiszteletben tartja az ügyfél autonómiáját — az ügyfél tájékozott döntést hozhat a folytatásról. Az elhallgatás vagy a hirtelen befejezés sérti a coaching partnerséget.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Felelősség a professzionalizmusért"
+  },
+  {
+    id: "eth-002", domain: "ethics", difficulty: 1,
+    question: "Milyen helyzetben lenne helyénvaló, ha egy coach megtörné az ügyfél titoktartását?",
+    options: ["Amikor a coach az ügyfél történetét esettanulmányként szeretné felhasználni", "Amikor egy kolléga tanácsot kér egy hasonló helyzetről", "Amikor jogi kötelezettség áll fenn, például közvetlen veszély esetén", "Amikor az ügyfél szervezete részletes előrehaladási jelentést kér"],
+    correctIndex: 2,
+    explanation: "Az ICF Etikai Kódex szigorú titoktartást ír elő korlátozott kivételekkel. A titoktartás megtörése csak törvényi kötelezettség esetén helyénvaló — közvetlen veszély vagy kötelező bejelentés esetén. Előadásokhoz kifejezett hozzájárulás, szervezeti jelentésekhez előre megkötött megállapodás szükséges.",
+    reference: "ICF Etikai Kódex 2020, 4. szakasz: Titoktartás / Magánszféra"
+  },
+  {
+    id: "eth-003", domain: "ethics", difficulty: 2,
+    question: "Egy ügyfél rendszeresen ajándékokat hoz és nemrég meghívta a coachot egy családi eseményre. Mi a legetikusabb válasz?",
+    options: ["Fogadja el az ajándékokat és a meghívást a pozitív kapcsolat fenntartásáért", "Határozottan utasítson el mindent és emlékeztesse az ügyfelet a szakmai jellegről", "Meleg szívvel ismerje el a gesztust, majd közösen vizsgálják meg a szakmai határokat", "Fogadja el a kis ajándékokat, de utasítsa el a meghívást"],
+    correctIndex: 2,
+    explanation: "A coaching megközelítés tiszteletben tartja az ügyfél gesztusát, miközben lehetőségként használja a szakmai határok feltárására. Ez összhangban van a coaching kapcsolat integritásával. Az ICF etika hangsúlyozza az egyértelmű szerephatárokat.",
+    reference: "ICF Etikai Kódex 2020, 1. szakasz: Felelősség az ügyfelekért"
+  },
+  {
+    id: "eth-004", domain: "ethics", difficulty: 3,
+    question: "Az alábbi helyzetek közül melyik jelenti a legegyértelműbb érdekellentétet egy coach számára?",
+    options: ["Olyan ügyfelet coachol, aki ugyanabban az iparágban dolgozik, mint a coach házastársa", "Egy kollégát coachol, miközben ugyanazért az előléptetésért versenyeznek", "Olyan ügyfelet coachol, akinek cége a coach által alkalmanként használt szállítója", "Olyan ügyfelet coachol, aki ugyanazokra a szakmai workshopokra jár"],
+    correctIndex: 1,
+    explanation: "Egy közvetlen versenytárs coachingja ugyanazért a pozícióért hozza létre a legegyértelműbb érdekellentétet — a coachnak személyes karrierérdekeltsége van, ami veszélyeztetheti az objektivitást. Az ICF Etikai Kódex az érdekellentétet olyan helyzetként definiálja, ahol a magánérdek befolyásolhatja a szakmai kötelezettségeket.",
+    reference: "ICF Etikai Kódex 2020, 3.1-3.2: Érdekellentét"
+  },
+  {
+    id: "eth-005", domain: "ethics", difficulty: 1,
+    question: "Mit kell a coachnak megszerezni MIELŐTT megkezdi a coaching kapcsolatot?",
+    options: ["Az ügyfél aláírt titoktartási nyilatkozatát", "Tájékoztatáson alapuló beleegyezést a coaching természetéről, folyamatáról és korlátairól", "Háttérvizsgálatot az ügyfél szakmai múltjáról", "Az ügyfél munkáltatójának írásos engedélyét, ha a cég fizeti a coachingot"],
+    correctIndex: 1,
+    explanation: "A tájékoztatáson alapuló beleegyezés az etikus coaching alapja. Az ICF Etikai Kódex megköveteli, hogy a coachok egyértelmű tájékoztatást adjanak a coaching természetéről, működéséről, korlátairól és az ügyfél jogairól — mielőtt a coaching megkezdődik.",
+    reference: "ICF Etikai Kódex 2020, 1. szakasz: Felelősség az ügyfelekért"
+  },
+  {
+    id: "eth-006", domain: "ethics", difficulty: 2,
+    question: "Az ICF etika szerint mit tegyen egy coach, ha szakértelmét meghaladó kihívó ügyfélhelyzettel találkozik?",
+    options: ["Folytassa a coachingot legjobb ítélete alapján", "Keressen szupervíziót, peer konzultációt, vagy irányítsa az ügyfelet kompetensebb szakemberhez", "Azonnali magyarázat nélkül szüntesse meg a coaching kapcsolatot", "Kérje meg az ügyfelet, hogy közösen dolgozzák ki a megoldást"],
+    correctIndex: 1,
+    explanation: "Az ICF Etikai Kódex megköveteli, hogy a coachok felismerjék kompetenciájuk határait és szükség esetén keressenek támogatást vagy irányítsanak tovább. Ez magában foglalja a szupervíziót, peer konzultációt és ügyfélirányítást.",
+    reference: "ICF Etikai Kódex 2020, 2. szakasz: Felelősség a gyakorlatért és teljesítményért"
+  },
+  {
+    id: "eth-007", domain: "ethics", difficulty: 2,
+    question: "Egy szervezet fizeti az alkalmazott coachingját. A HR igazgató frissítéseket kér az ülésekről. Mit tegyen a coach?",
+    options: ["Osszon meg általános frissítéseket, mivel a szervezet fizet", "Utasítson el minden információmegosztást, abszolút titoktartásra hivatkozva", "Csak a háromoldalú szerződésben előzetesen megállapított információkat ossza meg", "Kérjen engedélyt az ügyféltől minden HR-rel való interakció előtt"],
+    correctIndex: 2,
+    explanation: "Háromoldalú coaching esetén az ICF Etikai Kódex előzetes egyértelmű szerződést követel meg, amely meghatározza, milyen információk oszthatók meg és kivel. Csak a kezdeti szerződésben megállapított információkat szabad megosztani — nem többet, nem kevesebbet.",
+    reference: "ICF Etikai Kódex 2020, 1. szakasz: Felelősség az ügyfelekért"
+  },
+  {
+    id: "eth-008", domain: "ethics", difficulty: 2,
+    question: "Melyik marketing gyakorlat sértené az ICF etikai normáit?",
+    options: ["Anonimizált ügyféltörténetek megosztása engedéllyel", "Tényleges ICF minősítésed és tagságod feltüntetése", "Garantálni az ügyfeleknek, hogy elérnek meghatározott eredményeket", "Tapasztalati évek megjelölése profi coachként"],
+    correctIndex: 2,
+    explanation: "Az ICF Etikai Kódex megtiltja a megalapozatlan állításokat vagy meghatározott eredmények garantálását. A coaching eredmények nagymértékben függenek az ügyfél erőfeszítésétől és külső tényezőktől — egyetlen becsületes coach sem garantálhat konkrét eredményeket.",
+    reference: "ICF Etikai Kódex 2020, 3. szakasz: Felelősség a professzionalizmusért"
+  },
+  {
+    id: "eth-009", domain: "ethics", difficulty: 2,
+    question: "Egy coach személyes válságon megy keresztül és nehezen tud jelen lenni az ülések során. Mi az etikus reakció?",
+    options: ["Folytassa a coachingot, miközben kezeli a személyes problémákat", "Vonja le véglegesen az összes közelgő ülést", "Értékelje, képes-e megfelelően kiszolgálni az ügyfeleket, és fontolja meg a szüneteltetést vagy az ügyfelek irányítását", "Kérje az ügyfelek megértését a csökkent jelenlétéért"],
+    correctIndex: 2,
+    explanation: "Az ICF Etikai Kódex hangsúlyozza a gyakorlatért való felelősséget — a coachoknak értékelniük kell saját jóllétüket és kompetenciájukat. Amikor egy személyes válság befolyásolja a coaching minőségét, az etikus reakció az értékelés és megfelelő lépések megtétele.",
+    reference: "ICF Etikai Kódex 2020, 2. szakasz: Felelősség a gyakorlatért és teljesítményért"
+  },
+  {
+    id: "eth-010", domain: "ethics", difficulty: 1,
+    question: "Mikor vonatkozik az ICF Etikai Kódex egy coach viselkedésére?",
+    options: ["Csak a formális coaching ülések során", "Csak fizetős ügyfelekkel való munka esetén", "Minden szakmai interakcióban, beleértve a nyilvános szerepvállalást", "Csak az ICF minősítési értékelés során"],
+    correctIndex: 2,
+    explanation: "Az ICF Etikai Kódex szélesen kiterjed minden szakmai interakcióra, beleértve a marketing, a kollégákkal való kapcsolat, a minősítések reprezentálása és a közösségi szerepvállalás területeit. Nem korlátozódik a coaching ülésekre.",
+    reference: "ICF Etikai Kódex 2020, Bevezető és hatókör"
+  },
+
+  // ── DEFINÍCIÓ / HATÁROK (10) ────────────────────────────────
+  {
+    id: "def-001", domain: "definition", difficulty: 1,
+    question: "Mi a coaching és a terápia közötti ELSŐDLEGES különbség?",
+    options: ["A coaching rövidebb időtartamú, mint a terápia", "A coaching az ügyfél jövőbeli céljaira összpontosít, míg a terápia elsősorban a múltbeli élményekkel és érzelmi gyógyulással foglalkozik", "A coachinghoz minősítés szükséges, míg a terápiához nem", "A coaching csak szakmai fejlődésre szolgál, míg a terápia személyes problémákra"],
+    correctIndex: 1,
+    explanation: "Az alapvető különbség az orientáció: a coaching jövőorientált, cselekvés-központú és célvezérelt. A terápia jellemzően a gyógyulásra, a múltbeli élmények feldolgozására és a klinikai mentális egészségügyi állapotok kezelésére összpontosít.",
+    reference: "ICF Coaching Definíció; ICF Fehér Könyv az ügyfél terápiára irányításáról"
+  },
+  {
+    id: "def-002", domain: "definition", difficulty: 2,
+    question: "Egy ülés során az ügyfél elárulja, hogy több hete tartós álmatlanságot, étvágytalanságot és reménytelenséget tapasztal. Mit tegyen a coach?",
+    options: ["Segítsen cselekvési tervet készíteni az egyes tünetek kezelésére", "Javasoljon szünetet a coachingban, amíg jobban nem érzi magát", "Ismerje el az ügyfél tapasztalatát és javasolja, hogy forduljon mentálhigiénés szakemberhez", "Használjon coaching technikákat a negatív gondolatok átkeretezéséhez"],
+    correctIndex: 2,
+    explanation: "Ezek a tünetek a klinikai depresszió potenciális jelei — ami meghaladja a coaching hatókörét. Az ICF irányelvek szerint a coachoknak fel kell ismerniük az irányítást indokló jeleket. El kell ismerniük az ügyfél tapasztalatát és javasolniuk a szakmai konzultációt.",
+    reference: "ICF Fehér Könyv az ügyfél terápiára irányításáról; 1. alapkompetencia"
+  },
+  {
+    id: "def-003", domain: "definition", difficulty: 1,
+    question: "Az ügyfél konkrét tanácsot kér az osztálya átszervezéséről. Mi a legmegfelelőbb coaching válasz?",
+    options: ["Adjon részletes átszervezési tanácsot a coach iparági tapasztalata alapján", "Utasítsa el a segítséget — a szervezeti tervezés a coaching hatókörén kívül esik", "Tegyen fel erőteljes kérdéseket, amelyek segítik az ügyfelet saját ötletei és megközelítései feltárásában", "Javasolja, hogy az ügyfél vegyen fel menedzsment tanácsadót"],
+    correctIndex: 2,
+    explanation: "A coaching az ügyfél saját gondolkodását facilitálja, nem szakértői megoldásokat ad — az tanácsadás lenne. A coachnak erőteljes kérdéseket kell feltennie (7. kompetencia), hogy az ügyfél hozzáférjen saját tudásához és megoldásokat generáljon.",
+    reference: "ICF Coaching Definíció; 7. alapkompetencia (Tudatosság ébresztése)"
+  },
+  {
+    id: "def-004", domain: "definition", difficulty: 2,
+    question: "Mi a coach és a mentor közötti kulcskülönbség?",
+    options: ["A coachnak idősebbnek és tapasztaltabbnak kell lennie az ügyfelénél", "A mentor saját szakterületi tudását osztja meg, míg a coach az ügyfél saját felfedezési folyamatát facilitálja szakterületi tudástól függetlenül", "A coach kizárólag szakmai célokra összpontosít, míg a mentor a személyes fejlődéssel foglalkozik", "A mentori kapcsolat mindig informális, míg a coaching mindig formális"],
+    correctIndex: 1,
+    explanation: "A kulcskülönbség a szakértelem forrása: a mentorok saját szakterületi tapasztalatukból tanácsolnak, míg a coachok az ügyfél gondolkodási folyamatát facilitálják, szakterületi tudástól függetlenül. A coaching az ügyfél saját bölcsességének előhívásáról szól.",
+    reference: "ICF Coaching Definíció"
+  },
+  {
+    id: "def-005", domain: "definition", difficulty: 1,
+    question: "Mi különbözteti meg a coachingot a tréningtől?",
+    options: ["A coaching készségátadásra összpontosít, míg a tréning célok elérésére", "A coaching mindig egy-az-egyhez, míg a tréning mindig csoportos", "A tréning konkrét ismereteket vagy készségeket ad át, míg a coaching az ügyfél saját felfedezését és céljainak elérését facilitálja", "A coaching rövidebb időtartamú, mint a tréning"],
+    correctIndex: 2,
+    explanation: "A kulcskülönbség a tudás iránya: a tréningben a tréner átadja szakértelmét a résztvevőknek. A coachingban a coach az ügyfél saját gondolkodását facilitálja, anélkül, hogy szükségszerűen tárgyterületi szakértő lenne.",
+    reference: "ICF Coaching Definíció"
+  },
+  {
+    id: "def-006", domain: "definition", difficulty: 1,
+    question: "Az ICF szerint melyik elem ELENGEDHETETLEN a coaching definíciójához?",
+    options: ["A coachnak szakértelemmel kell rendelkeznie az ügyfél területén", "A coaching kapcsolatnak mérhető célokat kell tartalmaznia", "A coaching olyan partnerség, amely ügyfélközpontú és az ügyfél menetrendjére összpontosít", "A coach megoldásokat és eszközöket biztosít az ügyfél kihívásainak kezelésére"],
+    correctIndex: 2,
+    explanation: "Az ICF a coachingot olyan partnerségként definiálja az ügyfelekkel egy gondolatébresztő és kreatív folyamatban, amely inspirálja őket potenciáljuk maximalizálására. Az alapvető elemek a partnerség, az ügyfélközpontúság és az ügyfél saját céljainak fókusza.",
+    reference: "ICF Coaching Definíció"
+  },
+  {
+    id: "def-007", domain: "definition", difficulty: 2,
+    question: "Mikor kell egy coachnak megfontolnia az ügyfél irányítását tanácsadóhoz?",
+    options: ["Amikor az ügyfél konkrét taktikai útmutatást kér egy területen, ahol a coachnak nincs tapasztalata", "Mindig, amikor az ügyfél kérdez valamit", "Csak akkor, ha az ügyfél mentális egészségügyi problémákat mutat", "Amikor a coaching már hat hónapja tart"],
+    correctIndex: 0,
+    explanation: "Amikor az ügyfél konkrét szakértői tanácsot igényel — pl. jogi, pénzügyi, szervezeti kérdésekben — a coach megfontolhatja az irányítást. Ez nem jelenti a kapcsolat végét; a coaching folytatódhat párhuzamosan.",
+    reference: "ICF Coaching Definíció; ICF Fehér Könyv"
+  },
+  {
+    id: "def-008", domain: "definition", difficulty: 2,
+    question: "Egy ügyfél pszichológusi végzettségű coachtól kéri, hogy elemezze a személyiségét. Hogyan reagáljon a coach?",
+    options: ["Végezze el az elemzést — a végzettség ezt lehetővé teszi", "Ismerje el a kérést, majd terelje vissza a coaching folyamatba: mi célja van az elemzésnek?", "Utasítsa vissza teljesen — ez etikátlan átfedés", "Ajánljon fel egy személyiségtesztet eszközként"],
+    correctIndex: 1,
+    explanation: "A coach és terapeuta szerepek keveredése kockázatot jelent még akkor is, ha a coachnak van pszichológiai végzettsége. A helyes reakció az ügyfél szándékának feltárása és a coaching keretrendszerben maradás — nem a terápiás mód bekapcsolása.",
+    reference: "ICF Etikai Kódex 2020; Szerephatárok"
+  },
+  {
+    id: "def-009", domain: "definition", difficulty: 3,
+    question: "Mi a különbség a coaching és a facilitáció között?",
+    options: ["A facilitáció mindig csoportos, a coaching mindig egyéni", "A facilitátor segíti a csoport folyamatát és döntéshozatalát, míg a coach az egyén fejlődését és céljait facilitálja", "A coaching mélyebb, mint a facilitáció", "Nincs lényeges különbség — mindkettő kérdéseket tesz fel"],
+    correctIndex: 1,
+    explanation: "A facilitátor a csoportfolyamatra fókuszál — a résztvevők közötti interakciót, döntéshozatalt és eredmények elérését segíti. A coach az egyén (vagy kisebb csoport) belső fejlődési folyamatára fókuszál, személyes célok és tudatosság ébresztésével.",
+    reference: "ICF Coaching Definíció; Különbségtétel más módszerektől"
+  },
+  {
+    id: "def-010", domain: "definition", difficulty: 1,
+    question: "Az ICF definíciója szerint mi a coaching ELSŐDLEGES célja?",
+    options: ["Megoldások és stratégiák biztosítása az ügyfeleknek", "Az ügyfél személyes és szakmai potenciáljának maximalizálása gondolatébresztő partnerségen keresztül", "Az ügyfelek teljesítményproblémáinak diagnosztizálása és kezelése", "Szervezeti célok elérése az alkalmazottak fejlesztésén keresztül"],
+    correctIndex: 1,
+    explanation: "Az ICF szerint a coaching célja az ügyfél teljes potenciáljának — személyes és szakmai — maximalizálása. Ez az ügyfél saját bölcsességére és erőforrásaira épít, nem pedig a coach szakértelmére.",
+    reference: "ICF Coaching Definíció"
+  },
+
+  // ── KOMPETENCIÁK (10) ───────────────────────────────────────
+  {
+    id: "comp-001", domain: "competencies", difficulty: 2,
+    question: "A coach az ülés közepén erős érzelmi reakciót tapasztal magában az ügyfél helyzetével kapcsolatban. Mi a leginkább coachinghoz illő válasz?",
+    options: ["Elnyomja az érzést és folytatja az ülést", "Megoszt valamit az érzéséből, ha az az ügyfél hasznára válhat", "Vár az ülés végéig, majd szupervízióban dolgozza fel", "Megkérdezi az ügyfelet, hogy ő is érez-e valami hasonlót"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét (5. kompetencia) magában foglalja a coach érzelmi tudatosságát és annak etikus felhasználását az ügyfél érdekében. Ha a coach belső reakciója releváns adatnak tűnik, megosztható — diszkréten, az ügyfél fókuszát nem eltérítve.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét megőrzése"
+  },
+  {
+    id: "comp-002", domain: "competencies", difficulty: 1,
+    question: "Melyik viselkedés demonstrálja legjobban az aktív figyelést (6. kompetencia)?",
+    options: ["Részletes jegyzetek készítése az ülés során", "Az ügyfél szavaira, hangjára, testbeszédére és kimondatlan érzelmeire való teljes figyelem", "Az ügyfél mondanivalójának összefoglalása minden mondat után", "Az ülés irányításának átvétele, ha az ügyfél eltér a témától"],
+    correctIndex: 1,
+    explanation: "Az aktív figyelés (6. kompetencia) az ügyfél teljes valójára irányul — szavak, hangnem, érzelmek, testbeszéd, és amit NEM mond. Ez meghaladja a puszta szóbeli tartalomra való figyelmet.",
+    reference: "ICF 6. alapkompetencia: Aktív figyelés"
+  },
+  {
+    id: "comp-003", domain: "competencies", difficulty: 2,
+    question: "Az ügyfél azt mondja: 'Mindent megpróbáltam, semmi sem működik.' Melyik coach válasz ébreszti leginkább a tudatosságot?",
+    options: ["'Soroljuk fel, mit próbált eddig!'", "'Mit jelent számodra a mindent megpróbáltam?'", "'Ne add fel — biztos van még lehetőség.'", "'Mond el, mi nem működött, és megkeressük a megoldást.'"],
+    correctIndex: 1,
+    explanation: "A 7. kompetencia (Tudatosság ébresztése) célja, hogy az ügyfél mélyebben megértse saját feltételezéseit és perspektíváit. A 'Mit jelent számodra' kérdés felnyitja a feltételezést, ahelyett hogy elfogadná vagy megcáfolná azt.",
+    reference: "ICF 7. alapkompetencia: Tudatosság ébresztése"
+  },
+  {
+    id: "comp-004", domain: "competencies", difficulty: 1,
+    question: "Mit jelent a coaching megállapodás kialakítása (3. kompetencia) egy adott ülés elején?",
+    options: ["Az előző ülés összefoglalása és a haladás mérése", "Az ülés eredményének és sikerének közös meghatározása az ügyféllel", "A coaching szerződés és díjszabás áttekintése", "Az ügyfél heti feladatainak ellenőrzése"],
+    correctIndex: 1,
+    explanation: "A 3. kompetencia (Megállapodások kialakítása és fenntartása) az egyes ülésekre is vonatkozik: az ülés elején közösen tisztázni kell, mit szeretne az ügyfél elérni, és mi számít sikernek. Ez biztosítja, hogy az ülés az ügyfél valódi szükségletét szolgálja.",
+    reference: "ICF 3. alapkompetencia: Megállapodások kialakítása és fenntartása"
+  },
+  {
+    id: "comp-005", domain: "competencies", difficulty: 2,
+    question: "Az ügyfél folyamatosan elméleti szinten marad és kerüli a konkrét cselekvési lépéseket. Mi a leginkább coachinghoz illő megközelítés?",
+    options: ["Cselekvési tervet javasol az ügyfélnek", "Rákérdez, mi tartja az ügyfelet az elméletnél, és mit jelent számára a konkrét lépés megtétele", "Emlékezteti az ügyfelet a céljaira és a határidőkre", "Konfrontálja az ügyfelet a passzivitásával"],
+    correctIndex: 1,
+    explanation: "A 8. kompetencia (Ügyfél növekedésének elősegítése) és a 7. kompetencia (Tudatosság ébresztése) arra hívja a coachot, hogy kíváncsi maradjon az ügyfél mintájára — miért marad az elmélet szintjén? Ez mélyebb feltáráshoz vezet, mint a cselekvési terv erőltetése.",
+    reference: "ICF 7–8. alapkompetencia"
+  },
+  {
+    id: "comp-006", domain: "competencies", difficulty: 3,
+    question: "Melyik coach viselkedés demonstrálja leginkább a coaching szemléletet és etikát (1–2. kompetencia)?",
+    options: ["A coach naprakész marad az iparági trendekkel, hogy jobb tanácsokat adhasson", "A coach megkérdezi az ügyfelet: 'Mit gondolsz, mit kellene tenned?'", "A coach hisz abban, hogy az ügyfél kreatív, erőforrásokkal teli és teljes értékű személy", "A coach rendszeresen értékeli az ügyfél fejlődését objektív mutatók alapján"],
+    correctIndex: 2,
+    explanation: "Az 1. kompetencia (Coaching etika) és a 2. kompetencia (Coaching szemlélet) középpontjában az ügyfél alapvető elfogadása áll: az ügyfél kreatív, erőforrásokkal teli és teljes értékű személy (Creative, Resourceful and Whole). Ez az alap minden coaching interakciónak.",
+    reference: "ICF 1–2. alapkompetencia: Etika és Coaching szemlélet"
+  },
+  {
+    id: "comp-007", domain: "competencies", difficulty: 2,
+    question: "Az ügyfél nagy lelkesedéssel mesél egy új ötletéről, de a coach megérzi, hogy valami fontos hiányzik. Mi a leginkább coachinghoz illő reakció?",
+    options: ["Megmutatja az ügyfélnek a hiányzó elemet", "Ünnepli az ügyfél lelkesedését és nem veszi szóba az aggályát", "Nyitott kérdéssel megosztja megfigyelését: 'Miközben hallgatlak, feltűnt valami — megnevezhetem?'", "Megvárja, amíg az ügyfél maga rájön a hiányzó elemre"],
+    correctIndex: 2,
+    explanation: "A 6. kompetencia (Aktív figyelés) és a 7. kompetencia (Tudatosság ébresztése) alapján a coach észrevételeit megoszthatja — engedélyt kérve, kérdő formában. Ez az ügyfél gondolkodását gazdagítja, nem helyettesíti.",
+    reference: "ICF 6–7. alapkompetencia"
+  },
+  {
+    id: "comp-008", domain: "competencies", difficulty: 1,
+    question: "Mi a bizalom és biztonság kialakításának (4. kompetencia) lényege a coaching kapcsolatban?",
+    options: ["A coach tapasztalatának és minősítéseinek bemutatása", "Biztonságos, támogató környezet teremtése, ahol az ügyfél szabadon fejezheti ki magát ítélkezés nélkül", "A coaching megállapodás feltételeinek pontos betartása", "Az ügyfél minden döntésének megerősítése"],
+    correctIndex: 1,
+    explanation: "A 4. kompetencia (Bizalom és biztonság kialakítása) azt jelenti, hogy a coach olyan légkört teremt, ahol az ügyfél sebezhetőnek, őszintének és kísérletezőnek érezheti magát — ítélkezéstől, értékeléstől és előre rögzített elvárástól mentesen.",
+    reference: "ICF 4. alapkompetencia: Bizalom és biztonság kialakítása"
+  },
+  {
+    id: "comp-009", domain: "competencies", difficulty: 3,
+    question: "Az ügyfél egy coach által is ismert kollégájáról negatívan nyilatkozik. A coach ösztönösen védelmébe venné a kollégát. Mi a legjobb reakció?",
+    options: ["Semlegesen megfogalmazza a kolléga lehetséges nézőpontját", "Elismeri az ügyfél érzéseit és visszatereli a figyelmet az ügyfél tapasztalatára és szükségleteire", "Közli, hogy ismeri a kollégát, és felveszi a kapcsolatot", "Megkérdezi az ügyfelet, hogy mit gondol, mit érezhet a kolléga"],
+    correctIndex: 1,
+    explanation: "A coaching jelenlét (5. kompetencia) megköveteli, hogy a coach saját reakcióit, ítéleteit félretegye. Az ügyfél tapasztalata a fókusz — nem a coach viszonyulása a harmadik félhez. Az elismerés és visszaterelés az ügyfél valóságát tartja középpontban.",
+    reference: "ICF 5. alapkompetencia: Coaching jelenlét megőrzése"
+  },
+  {
+    id: "comp-010", domain: "competencies", difficulty: 2,
+    question: "Mi jellemzi a jó coaching kérdést a 7. kompetencia (Tudatosság ébresztése) szerint?",
+    options: ["Rövid, egyszerű és irányított", "Nyitott, gondolatébresztő és az ügyfél legfontosabb szükségletére irányul", "Megkérdőjelezi az ügyfél feltételezéseit és hibáit", "Stratégiai, a coaching célokhoz kapcsolódik"],
+    correctIndex: 1,
+    explanation: "Az ICF szerint a hatékony coaching kérdések nyitottak, gondolatébresztők és az ügyfél valódi szükségletét célozzák — nem a coach kíváncsiságát elégítik ki, és nem irányítanak előre meghatározott válasz felé.",
+    reference: "ICF 7. alapkompetencia: Tudatosság ébresztése"
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  SEGÉDFÜGGVÉNYEK
+// ═══════════════════════════════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickQuestions(all, count) {
+  const byDomain = { ethics: [], definition: [], competencies: [] };
+  all.forEach(q => byDomain[q.domain].push(q));
+  const weights = { ethics: 0.3, definition: 0.3, competencies: 0.4 };
+  let selected = [];
+  Object.entries(weights).forEach(([domain, w]) => {
+    const n = Math.round(count * w);
+    selected.push(...shuffle(byDomain[domain]).slice(0, n));
+  });
+  while (selected.length < count && selected.length < all.length) {
+    const rest = all.filter(q => !selected.find(s => s.id === q.id));
+    if (!rest.length) break;
+    selected.push(rest[Math.floor(Math.random() * rest.length)]);
+  }
+  return shuffle(selected).slice(0, count);
+}
+
+function calcResults(questions, answers) {
+  const domains = {
+    ethics:       { label: "Etika",            total: 0, correct: 0, color: C.purple },
+    definition:   { label: "Definíció",        total: 0, correct: 0, color: C.blue },
+    competencies: { label: "Kompetenciák",     total: 0, correct: 0, color: C.accent },
+  };
+  let totalCorrect = 0;
+  questions.forEach(q => {
+    domains[q.domain].total++;
+    if (answers[q.id] === q.correctIndex) {
+      totalCorrect++;
+      domains[q.domain].correct++;
+    }
+  });
+  const pct = Math.round((totalCorrect / questions.length) * 100);
+  return {
+    total: questions.length, correct: totalCorrect, percentage: pct, passed: pct >= 76,
+    domains: Object.fromEntries(Object.entries(domains).map(([k, v]) => [
+      k, { ...v, pct: v.total > 0 ? Math.round((v.correct / v.total) * 100) : 0 }
+    ]))
+  };
+}
+
+function fmtTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}:${String(sec).padStart(2, "0")}`;
+}
+
+const DOMAIN_META = {
+  ethics:       { label: "Etika",        color: C.purple,  icon: "⚖️" },
+  definition:   { label: "Definíció",    color: C.blue,    icon: "🔍" },
+  competencies: { label: "Kompetencia",  color: C.accent,  icon: "🌱" },
+};
+
+const MOCK_COUNT = 30;
+const MOCK_SECS  = 45 * 60; // 45 perc
+
+// ═══════════════════════════════════════════════════════════════
+//  REDUCER
+// ═══════════════════════════════════════════════════════════════
+const INIT = {
+  screen: "landing",
+  practiceQs: [], practiceIdx: 0, practiceAnswers: {}, practiceRevealed: {},
+  mockQs: [], mockIdx: 0, mockAnswers: {}, mockSection: 1,
+  mockTimeLeft: MOCK_SECS, mockPaused: false, mockShowBreak: false, mockShowIntro: false,
+  results: null, showReview: false,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "GO_HOME":
+      return { ...INIT };
+    case "START_PRACTICE":
+      return { ...INIT, screen: "practice", practiceQs: pickQuestions(QUESTIONS, 5) };
+    case "ANSWER_PRACTICE": {
+      const q = state.practiceQs[state.practiceIdx];
+      return {
+        ...state,
+        practiceAnswers: { ...state.practiceAnswers, [q.id]: action.idx },
+        practiceRevealed: { ...state.practiceRevealed, [q.id]: true },
+      };
+    }
+    case "NEXT_PRACTICE": {
+      const next = state.practiceIdx + 1;
+      if (next >= state.practiceQs.length)
+        return { ...state, screen: "results", results: calcResults(state.practiceQs, state.practiceAnswers) };
+      return { ...state, practiceIdx: next };
+    }
+    case "START_MOCK":
+      return {
+        ...INIT, screen: "mock",
+        mockQs: pickQuestions(QUESTIONS, MOCK_COUNT),
+        mockTimeLeft: MOCK_SECS,
+        mockShowIntro: true, mockPaused: true,
+      };
+    case "BEGIN_MOCK":
+      return { ...state, mockShowIntro: false, mockPaused: false };
+    case "ANSWER_MOCK": {
+      const q = state.mockQs[state.mockIdx];
+      return { ...state, mockAnswers: { ...state.mockAnswers, [q.id]: action.idx } };
+    }
+    case "NEXT_MOCK": {
+      const next = state.mockIdx + 1;
+      if (next === Math.floor(MOCK_COUNT / 2) && state.mockSection === 1)
+        return { ...state, mockShowBreak: true, mockPaused: true };
+      if (next >= state.mockQs.length)
+        return { ...state, screen: "results", results: calcResults(state.mockQs, state.mockAnswers) };
+      return { ...state, mockIdx: next };
+    }
+    case "CONTINUE_MOCK":
+      return { ...state, mockSection: 2, mockPaused: false, mockShowBreak: false, mockIdx: state.mockIdx + 1 };
+    case "FINISH_MOCK":
+      return { ...state, screen: "results", results: calcResults(state.mockQs, state.mockAnswers) };
+    case "TICK":
+      if (state.mockPaused) return state;
+      if (state.mockTimeLeft <= 1)
+        return { ...state, screen: "results", results: calcResults(state.mockQs, state.mockAnswers) };
+      return { ...state, mockTimeLeft: state.mockTimeLeft - 1 };
+    case "TOGGLE_REVIEW":
+      return { ...state, showReview: !state.showReview };
+    default: return state;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ALAP KOMPONENSEK
+// ═══════════════════════════════════════════════════════════════
+function Btn({ onClick, children, variant = "primary", full, style = {} }) {
+  const [hover, setHover] = useState(false);
+  const base = {
+    display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
+    padding: "12px 24px", borderRadius: 10, fontSize: 15, fontWeight: 600,
+    fontFamily: "Inter, sans-serif", cursor: "pointer", border: "none",
+    transition: "all .18s ease", width: full ? "100%" : undefined,
+  };
+  const variants = {
+    primary: {
+      background: hover ? C.accentDark : C.accent,
+      color: C.accentText,
+      boxShadow: hover ? `0 4px 24px ${C.accentGlow}` : "none",
+      fontWeight: 700,
+    },
+    ghost: {
+      background: "transparent", color: C.accent,
+      border: `1.5px solid ${hover ? C.accent : C.accentBorder}`,
+    },
+    subtle: {
+      background: hover ? C.surfaceHover : C.surface,
+      color: C.textSub, border: `1px solid ${C.border}`,
+    },
+    danger: {
+      background: hover ? "#dc2626" : "#ef4444", color: "#fff",
+    },
+  };
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{ ...base, ...variants[variant], ...style }}
+    >
+      {children}
+    </button>
+  );
+}
+
+function Badge({ domain }) {
+  const { label, color } = DOMAIN_META[domain] || DOMAIN_META.ethics;
+  return (
+    <span style={{
+      fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 20,
+      background: color + "18", color, border: `1px solid ${color}30`,
+      letterSpacing: "0.4px", textTransform: "uppercase",
+    }}>
+      {label}
+    </span>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  HEADER
+// ═══════════════════════════════════════════════════════════════
+function Header({ onHome, screen }) {
+  return (
+    <header style={{
+      position: "sticky", top: 0, zIndex: 100,
+      background: C.bg + "f0", backdropFilter: "blur(16px)",
+      borderBottom: `1px solid ${C.border}`,
+    }}>
+      <div style={{
+        maxWidth: 900, margin: "0 auto", padding: "0 24px",
+        height: 56, display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
+        <button
+          onClick={onHome}
+          style={{
+            background: "none", border: "none", cursor: "pointer",
+            color: C.text, fontFamily: "'Syne', sans-serif", fontWeight: 800,
+            fontSize: 17, letterSpacing: "-0.2px", display: "flex", alignItems: "center", gap: 8,
+          }}
+        >
+          <span style={{ color: C.accent }}>Y2Y</span>
+          <span style={{ color: C.border }}>·</span>
+          <span>ACC Felkészítő</span>
+        </button>
+        <span style={{
+          fontSize: 11, color: C.accent, letterSpacing: "2px",
+          textTransform: "uppercase", fontWeight: 700,
+        }}>
+          Teljesen ingyenes
+        </span>
+      </div>
+    </header>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  LANDING
+// ═══════════════════════════════════════════════════════════════
+function Landing({ dispatch }) {
+  const cardStyle = {
+    background: C.surface, border: `1px solid ${C.border}`,
+    borderRadius: 16, padding: "28px 24px",
+  };
+
+  const domains = [
+    { ...DOMAIN_META.ethics,       pct: "30%", desc: "ICF Etikai Kódex 2020 — titoktartás, érdekellentét, kettős szerepek, beleegyezés." },
+    { ...DOMAIN_META.definition,   pct: "30%", desc: "Mi a coaching és mi NEM az — vs terápia, mentoring, tanácsadás, tréning." },
+    { ...DOMAIN_META.competencies, pct: "40%", desc: "A 8 ICF alapkompetencia (2019) — szemlélet, jelenlét, hallgatás, tudatosság, növekedés." },
+  ];
+
+  const facts = [
+    "60 kérdés · 90 perc · 2 szekció",
+    "Átmenő pontszám: 460 (200–600-as skálán)",
+    "16 nyelven elérhető, köztük magyarul",
+    "Pearson VUE — személyesen vagy online",
+    "Teszted bármikor újra vehető",
+  ];
+
+  return (
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 80px" }}>
+      {/* Hero */}
+      <div className="fade" style={{ textAlign: "center", padding: "72px 0 56px" }}>
+        <div style={{
+          display: "inline-block",
+          padding: "5px 0", fontSize: 11, color: C.textSub,
+          fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", marginBottom: 28,
+        }}>
+          BY Y2Y · ICF ACC VIZSGA FELKÉSZÍTŐ
+        </div>
+        <h1 style={{
+          fontFamily: "'Syne', sans-serif", fontWeight: 800,
+          fontSize: "clamp(40px, 7vw, 68px)",
+          lineHeight: 1.05, color: C.text, marginBottom: 20,
+          letterSpacing: "-1px",
+        }}>
+          Tanulod. Gyakorlod.<br />
+          <span style={{ color: C.accent }}>Érzed.</span>
+        </h1>
+        <p style={{
+          fontSize: 17, color: C.textSub, maxWidth: 540, margin: "0 auto 40px",
+          lineHeight: 1.75,
+        }}>
+          Valódi vizsgaformátumú kérdések ICF hivatkozásokkal, részletes magyarázatokkal. Etika, definíció, kompetenciák — mind egy helyen. Ingyen.
+        </p>
+        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+          <Btn onClick={() => dispatch({ type: "START_PRACTICE" })} style={{ fontSize: 16, padding: "14px 32px" }}>
+            Gyakorló mód → 5 kérdés
+          </Btn>
+          <Btn onClick={() => dispatch({ type: "START_MOCK" })} variant="ghost" style={{ fontSize: 16, padding: "14px 32px" }}>
+            Próbavizsga → 30 kérdés
+          </Btn>
+        </div>
+      </div>
+
+      {/* Domain cards */}
+      <div style={{ marginBottom: 56 }}>
+        <h2 style={{
+          fontFamily: "'Syne', sans-serif", fontWeight: 800,
+          textAlign: "center", letterSpacing: "-0.5px",
+          fontSize: "clamp(22px, 3vw, 32px)", color: C.text, marginBottom: 32,
+        }}>
+          Három terület. Egy vizsga.
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+          {domains.map(d => (
+            <div key={d.label} style={{ ...cardStyle, borderTop: `3px solid ${d.color}` }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+                <span style={{ fontSize: 26 }}>{d.icon}</span>
+                <span style={{
+                  background: d.color + "18", color: d.color,
+                  padding: "4px 12px", borderRadius: 20, fontSize: 13, fontWeight: 700,
+                }}>{d.pct}</span>
+              </div>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 8 }}>{d.label}</h3>
+              <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65 }}>{d.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Exam facts */}
+      <div style={{ marginBottom: 56 }}>
+        <p style={{ fontSize: 11, color: C.textDim, letterSpacing: "3px", textTransform: "uppercase", textAlign: "center", marginBottom: 28 }}>
+          A VIZSGÁRÓL
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 1, background: C.border, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+          {[
+            { num: "60",   label: "kérdés" },
+            { num: "90",   label: "perc" },
+            { num: "460",  label: "átmenő pontszám" },
+            { num: "16",   label: "elérhető nyelv" },
+          ].map((f, i) => (
+            <div key={i} style={{ background: C.surface, padding: "24px 20px", textAlign: "center" }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 36, color: C.accent, letterSpacing: "-1px" }}>{f.num}</div>
+              <div style={{ fontSize: 13, color: C.textSub, marginTop: 4 }}>{f.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+        <div style={{ ...cardStyle }}>
+          <div style={{ fontSize: 30, marginBottom: 14 }}>🎯</div>
+          <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 8 }}>Gyakorló mód</h3>
+          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20 }}>
+            5 véletlenszerű kérdés, azonnali visszajelzés minden válasz után, ICF hivatkozásokkal. Ismételd, ahányszor akarod.
+          </p>
+          <Btn full onClick={() => dispatch({ type: "START_PRACTICE" })}>Gyakorlás indítása</Btn>
+        </div>
+        <div style={{ ...cardStyle, border: `1px solid ${C.accentBorder}`, boxShadow: `0 0 40px ${C.accentGlow}` }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+            <span style={{ fontSize: 30 }}>📋</span>
+            <span style={{
+              background: C.accentGlow, color: C.accent, border: `1px solid ${C.accentBorder}`,
+              padding: "4px 12px", borderRadius: 20, fontSize: 12, fontWeight: 700,
+            }}>INGYENES</span>
+          </div>
+          <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 8 }}>Próbavizsga</h3>
+          <p style={{ fontSize: 13.5, color: C.textSub, lineHeight: 1.65, marginBottom: 20 }}>
+            30 kérdés, 45 perces időzítő, szekció szünet, részletes eredmény és visszajelzés a végén.
+          </p>
+          <Btn full onClick={() => dispatch({ type: "START_MOCK" })}>Próbavizsga indítása</Btn>
+        </div>
+      </div>
+
+      <p style={{ textAlign: "center", color: C.textDim, fontSize: 12, marginTop: 48 }}>
+        Készítette: Y2Y Hungary · PCC-minősített coaching szakértelem · y2y.hu
+      </p>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  KÉRDÉS KÁRTYA
+// ═══════════════════════════════════════════════════════════════
+function QuestionCard({ q, selectedIdx, onSelect, revealed, isMock }) {
+  const isCorrect = selectedIdx === q.correctIndex;
+
+  return (
+    <div className="fade">
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+        <Badge domain={q.domain} />
+        <span style={{ fontSize: 12, color: C.textDim }}>
+          {"●".repeat(q.difficulty) + "○".repeat(3 - q.difficulty)}
+        </span>
+      </div>
+
+      <p style={{ fontSize: 18, lineHeight: 1.65, color: C.text, fontWeight: 500, marginBottom: 28 }}>
+        {q.question}
+      </p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
+        {q.options.map((opt, i) => {
+          let bg = C.surface, border = C.border, color = C.textSub;
+
+          if (revealed || isMock) {
+            if (i === selectedIdx && !revealed) { bg = C.surfaceHover; border = C.borderLight; color = C.text; }
+          }
+
+          if (revealed) {
+            if (i === q.correctIndex) { bg = C.correctBg; border = C.correctBorder; color = C.correct; }
+            else if (i === selectedIdx && !isCorrect) { bg = C.wrongBg; border = C.wrongBorder; color = C.wrong; }
+          }
+
+          if (!revealed && i === selectedIdx) { bg = C.surfaceHover; border = C.borderLight; color = C.text; }
+
+          return (
+            <button
+              key={i}
+              disabled={revealed && !isMock}
+              onClick={() => onSelect(i)}
+              style={{
+                background: bg, border: `1.5px solid ${border}`, borderRadius: 10,
+                padding: "14px 18px", textAlign: "left", cursor: revealed && !isMock ? "default" : "pointer",
+                color, fontSize: 15, lineHeight: 1.55, fontFamily: "Inter, sans-serif",
+                fontWeight: i === selectedIdx ? 500 : 400,
+                transition: "all .15s ease",
+                display: "flex", alignItems: "flex-start", gap: 12,
+              }}
+            >
+              <span style={{
+                minWidth: 24, height: 24, borderRadius: "50%",
+                border: `1.5px solid ${border}`, display: "flex", alignItems: "center",
+                justifyContent: "center", fontSize: 12, fontWeight: 700, flexShrink: 0, marginTop: 1,
+                background: i === selectedIdx ? (revealed ? (i === q.correctIndex ? C.correct : C.wrong) : C.borderLight) : "transparent",
+                color: i === selectedIdx ? "#fff" : color,
+              }}>
+                {String.fromCharCode(65 + i)}
+              </span>
+              {opt}
+            </button>
+          );
+        })}
+      </div>
+
+      {revealed && (
+        <div className="fade" style={{
+          background: isCorrect ? C.correctBg : C.wrongBg,
+          border: `1px solid ${isCorrect ? C.correctBorder : C.wrongBorder}`,
+          borderRadius: 12, padding: "18px 20px",
+        }}>
+          <p style={{ fontWeight: 700, color: isCorrect ? C.correct : C.wrong, marginBottom: 10, fontSize: 15 }}>
+            {isCorrect ? "✓ Helyes!" : `✗ Helytelen — A helyes válasz: ${String.fromCharCode(65 + q.correctIndex)}`}
+          </p>
+          <p style={{ color: C.textSub, fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{q.explanation}</p>
+          <p style={{ color: C.textDim, fontSize: 12 }}>📚 {q.reference}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  GYAKORLÓ MÓD
+// ═══════════════════════════════════════════════════════════════
+function PracticeScreen({ state, dispatch }) {
+  const q = state.practiceQs[state.practiceIdx];
+  const selected = state.practiceAnswers[q.id];
+  const revealed = state.practiceRevealed[q.id];
+  const total = state.practiceQs.length;
+  const current = state.practiceIdx + 1;
+  const pct = Math.round((current - 1) / total * 100);
+
+  return (
+    <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px 80px" }}>
+      {/* Progress */}
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+          <span style={{ fontSize: 13, color: C.textSub, fontWeight: 500 }}>Gyakorló mód</span>
+          <span style={{ fontSize: 13, color: C.textSub }}>{current} / {total}</span>
+        </div>
+        <div style={{ height: 4, background: C.surface, borderRadius: 2, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${pct}%`, background: C.accent, borderRadius: 2, transition: "width .3s ease" }} />
+        </div>
+      </div>
+
+      <QuestionCard
+        q={q}
+        selectedIdx={selected}
+        onSelect={idx => !revealed && dispatch({ type: "ANSWER_PRACTICE", idx })}
+        revealed={!!revealed}
+        isMock={false}
+      />
+
+      {revealed && (
+        <div style={{ marginTop: 24, display: "flex", justifyContent: "flex-end" }}>
+          <Btn onClick={() => dispatch({ type: "NEXT_PRACTICE" })}>
+            {state.practiceIdx + 1 < total ? "Következő kérdés →" : "Eredmények megtekintése →"}
+          </Btn>
+        </div>
+      )}
+
+      {!revealed && selected === undefined && (
+        <p style={{ textAlign: "center", color: C.textDim, fontSize: 13, marginTop: 24 }}>
+          Válassz egy választ a folytatáshoz
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  PRÓBAVIZSGA
+// ═══════════════════════════════════════════════════════════════
+function MockScreen({ state, dispatch }) {
+  useEffect(() => {
+    if (state.mockPaused || state.screen !== "mock") return;
+    const id = setInterval(() => dispatch({ type: "TICK" }), 1000);
+    return () => clearInterval(id);
+  }, [state.mockPaused, state.screen]);
+
+  const q = state.mockQs[state.mockIdx];
+  const selected = state.mockAnswers[q.id];
+  const total = state.mockQs.length;
+  const current = state.mockIdx + 1;
+  const pct = Math.round((current - 1) / total * 100);
+  const timeWarning = state.mockTimeLeft < 300;
+
+  if (state.mockShowIntro) {
+    return (
+      <div style={{ maxWidth: 540, margin: "80px auto", padding: "0 24px" }}>
+        <div className="fade" style={{
+          background: C.surface, border: `1px solid ${C.border}`,
+          borderRadius: 16, padding: "48px 40px", textAlign: "center",
+        }}>
+          <div style={{
+            display: "inline-block", background: C.accentGlow, border: `1px solid ${C.accentBorder}`,
+            borderRadius: 8, padding: "6px 16px", fontSize: 12, fontWeight: 600,
+            color: C.accent, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 24,
+          }}>Próbavizsga</div>
+          <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 28, color: C.text, marginBottom: 16 }}>
+            Készen állsz a vizsgára?
+          </h2>
+          <p style={{ color: C.textSub, fontSize: 15, lineHeight: 1.7, marginBottom: 32 }}>
+            Ez a próbavizsga az eredeti ICF ACC vizsga feltételeit szimulál. Miután elindítod, az idő megáll, amíg szünetet tartasz.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 32 }}>
+            {[
+              { icon: "📋", label: "30 kérdés", sub: "2 szekció (15+15)" },
+              { icon: "⏱", label: "45 perc", sub: "időkorlát" },
+              { icon: "☕", label: "Szekció szünet", sub: "félúton opcionálisan" },
+              { icon: "🎯", label: "460/600 pont", sub: "átmenő küszöb" },
+            ].map((item, i) => (
+              <div key={i} style={{
+                background: C.bg, border: `1px solid ${C.border}`,
+                borderRadius: 10, padding: "16px 12px", textAlign: "center",
+              }}>
+                <div style={{ fontSize: 22, marginBottom: 6 }}>{item.icon}</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16, color: C.text }}>{item.label}</div>
+                <div style={{ fontSize: 12, color: C.textSub, marginTop: 2 }}>{item.sub}</div>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: 13, color: C.textDim, marginBottom: 28, lineHeight: 1.6 }}>
+            Szabály: minden kérdésre válaszolj, nem jár büntetőpont a hibás válaszért. A vizsga az idő lejártakor automatikusan véget ér.
+          </p>
+          <Btn full onClick={() => dispatch({ type: "BEGIN_MOCK" })} style={{ fontSize: 17, padding: "16px 32px" }}>
+            Vizsga indítása →
+          </Btn>
+          <button onClick={() => dispatch({ type: "GO_HOME" })} style={{
+            marginTop: 16, background: "none", border: "none", color: C.textSub,
+            fontSize: 14, cursor: "pointer", textDecoration: "underline",
+          }}>← Vissza a főoldalra</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (state.mockShowBreak) {
+    return (
+      <div style={{ maxWidth: 500, margin: "80px auto", padding: "0 24px", textAlign: "center" }}>
+        <div className="fade" style={{
+          background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: "48px 40px",
+        }}>
+          <div style={{ fontSize: 48, marginBottom: 20 }}>☕</div>
+          <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 28, color: C.text, marginBottom: 12 }}>
+            Szekció szünet
+          </h2>
+          <p style={{ color: C.textSub, fontSize: 15, lineHeight: 1.7, marginBottom: 32 }}>
+            Az 1. szekció teljesítve ({Math.floor(MOCK_COUNT / 2)} kérdés). Tarthatsz rövid szünetet — az időzítő vár.
+          </p>
+          <Btn full onClick={() => dispatch({ type: "CONTINUE_MOCK" })}>
+            Folytatás a 2. szekcióval →
+          </Btn>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px 80px" }}>
+      {/* Header sor */}
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+          <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+            <span style={{ fontSize: 13, color: C.textSub, fontWeight: 500 }}>
+              {state.mockSection}. szekció · {current} / {total}
+            </span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{
+              fontSize: 14, fontWeight: 700, fontVariantNumeric: "tabular-nums",
+              color: timeWarning ? C.wrong : C.textSub,
+              background: timeWarning ? C.wrongBg : C.surface,
+              border: `1px solid ${timeWarning ? C.wrongBorder : C.border}`,
+              padding: "4px 12px", borderRadius: 8,
+            }}>
+              ⏱ {fmtTime(state.mockTimeLeft)}
+            </span>
+            <Btn variant="subtle" style={{ padding: "6px 14px", fontSize: 12 }}
+              onClick={() => dispatch({ type: "FINISH_MOCK" })}>
+              Befejezés
+            </Btn>
+          </div>
+        </div>
+        <div style={{ height: 4, background: C.surface, borderRadius: 2, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${pct}%`, background: C.accent, borderRadius: 2, transition: "width .3s ease" }} />
+        </div>
+      </div>
+
+      <QuestionCard
+        q={q}
+        selectedIdx={selected}
+        onSelect={idx => dispatch({ type: "ANSWER_MOCK", idx })}
+        revealed={false}
+        isMock={true}
+      />
+
+      <div style={{ marginTop: 28, display: "flex", justifyContent: "flex-end" }}>
+        <Btn
+          onClick={() => dispatch({ type: "NEXT_MOCK" })}
+          style={{ opacity: selected === undefined ? 0.4 : 1 }}
+        >
+          {current < total ? "Következő →" : "Eredmények →"}
+        </Btn>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  EREDMÉNYEK
+// ═══════════════════════════════════════════════════════════════
+function ResultsScreen({ state, dispatch }) {
+  const r = state.results;
+  const questions = state.screen === "results"
+    ? (state.practiceQs.length > 0 ? state.practiceQs : state.mockQs)
+    : [];
+  const qs = state.mockAnswers && Object.keys(state.mockAnswers).length > 0 ? state.mockQs : state.practiceQs;
+  const answers = state.mockAnswers && Object.keys(state.mockAnswers).length > 0 ? state.mockAnswers : state.practiceAnswers;
+
+  const cardStyle = {
+    background: C.surface, border: `1px solid ${C.border}`,
+    borderRadius: 16, padding: "24px",
+  };
+
+  return (
+    <div style={{ maxWidth: 720, margin: "0 auto", padding: "40px 24px 80px" }}>
+      <div className="fade">
+        {/* Főeredmény */}
+        <div style={{
+          textAlign: "center",
+          background: r.passed ? C.correctBg : C.wrongBg,
+          border: `1px solid ${r.passed ? C.correctBorder : C.wrongBorder}`,
+          borderRadius: 20, padding: "40px 32px", marginBottom: 28,
+        }}>
+          <div style={{ fontSize: 52, marginBottom: 12 }}>{r.passed ? "🎉" : "💪"}</div>
+          <h2 style={{
+            fontFamily: "'Syne', sans-serif", fontWeight: 800,
+            fontSize: "clamp(28px, 5vw, 40px)",
+            color: r.passed ? C.correct : C.wrong,
+            marginBottom: 10,
+          }}>
+            {r.passed ? "ÁTMENT ✓" : "MÉG NEM"}
+          </h2>
+          <p style={{ fontSize: 28, fontWeight: 800, color: C.text, marginBottom: 6 }}>
+            {r.correct} / {r.total}
+          </p>
+          <p style={{ fontSize: 18, color: r.passed ? C.correct : C.wrong, fontWeight: 600, marginBottom: 12 }}>
+            {r.percentage}%
+          </p>
+          <p style={{ fontSize: 14, color: C.textSub }}>
+            Átmenő pontszám: 460/600 · {r.passed ? "Gratulálunk!" : "Gyakorolj még és próbáld újra!"}
+          </p>
+        </div>
+
+        {/* Domain bontás */}
+        <div style={{ ...cardStyle, marginBottom: 20 }}>
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: C.text, marginBottom: 18 }}>Területenkénti bontás</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {Object.entries(r.domains).map(([key, d]) => (
+              <div key={key}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                  <span style={{ fontSize: 14, color: C.textSub, fontWeight: 500 }}>{d.label}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: d.color }}>
+                    {d.correct}/{d.total} · {d.pct}%
+                  </span>
+                </div>
+                <div style={{ height: 6, background: C.bg, borderRadius: 3, overflow: "hidden" }}>
+                  <div style={{
+                    height: "100%", width: `${d.pct}%`, background: d.color,
+                    borderRadius: 3, transition: "width .6s ease",
+                  }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Gombok */}
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
+          <Btn onClick={() => dispatch({ type: "GO_HOME" })}>← Főoldal</Btn>
+          <Btn variant="ghost" onClick={() => dispatch({ type: qs === state.practiceQs ? "START_PRACTICE" : "START_MOCK" })}>
+            Újrapróbálom
+          </Btn>
+          <Btn variant="subtle" onClick={() => dispatch({ type: "TOGGLE_REVIEW" })}>
+            {state.showReview ? "Elrejt" : "Összes válasz áttekintése"}
+          </Btn>
+        </div>
+
+        {/* Review */}
+        {state.showReview && (
+          <div className="fade">
+            <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 22, color: C.text, marginBottom: 24 }}>
+              Válaszok áttekintése
+            </h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              {qs.map((q, i) => {
+                const ans = answers[q.id];
+                const correct = ans === q.correctIndex;
+                return (
+                  <div key={q.id} style={{
+                    ...cardStyle,
+                    borderLeft: `3px solid ${correct ? C.correct : C.wrong}`,
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                        <span style={{ fontSize: 12, color: C.textDim, fontWeight: 600 }}>{i + 1}.</span>
+                        <Badge domain={q.domain} />
+                      </div>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: correct ? C.correct : C.wrong }}>
+                        {correct ? "✓" : "✗"}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: 14, color: C.text, marginBottom: 12, lineHeight: 1.6 }}>{q.question}</p>
+                    {ans !== undefined && ans !== q.correctIndex && (
+                      <p style={{ fontSize: 13, color: C.wrong, marginBottom: 6 }}>
+                        Válaszod: {q.options[ans]}
+                      </p>
+                    )}
+                    <p style={{ fontSize: 13, color: C.correct, marginBottom: 12 }}>
+                      Helyes: {q.options[q.correctIndex]}
+                    </p>
+                    <p style={{ fontSize: 13, color: C.textSub, lineHeight: 1.65 }}>{q.explanation}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  APP
+// ═══════════════════════════════════════════════════════════════
+function App() {
+  const [state, dispatch] = useReducer(reducer, INIT);
+
+  return (
+    <div style={{ minHeight: "100vh", background: C.bg, fontFamily: "Inter, sans-serif", color: C.text }}>
+      <style>{`
+        @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .fade { animation: fadeIn .25s ease; }
+        * { box-sizing: border-box; }
+        button:focus { outline: none; }
+        body { font-family: Inter, sans-serif; }
+      `}</style>
+
+      <Header onHome={() => dispatch({ type: "GO_HOME" })} screen={state.screen} />
+
+      {state.screen === "landing"  && <Landing  state={state} dispatch={dispatch} />}
+      {state.screen === "practice" && <PracticeScreen state={state} dispatch={dispatch} />}
+      {state.screen === "mock"     && <MockScreen     state={state} dispatch={dispatch} />}
+      {state.screen === "results"  && <ResultsScreen  state={state} dispatch={dispatch} />}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
